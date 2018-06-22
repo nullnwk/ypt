@@ -1,0 +1,6 @@
+/*é‡ç½®*/
+#content_showInfo .pagination {position:static}
+#content_showInfo .pagination > li{display:inline-block;}
+#content_showInfo #list .pagination li{border:none;padding: initial;}
+#content_showInfo.content_newsList .pagination {position:absolute}
+

@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>齐鲁艺票通</title>
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+    <!--bootstrap css-->
+    <link type="text/css" href="../css/bootstrap.css" rel="stylesheet">
+    <!--公共css-->
+    <link type="text/css" href="../css/public.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/reset.css" rel="stylesheet"/>
+    <!--首页css-->
+    <link type="text/css" href="../css/swiper.css" rel="stylesheet"/>
+    <!--个人中心css-->
+    <link type="text/css" href="../css/user.css" rel="stylesheet">
+    <link type="text/css" href="../css/ypt-font.css" rel="stylesheet">
+    <!--友情链接-->
+    <link rel="stylesheet" href="../css/footerLink.css">
+
+    <!--bootstrap js-->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/url.js"></script>
+    <script type="text/javascript" src="../js/security.js"></script>
+    <!--百度地图-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OKxZsvlTuIBN16u1WpGt7K9eZXf8HS1s"></script>
+    <!--首页js-->
+    <!-- <script type="text/javascript" src="../js/swiper.min.js"></script> -->
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script src="../js/base64.js"></script>
+    <!-- <script type="text/javascript" src="../js/index.js"></script> -->
+    <!--个人中心js-->
+    <script type="text/javascript" src="../js/chinaArea.js"></script>
+    <script type="text/javascript" src="../js/listPages.js"></script>
+    <script type="text/javascript" src="../js/user-right.js"></script>
+    <script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+</head>
+
+<body>
+    <!--头部-->
+    <div id="header"></div>
+
+
+    <!--页面主体-->
+    <div class="container" id="ypt-main-content">
+        <div class="row">
+            <!--左侧导航菜单-->
+            <div class="col-xs-2" id="ypt-user-left-menus">
+                <h1>我的艺票通</h1>
+                <div class="list-group">
+                    <h2><span class="ypt-icon ypt-icon-form" aria-hidden="true"></span>订单中心</h2>
+                    <a class="list-group-item active" method="ordersQuery">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的订单
+                    </a>
+                    <a class="list-group-item" method="cardsQuery">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的次卡
+                    </a>
+                    <!-- <a class="list-group-item" method="couponsQuery">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的优惠券
+                    </a> -->
+                    <a class="list-group-item" method="pointsQuery">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的积分
+                    </a>
+                    <a class="list-group-item" method="favourQuery">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的关注
+                    </a>
+                    <a class="list-group-item" method="watchedList">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的观看
+                    </a>
+                    <h2><span class="ypt-icon ypt-icon-profile" aria-hidden="true"></span>账户管理</h2>
+                    <a class="list-group-item" method="getUserInfo">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        个人信息
+                    </a>
+                    <a class="list-group-item" method="queryAdrList">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        收获地址
+                    </a>
+                    <a class="list-group-item" method="getComments">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        我的评论
+                    </a>
+                    <a class="list-group-item" method="ideaSubmit">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        意见建议
+                    </a>
+                    <!-- <a class="list-group-item" method="">
+                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                        艺票通
+                    </a> -->
+                </div>
+            </div>
+
+            <!--我的订单-->
+            <div class="col-xs-10 user-content-block">
+
+                <!--列表-->
+                <div class="row user-right-title-wrap ypt-style-mb15 user-order-list-box">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的订单</h2>
+                        <span class="ypt-fc-grey">已支付（<span class="ypt-fc-red" id="paied-nums">0</span>）</span>
+                        <span class="ypt-fc-grey">未支付（<span class="ypt-fc-red" id="unPaied-nums">0</span>）</span>
+                        <!-- <span class="ypt-fc-grey">已签收（<span class="ypt-fc-red">0</span>）</span> -->
+                    </div>
+                </div>
+
+                <div class="row ypt-user-order-list ypt-style-mb15 user-order-list-box" id="ypt-user-order-list">
+                    <div class="col-xs-12" id="ypt-user-order-head">
+                        <table class="table ypt-fc-grey">
+                            <tr>
+                                <td class="order-sortby-date order-select">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span id="orderT">近三个月订单</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a time="0" class="active">近三个月订单</a></li>
+                                            <li><a time="1">近半年订单</a></li>
+                                            <li><a time="2">近一年订单</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td class="order-details">订单详情</td>
+                                <td class="order-amount">金额(元)</td>
+                                <td class="order-status order-select">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span id="orderSta">全部</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a state="" class="active">全部</a></li>
+                                            <li><a state="1">已支付</a></li>
+                                            <li><a state="2">未支付</a></li>
+                                            <!-- <li><a state="3">已签收</a></li> -->
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td class="order-btns">操作</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--订单列表-->
+                    <div class="col-xs-12 ypt-user-order-item">
+                    </div>
+                    <div class="listPages"></div>
+                </div>
+
+                <!--详情-->
+                <div class="row user-right-title-wrap ypt-style-mb15 user-order-detail-box" style="display: none;">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的订单<i class="ypt-icon ypt-icon-right"></i>订单详情</h2>
+                    </div>
+                </div>
+
+                <div class="row ypt-user-order-list ypt-style-mb15 user-order-detail-box" id="order-detail" style="display: none;">
+                    <div class="col-xs-12" id="order-detail-head">
+                        <table class="table ypt-fc-grey">
+                            <tr>
+                                <th colspan="3"><img src="../img/blue-circle.png"/>订单信息</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../img/detail-pay.png">
+                                    <p>支付状态</p>
+                                    <p class="detail-pay"></p>
+                                </td>
+                                <td>
+                                    <img src="../img/detail-order.png">
+                                    <p>订单编号</p>
+                                    <p class="detail-order"></p>
+                                </td>
+                                <td>
+                                    <img src="../img/detail-time.png">
+                                    <p>下单时间</p>
+                                    <p class="detail-time"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="../img/detail-person.png">
+                                    <p>收件人</p>
+                                    <p class="detail-person"></p>
+                                </td>
+                                <td>
+                                    <img src="../img/detail-phone.png">
+                                    <p>电话</p>
+                                    <p class="detail-phone"></p>
+                                </td>
+                                <td>
+                                    <img src="../img/detail-address.png">
+                                    <p>取货地址</p>
+                                    <p class="detail-address"></p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-12" id="order-detail-pro">
+                        <h2><img src="../img/red-circle.png">商品信息</h2>
+                        <table class="table ypt-fc-grey" style="table-layout: fixed;">
+                            <tr id="detail-header">
+                                <th style="width: 30%">名称</th>
+                                <th style="width: 20%">座位号</th>
+                                <th style="width: 15%">价格</th>
+                                <th style="width: 10%">数量</th>
+                                <th style="width: 10%">价格小计</th>
+                                <th style="width: 15%;text-align: center;">验票码</th>
+                            </tr>
+                            <!-- <tr id="seatList">
+                                <td id="detail-pro-name"></td>
+                                <td id="seatOrder"></td>
+                                <td id="unitPrice" class="ypt-fc-red"></td>
+                                <td id="orderItemsCount"></td>
+                                <td id="receivableMoney" class="ypt-fc-red"></td>
+                            </tr> -->
+                            <tr>
+                                <td colspan="1">
+                                    <span class="detail-pro-pay">
+                                    支付方式：<span id="orderPayType"></span></span>
+                                </td>
+                                <td colspan="5" style="text-align: right;">
+                                    <span>　　　运费：<span class="detail-cell-info ypt-fc-red" id="">&yen;0.00</span></span></br>
+                                    <span>优惠券抵扣：<span class="detail-cell-info ypt-fc-red" id="couponDiscountMoney"></span></span></br>
+                                    <span>　　　优惠：<span class="detail-cell-info ypt-fc-red" id="favorableMoney"></span></span></br>
+                                    <span>　实际付款：<span class="detail-cell-info ypt-fc-red" id="orderMoney"></span></span></br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="text-align: right;">
+                                    <a class="btn btn-primary active detail-pro-btn detail-btn">去评价</a>
+                                    <a class="btn btn-primary active detail-pay-btn detail-btn" href="">去支付</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+            <template id="orderTpl">
+                <table class="table">
+                    <tr class="width-set">
+                        <th style="width: 35%"></th>
+                        <th style="width: 15%"></th>
+                        <th style="width: 10%"></th>
+                        <th style="width: 8%"></th>
+                        <th style="width: 12%"></th>
+                        <th style="width: 10%"></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th class="order-item-no" colspan="4">
+                            <p class="ypt-fc-grey">订单号:{oid}</p>
+                        </th>
+                        <th class="order-item-date" colspan="3">
+                            <p class="ypt-fc-grey start-time" st="{startTime}">{startTime} 
+                                <a class="glyphicon glyphicon-trash ypt-fc-grey order-delete" oid="{oid}"></a>
+                            </p>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="user-order-item-info">
+                            <p class="order-item-img"><img src="{representPathUrl}" /></p>
+                            <div class="order-item-txt">
+                                <h3><a url="{projectUrl}" oid="{oid}" pid="{id}" class="to-order-detail" orderMoney="{orderMoney}">{name}</a></h3>
+                                <p class="ypt-fc-grey">时间：{endTime}</p>
+                                <p class="ypt-fc-grey">地点：{siteName}</p>
+                            </div>
+                        </td>
+                        <td class="user-order-item-seat">{seatOrder}</td>
+                        <td class="user-order-item-count">
+                            <p><span class="ypt-fc-red">{unitPrice}</span><!--×{orderItemsCount}--></p>
+                        </td>
+                        <td class="user-order-item-service">售后申请</td>
+                        <td class="user-order-item-price">
+                            <p class="ypt-fc-red">金额：&yen;{orderMoney}</p>
+                            <!-- <p class="ypt-fc-grey">[包含快递费12.00]</p> -->
+                        </td>
+                        <td class="user-order-item-status">
+                            <p class="ypt-fc-red">{orderPayState}</p>
+                            <!-- <p>付款详情</p> -->
+                        </td>
+                        <td class="user-order-item-btns" oid="{oid}" orderMoney="{orderMoney}" pid="{id}">
+                            <!-- <p class="ypt-fc-grey"><span class="glyphicon glyphicon-time">
+                            </span>结束时间:<span>{endTime}</span>
+                            </p> -->
+                            <button type="button" class="btn btn-primary btn-default btn-block active {displayClass1} order-pay-btn">立即支付</button>
+                            <button type="button" class="btn btn-default btn-block {displayClass2} order-cancel-btn">取消</button>
+                            <!-- <button type="button" class="btn btn-default btn-block {displayClass3} order-confirm-btn">已支付</button> -->
+                            <button type="button" class="btn btn-block btn-primary {displayClass4} order-comment-btn">去评价</button>
+                            <button type="button" class="btn btn-block btn-default {displayClass5} order-comment-done">已评价</button>
+                        </td>
+                    </tr>
+                </table>
+            </template>
+
+            <!--我的次卡-->
+            <div class="col-xs-10 user-content-block">
+
+                <!--没有次卡-->
+                <div class="row" id="ypt-user-card-none" style="display: none;">
+                    <p class="no-card-tips">您还没有次卡！<a class="btn btn-primary active buy-card">购买次卡</a></p>
+                    <div class="col-xs-12">
+                        <h2 class="user-card-title ypt-f16"><span>使用记录</span></h2>
+                        <table class="table card-records">
+                            <tr>
+                                <td>您还没有任何次卡使用记录！</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!--购买次卡-->
+                <div class="row" id="ypt-user-card-get" style="display: none;">
+                    <!--标题-->
+                    <div class="col-xs-12 user-right-title-wrap ypt-style-mb15">
+                        <div class="user-right-title">
+                            <h2 class="ypt-f16 ypt-fc-dark">我的次卡<i class="ypt-icon ypt-icon-right"></i>购买次卡</h2>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 card-get-pro">
+                        <table class="table card-get-head">
+                            <tr>
+                                <th class="get-step1 active" style="width: 360px">
+                                    选择次卡信息
+                                    <div class="arrow-icon-left"></div>
+                                </th>
+                                <th class="get-step2" style="width: 300px">
+                                    在线支付
+                                    <div class="arrow-icon-right"></div>
+                                </th>
+                                <th class="get-step3">
+                                    购买成功
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 card-type get-step1-box card-pro-box">
+                        <form class="form-horizontal" id="card-form">
+
+                          <div class="form-group">
+                            <label for="" class="col-xs-1 control-label">购买账户：</label>
+                            <div class="col-xs-6 card-account user-name"></div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="" class="col-xs-1 control-label">次卡类型：</label>
+                            <div class="col-xs-6 card-types">
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="" class="col-xs-1 control-label">购卡数量：</label>
+                            <div class="col-xs-2">
+                                <input type="text" name="" class="form-control" id="card-count">
+                                <span>张</span>
+                            </div>
+                            <div class="col-xs-4 check-warn"></div>
+                          </div>
+                          <div class="form-group">
+                            <label for="" class="col-xs-1 control-label">应付金额：</label>
+                            <div class="col-xs-6 card-amount ypt-fc-red ypt-f20">&yen;<span id="card-money">0.00</span></div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-xs-offset-1 col-xs-10 card-btn-wrap">
+                              <a class="btn btn-primary active" id="card-confirm">下一步</a>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12 card-pay get-step2-box card-pro-box" style="display: none;">
+                        <table class="table">
+                            <tr>
+                                <td class="card-order-no">
+                                    <span>
+                                        订单提交成功，请您尽快付款！订单号：
+                                        <strong id="card-order-no"></strong>
+                                    </span>
+                                </td>
+                                <td class="card-pay-amt">应付金额 <span class="ypt-fc-red pay-amt">0.00</span> 元</td>
+                            </tr>
+                            <tr><td class="card-order-warning" colspan="2">请您在订单生成24小时内支付，否则订单自动取消！</td></tr>
+                        </table>
+
+                        <ul class="nav nav-tabs tabs-style1" role="tablist">
+                            <!-- <li role="presentation"><a href="#ebank" aria-controls="ebank" role="tab" data-toggle="tab">网上银行付款</a></li> -->
+                            <li role="presentation" class="active"><a href="#payChannel" aria-controls="payChannel" role="tab" data-toggle="tab">支付平台付款</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="payChannel">
+                                <table class="table">
+                                    <tr><td colspan="5">支付：<span class="ypt-fc-red pay-amt"></span> 元</td></tr>
+                                    <tr>
+                                        <td><a way="A01" class="chosen-bank"><img src="../img/zhifu_30.png"></a></td>
+                                        <td><a way="W01"><img src="../img/zhifu_40.png"></a></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary active" id="pay-for-card">立即支付</a>
+                    </div>
+
+                    <div class="col-xs-12 card-success get-step3-box card-pro-box" style="display: none;">
+                        <div class="card-pay-scuccess">
+                            <i class="glyphicon glyphicon-ok-circle"></i>
+                            <p>您已成功购买次卡！</p>
+                            <a class="btn btn-primary active" id="card-pay-finished">完成</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--已有次卡-->
+                <div class="row user-right-title-wrap ypt-style-mb15" id="card-main-title" style="display: none;">
+                    <div class="col-xs-6 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的次卡</h2><a modal="card-intro" class="modal-intro">次卡规则说明</a>
+                    </div>
+                    <div class="col-xs-6 user-right-title card-top-btns">
+                        <a class="buy-card" id="rebuy-card">购买次卡</a>
+                        <a id="bind-card">绑定次卡</a>
+                    </div>
+                </div>
+                <div id="ypt-user-card" class="ypt-user-card" style="display: none;">
+                    <div class="row ypt-user-card-body ypt-style-mb15">
+                        <div class="col-xs-6">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#availableCard" aria-controls="available" role="tab" data-toggle="tab">可用次卡(<span></span>)</a></li>
+                                <li role="presentation"><a href="#appliedCard" aria-controls="applied" role="tab" data-toggle="tab">已用次卡(<span></span>)</a></li>
+                                <li role="presentation"><a href="#expiredCard" aria-controls="expired" role="tab" data-toggle="tab">过期次卡(<span></span>)</a></li>
+                            </ul>
+                        </div>
+
+                        <!--搜索框-->
+                        <!-- <div class="col-xs-6 input-group-wrap">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="输入优惠券码">
+                              <span class="input-group-btn">
+                                <button class="btn btn-primary active" type="button">兑换</button>
+                              </span>
+                            </div>
+                        </div> -->
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="availableCard">
+                                <div class="cardsWrap"></div>
+                                <div class="listPages"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="appliedCard">
+                                <div class="cardsWrap"></div>
+                                <div class="listPages"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="expiredCard">
+                                <div class="cardsWrap"></div>
+                                <div class="listPages"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <template id="cardTpl">
+                <div class="col-xs-4 myCard">
+                    <a>
+                        <p class="card-name">{cardName}</p>
+                        <p class="card-count">剩余 <span class="count-no">{frequency}</span> 次</p>
+                        <p class="card-date">有效期至：<span class="date-no">{effectiveTime}</span></p>
+                        <p class="card-num">{cardNum}</p>
+                        {cardCorner}
+                    </a>
+                </div>
+            </template>
+
+            <!--我的优惠券-->
+            <!-- <div class="col-xs-10 user-content-block">
+                
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">优惠券</h2><a modal="coupon-intro" class="modal-intro">优惠券规则说明</a>
+                    </div>
+                </div>
+
+                
+                <div id="ypt-user-coupon" class="ypt-user-coupon">
+
+                    <div class="row ypt-user-coupon-body ypt-style-mb15">
+                        <div class="col-xs-6">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#availableCoupon" aria-controls="availableCoupon" role="tab" data-toggle="tab">可用优惠券(<span>0</span>)</a></li>
+                                <li role="presentation"><a href="#appliedCoupon" aria-controls="appliedCoupon" role="tab" data-toggle="tab">已用优惠券(<span>0</span>)</a></li>
+                                <li role="presentation"><a href="#expiredCoupon" aria-controls="expiredCoupon" role="tab" data-toggle="tab">过期优惠券(<span>0</span>)</a></li>
+                            </ul>
+                        </div>
+
+                        
+                        <div class="col-xs-6 input-group-wrap">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="输入优惠券码">
+                              <span class="input-group-btn">
+                                <button class="btn btn-primary active" type="button">兑换</button>
+                              </span>
+                            </div>
+                        </div>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="availableCoupon">
+                                <div class="col-xs-3">
+                                    <div class="coupon-item">
+                                        <div class="coupon-info">
+                                            <p class="coupon-price ypt-f20">￥<span class="ypt-f50">20</span></p>
+                                            <p class="coupon-limit ypt-fc-dgreen ypt-style-mb15">优惠券<span>【满200元可用】</span></p>
+                                            <P class="coupon-date ypt-fc-dgreen">2017.09.08-2017.09.10</P>
+                                        </div>
+                                        <p class="coupon-tips ypt-fc-dark">
+                                            <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                                        </p>
+                                        <p class="coupon-tips ypt-fc-dark">
+                                            <b>券编号：</b><span class="ypt-fc-grey">30445722190</span>
+                                        </p>
+                                        <button type="button" class="btn btn-default btn-block" id="use-coupon">立即使用</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="appliedCoupon">
+                                <div class="col-xs-3">
+                                    <div class="coupon-item coupon-item-applied">
+                                        <div class="coupon-info">
+                                            <p class="coupon-price ypt-f20">￥<span class="ypt-f50">20</span></p>
+                                            <p class="coupon-limit ypt-fc-dark ypt-style-mb15">优惠券<span>【满200元可用】</span></p>
+                                            <P class="coupon-date ypt-fc-dark">2017.09.08-2017.09.10</P>
+                                        </div>
+                                        <p class="coupon-tips ypt-fc-dark">
+                                            <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                                        </p>
+                                        <p class="coupon-tips ypt-fc-dark">
+                                            <b>券编号：</b><span class="ypt-fc-grey">30445722190</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="expiredCoupon">
+                                <div class="col-xs-3">
+                                    <div class="coupon-item coupon-item-applied">
+                                        <div class="coupon-info">
+                                            <p class="coupon-price ypt-f20">￥<span class="ypt-f50">20</span></p>
+                                            <p class="coupon-limit ypt-fc-dark ypt-style-mb15">优惠券<span>【满200元可用】</span></p>
+                                            <P class="coupon-date ypt-fc-dark">2017.09.08-2017.09.10</P>
+                                        </div>
+                                        <p class="coupon-tips ypt-fc-dark">
+                                            <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                                        </p>
+                                        <p class="coupon-tips ypt-fc-dark">
+                                            <b>券编号：</b><span class="ypt-fc-grey">30445722190</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <template id="couponTpl">
+                <div class="col-xs-3">
+                    <div class="coupon-item">
+                        <div class="coupon-info">
+                            <p class="coupon-price ypt-f20">￥<span class="ypt-f50">20</span></p>
+                            <p class="coupon-limit ypt-fc-dgreen ypt-style-mb15">优惠券<span>【满200元可用】</span></p>
+                            <P class="coupon-date ypt-fc-dgreen">2017.09.08-2017.09.10</P>
+                        </div>
+                        <p class="coupon-tips ypt-fc-dark">
+                            <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                        </p>
+                        <p class="coupon-tips ypt-fc-dark">
+                            <b>券编号：</b><span class="ypt-fc-grey">30445722190</span>
+                        </p>
+                        <button type="button" class="btn btn-default btn-block" id="use-coupon">立即使用</button>
+                    </div>
+                </div>
+            </template> -->
+
+            <!--我的积分-->
+            <div class="col-xs-10 user-content-block">
+
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的积分</h2><span class="ypt-fc-ldark">积分是网站返给用户的虚拟货币，将采用逾期自动清理的原则，请注意积分到期时间！</span>
+                        <a modal="point-intro" class="modal-intro">了解积分兑换规则</a>
+                    </div>
+                </div>
+
+                <!--积分列表-->
+                <div class="row ypt-user-points ypt-style-mb15" id="ypt-user-points">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs tabs-style1" role="tablist">
+                            <li role="presentation" class="active"><a href="#available" aria-controls="available" role="tab" data-toggle="tab">积分获取</a></li>
+                            <!-- <li role="presentation"><a href="#applied" aria-controls="applied" role="tab" data-toggle="tab">积分使用</a></li> -->
+                        </ul>
+                        <p class="user-points-no ypt-fc-ldark">
+                            <a class="btn btn-primary" id="sign-points">签到</a>
+                            <span>会员积分：<span class="ypt-fc-red" id="integral">0</span>分</span>
+                        </p>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="available">
+                                <table class="table">
+                                </table>
+                            </div>
+                            <div class="listPages"></div>
+                            <!-- <div role="tabpanel" class="tab-pane" id="applied">
+                                <table class="table">
+                                    <tr>
+                                        <th>积分使用</th>
+                                        <th>积分数</th>
+                                        <th>使用日期</th>
+                                    </tr>
+                                    <tr>
+                                        <td>兑换礼品</td>
+                                        <td>-20</td>
+                                        <td>2017.09.08</td>
+                                    </tr>
+                                </table>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--我的关注-->
+            <div class="col-xs-10 user-content-block">
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-6 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的关注</h2><span class="ypt-fc-ldark">共<span id="favour-count">0</span>条</span>
+                    </div>
+                </div>
+
+                <!--关注演出-->
+                <div id="ypt-user-favour" class="ypt-user-favour">
+                    <div class="row ypt-user-favour-body ypt-style-mb15">
+                        <div class="col-xs-12">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#shows" type="0" role="tab" data-toggle="tab">全部剧目</a></li>
+                                <li role="presentation"><a href="#news" role="tab" data-toggle="tab" type="1">新闻动态</a></li>
+                                <li role="presentation"><a href="#policy"  role="tab" data-toggle="tab" type="2">政策法规</a></li>
+                                <li role="presentation"><a href="#notice" role="tab" data-toggle="tab" type="3">通知公告</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="shows" type="0">
+                                <div class="contentWrap"></div>
+                                <div class="listPages"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="news" type="1">
+                                <table class="table-striped table contentWrap">
+                                </table>
+                                <div class="listPages"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="policy" type="2">
+                                <table class="table-striped table contentWrap">
+                                </table>
+                                <div class="listPages"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="notice" type="3">
+                                <table class="table-striped table contentWrap">
+                                </table>
+                                <div class="listPages"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <template id="favourTpl0">
+                <div class="col-xs-12 favour-item">
+                    <a class="favour-item-box" href="{proId}">
+                        <p class="favour-img">
+                            <img src="{imagePath}"/>
+                        </p>
+                    </a>
+                    <div class="favour-content">
+                        <p class="favour-title ypt-fc-dark ypt-style-bt10">{name}</p>
+                        <p class="favour-tips ypt-f13 ypt-fc-grey ypt-style-mt5">
+                            时间：<span>{startTime}</span></br>
+                            地点：<span>{siteName}</span>
+                        </p>
+                        <p class="favour-price ypt-fc-grey ypt-f13">票价：
+                            <span class="ypt-fc-red">￥</span><b class="ypt-fc-red">{minPrice}</b> 起
+                        </p>
+                        <p class="favour-btns">
+                            <a><i class="ypt-icon ypt-icon-similar"></i> 在线选座</a>
+                            <a><i class="ypt-icon ypt-icon-erweima"></i> 电子票</a>
+                        </p>
+                    </div>
+                    <a type="button" class="btn btn-primary active order-btn" href="{proId}">立即购票</a>
+                    <a class="cancel-favour" proId="{proId2}">取消关注</a>
+                </div>
+            </template>
+            <template id="favourTpl1">
+                <div class="col-xs-12 favour-item">
+                    <a class="favour-item-box" href="{proId}">
+                        <p class="favour-img">
+                            <img src="{imagePath}"/>
+                        </p>
+                    </a>
+                    <div class="favour-content">
+                        <p class="favour-title ypt-fc-dark ypt-style-bt10">{title}</p>
+                    </div>
+                    <a class="cancel-favour" proId="{proId2}">取消关注</a>
+                </div>
+            </template>
+            <template id="favourTpl3">
+                <tr>
+                    <td>{createTime}</td>
+                    <td class="favour-title-td">{title}</td>
+                    <td class="favour-content-td">{content}</td>
+                    <td><a class="favour-cancel" proId="{proId}">取消收藏</a></td>
+                </tr>
+            </template>
+
+            <!--我的观看-->
+            <div class="col-xs-10 user-content-block">
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-6 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的观看</h2>
+                    </div>
+                </div>
+
+                <!--关注演出-->
+                <div id="ypt-user-watch" class="ypt-user-watch">
+                    <div class="row ypt-user-watch-body ypt-style-mb15">
+                        <div class="col-xs-12">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#unWatched" role="tab" data-toggle="tab" type="1">待观看</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#watched" role="tab" data-toggle="tab" type="0">已观看</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="unWatched" type="1">
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="watched" type="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <template id="watchTpl" style="display: none;">
+                <div class="col-xs-6 watch-item">
+                    <a class="watch-left"><img src=""/></a>
+                    <div class="watch-right">
+                        <p class="watch-name ypt-fc-dark">{title}</p>
+                        <p class="watch-date ypt-fc-grey">{createTime}</p>
+                        <p class="watch-adr ypt-fc-dark">{address}</p>
+                        <p class="watch-price ypt-fc-dark"><span class="ypt-fc-red">&yen; <b>{minPrice}</b></span> 起</p>
+                    </div>
+                    <a class="watch-btn btn-default btn">{status}</a>
+                </div>
+            </template>
+
+            <!--个人资料-->
+            <div class="col-xs-10 user-content-block">
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">个人信息</h2>
+                        <span class="ypt-fc-grey">为了能为您提供个性化服务，完善资料中的真实姓名、性别、出生日期、演出喜好等信息，可获<b class="ytp-fc-red">10</b>积分！<a modal="point-intro" class="modal-intro">了解积分兑换</a></span>
+                    </div>
+                </div>
+
+                <!--地址列表-->
+                <div class="row ypt-user-info ypt-style-mb15" id="ypt-user-info">
+                    <div class="col-xs-12">
+                        <ul class="nav nav-tabs tabs-style1" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#base-info" aria-controls="base-info" role="tab" data-toggle="tab">基本资料</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#portrait" aria-controls="portrait" role="tab" data-toggle="tab">头像设置</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-12 user-img-left">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="base-info">
+                                <h3 class="ypt-fc-warning ypt-style-mt15 ypt-style-mb15">为了您的帐户安全，请验证邮箱和验证手机 ，现在验证赠送积分！</h3>
+                                <div>
+                                    <form class="form-horizontal" id="auth-form">
+
+                                      <div class="form-group">
+                                        <label for="" class="col-xs-2 control-label">昵称：</label>
+                                        <div class="col-xs-4">
+                                          <input type="text" class="form-control" id="name" placeholder="请输入您的昵称" value="">
+                                        </div>
+                                        <div class="col-xs-4 check-warn"></div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="" class="col-xs-2 control-label">性别：</label>
+                                        <div class="col-xs-4">
+                                            <label class="radio-inline">
+                                              <input type="radio" name="sex" class="sexRadio" value="0"> 男
+                                            </label>
+                                            <label class="radio-inline">
+                                              <input type="radio" name="sex" class="sexRadio" value="1"> 女
+                                            </label>
+                                            <label class="radio-inline">
+                                              <input type="radio" name="sex" class="sexRadio" value="2"> 保密
+                                            </label>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="" class="col-xs-2 control-label">出生日期：</label>
+                                        <div class="col-xs-2">
+                                          <select class="form-control" id="birth-y">
+                                        </select>
+                                        </div>
+                                        <div class="col-xs-2">
+                                          <select class="form-control" id="birth-m">
+                                              <option value="1">1</option>
+                                              <option value="2">2</option>
+                                              <option value="3">3</option>
+                                              <option value="4">4</option>
+                                              <option value="5">5</option>
+                                              <option value="6">6</option>
+                                              <option value="7">7</option>
+                                              <option value="8">8</option>
+                                              <option value="9">9</option>
+                                              <option value="10">10</option>
+                                              <option value="11">11</option>
+                                              <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-2">
+                                          <select class="form-control" id="birth-d">
+                                            </select>
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <div class="col-xs-offset-2 col-xs-10">
+                                          <a class="btn btn-primary active" id="mod-info">确认</a>
+                                        </div>
+                                      </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="portrait">
+                                <div class="userHeadImage-wrap">
+                                    
+                                    <div class="uploadBtns">
+                                        <a class="btn btn-default" id="choose-img">选择您要上传的头像</a>
+                                        <p>仅支持JPG、GIF、PNG、JPEG、BMP格式，文件小于4M。</p>
+                                    </div>
+                                    <p class="userHeadImage userHeadImageSet">
+                                        <img src="../img/headImgDefault.jpg" >
+                                    </p>
+                                    <table class="table" id="chooseHeadImg">
+                                        <tr>
+                                            <th colspan="8" style="padding: 10px 0 0 8px;background: none;border: none;">
+                                                <b>推荐头像</b>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="../img/headImg/tx1.png"></td>
+                                            <td><img src="../img/headImg/tx2.png"></td>
+                                            <td><img src="../img/headImg/tx3.png"></td>
+                                            <td><img src="../img/headImg/tx4.png"></td>
+                                            <td><img src="../img/headImg/tx5.png"></td>
+                                            <td><img src="../img/headImg/tx6.png"></td>
+                                            <td><img src="../img/headImg/tx7.png"></td>
+                                            <td><img src="../img/headImg/tx8.png"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="../img/headImg/tx9.png"></td>
+                                            <td><img src="../img/headImg/tx10.png"></td>
+                                            <td><img src="../img/headImg/tx11.png"></td>
+                                            <td><img src="../img/headImg/tx12.png"></td>
+                                            <td><img src="../img/headImg/tx13.png"></td>
+                                            <td><img src="../img/headImg/tx14.png"></td>
+                                            <td><img src="../img/headImg/tx15.png"></td>
+                                            <td><img src="../img/headImg/tx16.png"></td>
+                                        </tr>
+                                    </table>
+                                    <div class="uploadBtns">
+                                        <a class="btn btn-primary active" id="upload-img">保存</a>
+                                        <a class="btn btn-default" id="upload-cancel">取消</a>
+                                        <form id="uploadForm" enctype="multipart/form-data" style="display: none;">
+                                            <input type="file" name="file" id="chooseInput">
+                                            <input type="submit" name="submit" value="submit" id="submit">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="user-img-rihgt" id="headImgPreview">
+                                    <p><b>效果预览</b></br>上传的图片会自动生成两种尺寸，请注意小尺寸的头像是否清晰。</p>
+                                    <div class="previewL userHeadImage">
+                                        <img src="../img/headImgDefault.jpg"/></br>
+                                        <span class="ypt-fc-grey">100*100像素</span>
+                                    </div>
+                                    <div class="previewS userHeadImage">
+                                        <img src="../img/headImgDefault.jpg"/></br>
+                                        <span class="ypt-fc-grey">50*50像素</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--收货地址-->
+            <div class="col-xs-10 user-content-block">
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">收货地址</h2>
+                    </div>
+                </div>
+                <!--地址列表-->
+                <div class="row ypt-user-address ypt-style-mb15" id="ypt-user-address">
+                    <div class="col-xs-12">
+                        <h2 class="ypt-block-title-sm">常用收货地址<span class="ypt-f13 ypt-fc-grey">您已创建3个地址，最多可创建20个</span></h2>
+                        <table class="table table-show1">
+                        </table>
+                        <div class="listPages"></div>
+                    </div>
+                    
+                    <div class="col-xs-12">
+                        <h2 class="ypt-block-title-sm">新增收货地址</h2>
+
+                        <form class="form-horizontal" id="address-add-form">
+                          <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">收货人：</label>
+                            <div class="col-xs-4">
+                              <input type="text" class="form-control" id="adr-name" placeholder="请填写收货人姓名">
+                            </div>
+                            <div class="col-xs-4 check-warn" style="display: none;"></div>
+                          </div>
+                          <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">所在区划：</label>
+                            <div class="col-xs-2">
+                              <select class="form-control area-select" id="area-province1"></select>
+                            </div>
+                            <div class="col-xs-2">
+                              <select class="form-control area-select" id="area-city1"></select>
+                            </div>
+                            <div class="col-xs-2">
+                              <select class="form-control area-select" id="area-district1"></select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">详细地址：</label>
+                            <div class="col-xs-4">
+                              <input type="text" class="form-control" id="adr-detail" placeholder="请输入详细地址">
+                            </div>
+                            <div class="col-xs-4 check-warn" style="display: none;"></div>
+                          </div>
+                          <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">手机号码：</label>
+                            <div class="col-xs-4">
+                              <input type="text" class="form-control" id="adr-phone" placeholder="请输入手机号码">
+                            </div>
+                            <div class="col-xs-4 check-warn" style="display: none;"></div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox" id="adr-state">设为默认地址
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+                              <a class="btn btn-primary active" id="addAdr">确认</a>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--我的评论-->
+            <div class="col-xs-10 user-content-block">
+
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">我的评论</h2>
+                    </div>
+                </div>
+
+                <div class="row ypt-user-comments-list ypt-style-mb15" id="ypt-user-comments-list">
+
+                    <!-- <div class="col-xs-12 ypt-block-title-wrap">
+                        <h2 class="ypt-block-title">共<b class="ypt-fc-red" id="mark-count">0</b>条评论</h2>
+                    </div> -->
+
+                    <div class="col-xs-12 comment-nav">
+                        <ul class="nav nav-tabs tabs-style1" role="tablist">
+                            <li role="presentation" class="active" state="2">
+                                <a href="#commented" aria-controls="commented" role="tab" data-toggle="tab">已评价</a>
+                            </li>
+                            <li role="presentation" state="1">
+                                <a href="#willComment" aria-controls="willComment" role="tab" data-toggle="tab">待评价</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--评论模板-->
+                    <div class="col-xs-12">
+                        <div class="tab-content user-comments-list">
+                            <div role="tabpanel" class="tab-pane ypt-user-comments-item active" id="commented">
+                                <table class="table">
+                                </table>
+                                <div class="listPages"></div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane ypt-user-comments-item" id="willComment">
+                                <table class="table">
+                                </table>
+                                <div class="listPages"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end-->
+                </div>
+
+                <!-- <div class="row" id="ypt-user-comments-pages">
+                    <div class="col-xs-12">
+                        <nav aria-label="Page navigation" class="navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span class="ypt-icon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span aria-hidden="true">上一页</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">下一页</span>
+                                        <span class="ypt-icon ypt-icon-right" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="skip-to-page ypt-fc-grey">
+                                共24页，到第                         
+                                <input type="text" class="form-control input-sm" id="exampleInputName2" placeholder="24" style="display: inline"> 页
+                                <a class="btn btn-default">确定</a>
+                            </div>
+                        </nav>
+                    </div>
+                </div> -->
+            </div>
+            <template id="comentTpl">
+                <tr>
+                    <td class="comments-item-show">
+                        <a href="{id}">
+                            <p class="comments-item-img"><img src="{representPathUrl}"/></p>
+                        </a>
+                        <div class="comments-item-txt">
+                            <p class="cmt-show-name ypt-fc-dark"><a oid="{oid}" href="{id}" class="comment-detail">{name}</a></p>
+                            <p class="ypt-fc-dark">地点：
+                                <span class="ypt-fc-ldark">{siteName}</span>
+                            </p>
+                            <p class="ypt-fc-dark">评论：
+                                <span class="ypt-fc-ldark">{content}</span>
+                            </p>
+                        </div>
+                    </td>
+                    <td class="comments-item-btns ypt-fc-grey">
+                        <p class="comments-item-date">{startTime}</p>
+                        <p class="thumbs-wrap ypt-fc-grey">
+                            <a class="btn btn-primary comment-detail {className1}" href="{id}">查看详情</a>
+                            <a class="btn btn-primary go-comment {className2}" cId="{cId}" oid="{oid}" name="{name}">去评价</a>
+                        </p>
+                    </td>
+                </tr>
+            </template>
+
+            <!--我的建议-->
+            <div class="col-xs-10 user-content-block">
+                <!--标题-->
+                <div class="row user-right-title-wrap ypt-style-mb15">
+                    <div class="col-xs-12 user-right-title">
+                        <h2 class="ypt-f16 ypt-fc-dark">意见建议</h2>
+                    </div>
+                </div>
+
+                <!--建议表单-->
+                <div class="row ypt-user-address ypt-style-mb15" id="ypt-user-address">
+                    
+                    <div class="col-xs-12">
+                        <form class="form-horizontal">
+                          <div class="form-group">
+                            <label for="" class="col-xs-2 control-label">意见内容：</label>
+                            <div class="col-xs-6">
+                              <textarea class="form-control" id="idea-content"></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+                              <a class="btn btn-primary active" id="idea-submit">确认</a>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--艺票通-->
+            <!-- <div class="col-xs-10 user-content-block">
+
+                <div class="row ypt-rencent-order-list ypt-style-mb15" id="ypt-recent-order-list">
+                    <div class="col-xs-12 ypt-order-item">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th colspan="2"><h2 class="ypt-block-title">近期订单</h2></th>
+                                    <th colspan="3">
+                                        <button type="button" class="btn btn-default btn-block" id="all-orders">全部订单</button>
+                                    </th>
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td class="order-item-info">
+                                        <a>
+                                            <p class="item-img"><img src="../img/demo.jpg"/></p>
+                                            <div class="item-txt">
+                                                <h3>万有音乐--2018世界巡回演唱会万有音乐--2018世界巡回演唱会</h3>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td class="order-item-price">
+                                        <p class="ypt-fc-red">金额：$600.00</p>
+                                        <p class="ypt-fc-grey">[包含快递费12.00]</p>
+                                    </td>
+                                    <td class="order-item-date">
+                                        <p class="ypt-fc-grey">2017-12-18</br>23:01:56</p>
+                                    </td>
+                                    <td class="order-item-status">
+                                        <a class="ypt-fc-red" href="#" role="button">待付款</a></br><a class="ypt-fc-grey" href="#" role="button">订单详情</a>
+                                    </td>
+                                    <td class="order-item-btns">
+                                        <a class="ypt-fc-red" href="#" role="button">付款</a></br><a class="ypt-fc-grey" href="#" role="button">取消订单</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td class="order-item-info">
+                                        <a>
+                                            <p class="item-img"><img src="../img/demo.jpg"/></p>
+                                            <div class="item-txt">
+                                                <h3>万有音乐--2018世界巡回演唱会万有音乐--2018世界巡回演唱会</h3>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td class="order-item-price">
+                                        <p class="ypt-fc-red">金额：$600.00</p>
+                                        <p class="ypt-fc-grey">[包含快递费12.00]</p>
+                                    </td>
+                                    <td class="order-item-date">
+                                        <p class="ypt-fc-grey">2017-12-18</br>23:01:56</p>
+                                    </td>
+                                    <td class="order-item-status">
+                                        <a class="ypt-fc-red" href="#" role="button">待付款</a></br><a class="ypt-fc-grey" href="#" role="button">订单详情</a>
+                                    </td>
+                                    <td class="order-item-btns">
+                                        <a class="ypt-fc-red" href="#" role="button">付款</a></br><a class="ypt-fc-grey" href="#" role="button">取消订单</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="row ypt-recommond-show ypt-style-mb15" id="ypt-recommond-show">
+                    <div class="col-xs-12 ypt-block-title-wrap"><h2 class="ypt-block-title">推荐演出</h2></div>
+                    <table class="table">
+                        <tr>
+                            <td class="recommond-show-item">
+                                <a>
+                                    <p class="show-img"><img src="../img/demo.jpg"></p>
+                                    <p class="ypt-font14 ypt-fc-dark">不服来将--何洁济南演唱会</p>
+                                    <p class="ypt-font13 ypt-fc-grey">时间：2018-09-08 12:00</p>
+                                </a>
+                            </td>
+                            <td class="recommond-show-item">
+                                <a>
+                                    <p class="show-img"><img src="../img/demo.jpg"></p>
+                                    <p class="ypt-font14 ypt-fc-dark">不服来将--何洁济南演唱会</p>
+                                    <p class="ypt-font13 ypt-fc-grey">时间：2018-09-08 12:00</p>
+                                </a>
+                            </td>
+                            <td class="recommond-show-item">
+                                <a>
+                                    <p class="show-img"><img src="../img/demo.jpg"></p>
+                                    <p class="ypt-font14 ypt-fc-dark">不服来将--何洁济南演唱会</p>
+                                    <p class="ypt-font13 ypt-fc-grey">时间：2018-09-08 12:00</p>
+                                </a>
+                            </td>
+                            <td class="recommond-show-item">
+                                <a>
+                                    <p class="show-img"><img src="../img/demo.jpg"></p>
+                                    <p class="ypt-font14 ypt-fc-dark">不服来将--何洁济南演唱会</p>
+                                    <p class="ypt-font13 ypt-fc-grey">时间：2018-09-08 12:00</p>
+                                </a>
+                            </td>
+                            <td class="recommond-show-item">
+                                <a>
+                                    <p class="show-img"><img src="../img/demo.jpg"></p>
+                                    <p class="ypt-font14 ypt-fc-dark">不服来将--何洁济南演唱会</p>
+                                    <p class="ypt-font13 ypt-fc-grey">时间：2018-09-08 12:00</p>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div> -->
+
+        </div>
+    </div>
+
+    <!--编辑地址弹出框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="edit-form">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="ypt-icon ypt-icon-roundclose"></i></button>
+            <h4 class="modal-title">编辑地址</h4>
+          </div>
+          <div class="modal-body" id="edit-body">
+                <form class="form-horizontal" id="address-edit-form">
+                  <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">收货人：</label>
+                    <div class="col-xs-6">
+                      <input type="text" class="form-control" id="adr-name2" placeholder="请填写收货人姓名">
+                    </div>
+                    <div class="col-xs-3 check-warn"></div>
+                  </div>
+
+                      <div class="form-group">
+                        <label for="" class="col-xs-3 control-label">所在区划：</label>
+                        <div class="col-xs-3">
+                          <select class="form-control area-select" id="area-province2"></select>
+                        </div>
+                        <div class="col-xs-3">
+                          <select class="form-control area-select" id="area-city2"></select>
+                        </div>
+                        <div class="col-xs-3">
+                          <select class="form-control area-select" id="area-district2"></select>
+                        </div>
+                      </div>
+
+                  <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">详细地址：</label>
+                    <div class="col-xs-6">
+                      <input type="text" class="form-control" id="adr-detail2" placeholder="请输入详细地址">
+                    </div>
+                    <div class="col-xs-3 check-warn"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-xs-3 control-label">手机号码：</label>
+                    <div class="col-xs-6">
+                      <input type="text" class="form-control" id="adr-phone2" placeholder="请输入手机号码">
+                    </div>
+                    <div class="col-xs-3 check-warn"></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-offset-3 col-xs-4">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" id="adr-state2">设为默认地址
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-xs-4 check-warn"></div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary active" id="edit-submit" >确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--发表评论-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="comment-form">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="ypt-icon ypt-icon-roundclose"></i>
+            </button>
+            <h4 class="modal-title">发表评价</h4>
+          </div>
+          <div class="modal-body" id="comment-body">
+
+            <table class="table">
+                <tr>
+                    <td colspan="2" class="comment-order">
+                        <p class="comment-img"><img src=""></p>
+                        <div class="comment-info">
+                            <h2 id="comment-title"></h2>
+                            <p id="comment-date">时间：<span></span></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" class="comment-user-info userHeadImage">
+                        <img src="">
+                        <p id="comment-user-name" class="user-name"></p>
+                    </td>
+                    <td class="comment-user-content">
+                        <textarea class="form-control" id="comment-content" style="width: 100%;" cols="5" placeholder="请输入评论内容，最多只能输入100个字"></textarea>
+                    </td>
+                </tr>
+            </table>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary active" id="comment-submit">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--购买次卡弹出框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-wrap">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="ypt-icon ypt-icon-roundclose"></i></button>
+            <h4 class="modal-title" id="modal-title"></h4>
+          </div>
+          <div class="modal-body" id="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary active" id="modal-ok" >确认已支付</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--绑定次卡弹出框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="bind-card-form">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="ypt-icon ypt-icon-roundclose"></i>
+            </button>
+            <h4 class="modal-title">次卡绑定</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row bind-card-box" id="bind-card-result">
+                <i class="ypt-icon ypt-icon-roundcheck ypt-fc-red"></i>
+                <p>绑定成功！</p>
+            </div>
+            <div class="row bind-card-box" id="bind-card-table">
+                <!-- <div class="col-xs-6 col-xs-offset-3">
+                    <i class="ypt-icon ypt-icon-mobile"></i>
+                  <input type="text" id="bind-phone" class="form-control" placeholder="请填写您的手机号">
+                </div> -->
+                <div class="col-xs-6 col-xs-offset-3">
+                    <i class="ypt-icon ypt-icon-vipcard"></i>
+                  <input type="text" id="card-no" class="form-control" placeholder="请填写次卡卡号">
+                </div>
+                <div class="col-xs-6 col-xs-offset-3">
+                    <i class="ypt-icon ypt-icon-lock"></i>
+                  <input type="password" id="bindPwd" class="form-control" placeholder="请填写密码">
+                </div>
+               <div class="col-xs-6 col-xs-offset-3" id="bind-error">
+                    <div class="alert alert-danger" role="alert"></div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary active" id="bind-card-ok" >确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--规则说明-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-intro">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="ypt-icon ypt-icon-roundclose"></i></button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="intro-block card-intro">
+                <div class="ypt-user-block-intr">
+                    次卡分为普惠卡(2次卡)、亲子卡(6次卡)</br>
+                    次卡绑定之后才可以用</br>
+                    惠普卡全部线下发行，线上绑定，线上不发行(线上不能购买)，亲子卡卡线下线上都发行。</br>
+                    次卡：单人的使用上限和项目使用上限，不超出200人。</br></br>
+                    1、一个订单里不能同时使用2次卡和6次卡；</br>
+                    2、每个订单购票无限制；</br>
+                    3、2次卡买一张票的时候可以用，二张票只能用一张，三张票只能用一张，超出部分需要使用现金；</br>
+                    4、6次卡买二张票的时候可以用，一张票单独买不可以使用，三张票只能用一张，四张票可用二张(2的倍数增长)；</br>
+                </div>
+            </div>
+            <div class="intro-block coupon-intro">
+                <div class="ypt-user-block-intr">
+                    <p class="ypt-fc-ldark">1、单笔订单只能使用1张优惠券，不能同时使用多张优惠券；</br>
+                    2、请在有效期内使用优惠券，未使用的优惠券过期后，将自动作废；</br>
+                    3、每张优惠券的使用条件请查看对应优惠券的使用说明；</br>
+                    4、用户使用优惠券提交订单但未付款，订单取消后优惠券将自动返回账户；使用优惠券支付成功订单，则无法退回；</br>
+                    5、优惠券仅能在聚橙网提交订单时抵减应支付商品金额，不能进行兑现或其他用；</br>
+                    6、使用优惠券时，优惠券与平台其他优惠不能同时享有，优惠券支付部分不开具发票</br>
+                    7、优惠券严禁出售或转让，如经发现并证实的，该券将予以作废处理；</br>
+                    8、如果在聚橙网使用通过不正当手段获得的优惠劵，聚橙网有权将该券予以作废处理，并要求此客户通过其它方式补足余款。</br>
+                    9、如需了解更多，请联系在线客服或拨打客服电话400-185-8666。</p>
+                </div>
+            </div>
+            <div class="intro-block point-intro">
+                <div class="ypt-user-block-intr">
+                    <p class="ypt-fc-ldark">积分兑换规则...</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--校验提示--> 
+    <div class="modal fade" tabindex="-1" role="dialog" id="validate-wrap">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="validate-tips">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="footer"></div>
+
+    </body>
+
+</html>

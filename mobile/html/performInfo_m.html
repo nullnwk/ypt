@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>演出详情</title>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<script src="../js/idangerous.swiper.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/pager.js"></script>
+	<script type="text/javascript" src="../js/jquery.raty.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script type="text/javascript" src="../logic/perform_Info_m.js"></script>
+
+	<link rel="stylesheet" href="../css/include_m.css">
+	<link href="../css/public_mys.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid p0">
+<div id="" class="bg_ef">
+<!-- 购票信息开始 -->
+<div class="size12-xs container p0 m0-xs bor-none-xs">
+<div class="head">
+	<!--标题栏-->
+	<table width="100%" class="mt10">
+		<tr>
+			<td width="10%"><a class="ml10" href="javascript:void(0)" onclick="backToList()"><img src="../img/icon_back.png" style="width: 19px;"></a>
+			</td>
+			<td width="75%" class="text-center"><span class="size14-xs" id="title">票务详情</span></td>
+			<td width="15%">
+				<img id="markImg" onclick="mark()" src="../img/icon_mark3.png" style="width: 19px;">
+				<img class="ml5" onclick="share()" src="../img/icon_share1.png" style="width: 19px;">
+			</td>
+			<div id="fx" class="-mob-share-ui-button -mob-share-open" style="display: none;"></div>
+			<div class="-mob-share-ui" style="display: none">
+				<ul class="-mob-share-list">
+					<li class="-mob-share-weibo"><p>新浪微博</p></li>
+					<li class="-mob-share-qq"><p>QQ好友</p></li>
+					<li class="-mob-share-weixin"><p>微信</p></li>
+				</ul>
+				<div class="-mob-share-close">取消</div>
+			</div>
+			<div class="-mob-share-ui-bg"></div>
+			<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=25f231895855c"></script>
+		</tr>
+	</table>
+</div>
+<div class="pl20 pr20 col-sm-12 mt40" id="buyInfo" style="height: 180px; background-image:url(../img/bg.png); background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;">
+
+	<!--内容-->
+	<table style="width: 100%;" border="0">
+		<tr>
+			<td width="40%" rowspan="3" class="pt5 pb5">
+				<img class="mt5" id="image" src="" style="width: 120px;height: 160px;">
+			</td>
+			<td width="60%" class="pt5 pb5">
+				<div class="col_ff pl10 pr10" id="detail_name"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="pt5 pb5">
+				<span class="col_ff ml10" id="detail_type"><span class="bor_ff p3">售票中</span>&nbsp;
+				<span class="bor_ff p3">座</span></span>
+			</td>
+		</tr>
+		<tr>
+			<td class="pt5 pb5"><span class="col_ff ml10 size16-xs" id="detail_price"></span></td>
+		</tr>
+	</table>
+</div>
+<div class="col-sm-12 pl20 pr20 bg_ff">
+	<table width="100%">
+		<tr>
+			<td width="20%" class="col_8a pt15 pb15">演出时间</td>
+			<td width="70%" class="pt15 pb15"><span id="info_Time" class="pull-left">2018-03-04 18:30</span></td>
+			<td width="10%" class="pt15 pb15"><img src="../img/xqym_clock@3x.png" style="width: 17px;"></td>
+		</tr>
+	</table>
+</div>
+<div class="bor_b_db"></div>
+<div class="col-sm-12 pl20 pr20 bg_ff">
+	<table width="100%">
+		<tr>
+			<td width="20%" class="col_8a pt15 pb15">演出场馆</td>
+			<td width="70%" class="pt15 pb15"><span id="place" class="pull-left">山东省会大剧院-音乐厅</span></td>
+			<td width="10%" class="pt15 pb15"><img src="../img/xqym_location@3x.png" style="width: 17px;"></td>
+		</tr>
+	</table>
+</div>
+<!-- 购票信息结束 -->
+
+<!-- 购票详情开始 -->
+<div class="container p0 mt15">
+<div class="col-sm-12 p0">
+<div class="bg_ff" id="detailBox">
+<!-- 演出内容 -->
+<div role="tabpanel" class=" p_lr15 p_b30 " id="showInfo">
+	<div class="text-center hei20"> </div>
+	<div class="text-center hei30">
+		<table width="100%">
+			<tr>
+				<td width="30%" align=right><div class="bor_t_9d" style="width: 80px;"></div></td>
+				<td width="20%" class="size13-xs">演出介绍</td>
+				<td width="30%" ><div class="bor_t_9d" style="width: 80px;"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div id="content">
+		<!--<p class="size14 size12-xs mt15">喜剧《无事生非》写了两对情人故事，剧中数条线索巧妙穿插，最吸引人的是培尼狄克和贝特丽丝的恋情。-->
+			<!--贝特丽丝是莎士比亚笔下最聪慧善言的女主角，与培尼狄克才智相当。他们起初誓抱独身，相互讽嘲，各不相让。朋友们设法让他们相信对方之爱而生爱慕之心，但直到结婚他们还在拌嘴，宣称自己是因为怜悯对方而行善。最后彼此倾倒，完满结合-->
+		<!--</p>-->
+		<!--<img src="../img/poster3.png" alt="">-->
+
+	</div>
+	<!--视频播放start-->
+	<table style="width: 100%; display: none;" class="mt20 mb20" id="videoTable">
+		<tr>
+			<td align="center" id="videoContent">
+				<video id="my-video" class="video-js"  preload="auto" width="100%" height="300" poster="" data-setup="{}">
+					<source id="videoSrc" src="../demo.mkv" type="video/mp4">
+				</video>
+			</td>
+		</tr>
+	</table>
+	<!--视频播放end-->
+	<div class="text-center hei30 mt20">
+		<table width="100%">
+			<tr>
+				<td width="30%" align=right><div class="bor_t_9d" style="width: 80px;"></div></td>
+				<td width="20%" class="size13-xs">注意事项</td>
+				<td width="30%" ><div class="bor_t_9d" style="width: 80px;"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div id="perform_zy">
+		<p class="size14 size12-xs mt15">a)演出详情仅供参考，具体信息以现场为准；</p>
+		<p class="size14 size12-xs mt5">b)演出票品具有唯一性、时效性等特殊属性，如非活动变更、活动取消、票品错误的原因外，不提供退换票品服务，购票时请务必仔细核对并审慎下单。</p>
+	</div>
+	<div class="text-center hei30 mt20">
+		<table width="100%">
+			<tr>
+				<td width="30%" align=right><div class="bor_t_9d" style="width: 80px;"></div></td>
+				<td width="20%" class="size13-xs">购票须知</td>
+				<td width="30%" ><div class="bor_t_9d" style="width: 80px;"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div id="perform_xz">
+		<p class="size14 size12-xs mt15 mb5">1.为避免快递配送不能及时送达，演出距开场时间少于3天时不提供【快递配送】服务，请您谅解！您可以选择电子票或在线支付后上门自取纸质票。
+		</p>
+
+		<p class="size14 size12-xs mb5">2.凡演出票类商品，开票时间一般为演出前二到四周，正式开票后会第一时间短信通知您，请注意接收。</p>
+
+		<p class="size14 size12-xs">
+			3.如您不是通过“选座购买”通道进行的票品购买，最终票品数量视项目主办方及场馆情况而定，正式开票后齐鲁艺票通将根据用户付款先后顺序依次配票，可能存在票品不足不能为您配票的风险，如最终未能配票，齐鲁艺票通承诺全额退款，但不承担其他损失。</p>
+
+	</div>
+	<div class="text-center hei30 mt20">
+		<table width="100%">
+			<tr>
+				<td width="30%" align=right><div class="bor_t_9d" style="width: 80px;"></div></td>
+				<td width="20%" class="size13-xs">在线留言</td>
+				<td width="30%" ><div class="bor_t_9d" style="width: 80px;"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div id="perform_message">
+		<ul id="messageUL">
+
+		</ul>
+	</div>
+	<div class="bor_b_db mt15"></div>
+</div>
+<!-- 演出内容结束 -->
+<!--footer-->
+<div class="foot text-center bg_ff">
+	<table style="width: 100%; height: 40px;">
+		<tr>
+			<!--<td width="50%" class="bg_ff"><a href="javascript:void(0)" class="size14-xs col_67 inlineb" data-toggle="modal" data-target="#message_Modal"><img src="../img/icon_message.png" class="mt-5" style="width: 22px;"><span class="ml10">写留言</span></a></td>-->
+			<td width="100%" class="size14-xs bg_red2"><a href="javascript:void(0)" class="col_ff bg_red2" onclick="selectSeat()">选座购买</a></td>
+		</tr>
+	</table>
+</div>
+
+<!--留言弹出层-start-->
+<!--<div class="modal fade" id="message_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+	<!--<div class="modal-dialog">-->
+		<!--<div class="modal-content">-->
+			<!--<div class="bg_ff p15" style="height: 130px;">-->
+				<!--<table style="width: 100%;">-->
+					<!--<tr>-->
+						<!--<td colspan="3">-->
+							<!--<textarea name="" id="message_content" class="bor_e3" style="width: 100%; height: 70px;" placeholder="请输入评论内容，最多只能输入100个字"></textarea>-->
+						<!--</td>-->
+					<!--</tr>-->
+					<!--<tr class="mt10">-->
+						<!--<td width="15%;">评分：</td>-->
+						<!--<td width="60%;"><div id="myScore"></div></td>-->
+						<!--<td width="25%;"><input type="button" value="发布" style="height: 30px; width: 80px;" class="bg_red2 lihei30-xs col_ff bor_none"></td>-->
+					<!--</tr>-->
+				<!--</table>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+<!--留言弹出层-end-->
+
+
+</div>
+</div>
+</div>
+<!-- 购票详情结束 -->
+</div>
+</div>
+</div>
+</body>
+</html>

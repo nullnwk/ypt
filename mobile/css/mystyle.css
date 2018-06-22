@@ -1,0 +1,513 @@
+@charset "utf-8";
+body { font-family: "Microsoft YaHei",Helvetica,Arial,sans-serif !important;  font-size: 14px;  line-height: 1.42857143; color: #333;}
+.bg-wrap {font-family: "Microsoft YaHei";background: none no-repeat fixed center top #fff;}
+.container { width: 1000px; margin: 0 auto; }
+.pt40{padding-top: 40px;}
+
+/*top-banner*/
+#top-banner{position: relative;}
+.top-banner-s img,.top-banner-l img{display: block;border: 0;}
+.top-banner-s,.top-banner-l{width: 1020px;margin: 0 -10px;text-align:center;}
+.top-banner-s a,.top-banner-l a{margin: 0 auto;display:block;}
+.top-banner-s{display: none;}
+.closed-bg{position: absolute;right: 5px;top: 0px;color: #fff;}
+
+/*导航*/
+.nav-wrap{width:100%;}
+.nav-box{height:68px;background:#fff;}
+.nav-box .n-logo{padding-top: 10px;}
+.nav{border:0;float:right;padding-top:18px;font-family:'Microsoft YaHei';font-size:15px;}
+.nav li{position:relative;float:left;display:inline;margin-left:10px;width:100px;height:30px;text-align:center;z-index:100;}
+.nav li a{position:absolute;left:0;bottom:0;width:100px;height:29px;display:block;color:#000;}
+.nav li a.on{bottom:-3px;border-bottom:3px solid;border-color:#c20006;color:#c20006;}
+.nav li a:hover{color:#c20006;border:0;bottom:0;}
+.nav-sub{position:absolute;top:30px;left:-7px;width:112px;display: none;background: url(http://ticket.qlypt.com/resources/common/images/nav-sub-bg.png);z-index:100;}
+.nav-sub li{float: none;margin:0;width:100%;height:36px;font-size: 12px;font-family: '宋体';line-height: 36px;text-align:center;}
+.nav-sub li a{display:block;padding:0;color:#fff;width:112px;height:36px;position:static;border-bottom:1px  solid #d0d4d4;}
+.nav-sub li a:hover{margin:0;border-bottom:1px  solid #d0d4d4;background:url(http://ticket.qlypt.com/resources/common/images/nav-sub-li-on.png);color:#666;}
+.nav-sub li.last a{border:0;}
+.nav li:hover .nav-sub{display:block;}
+
+/*左侧分类导航*/
+#nav-sld .container{background: #fff;}
+.l-sd {float: left;padding-bottom: 10px;width: 170px;border:1px solid #d5d5d5;border-bottom:0;box-shadow:0 0 5px #d5d5d5;background: url("http://ticket.qlypt.com/resources/common/images/l-sd-btm.png") no-repeat bottom;}
+.l-sd .st-tit{margin:0 -1px;height: 44px;font-size:16px;color:#fff;line-height:44px;text-align:center;background: url("http://ticket.qlypt.com/resources/common/images/st-tit.png") repeat-x;}
+.st-list > li{position:relative;height: 48px;;border:1px solid #fff;line-height: 48px;}
+.st-list > li.on{z-index:20;margin-left:-1px;border:1px solid #c20006;border-right-color: #fff;}
+.st-list > li.on a{z-index: 13;background-color: #fff;}
+.st-list > li.on .st-sub{display: block;border:1px solid #c20006;}
+.st-list > li > a{position:relative;padding-left:44px;/*background: url("http://ticket.qlypt.com/resources/common/images/st-list-icon.png") no-repeat ;*/z-index: 1;}
+.st-list > li > a span{display: block;background: url("http://ticket.qlypt.com/resources/common/images/arrow-r2.png") no-repeat 110px;}
+.st-list li a{display: block;height: 48px;font-size: 14px;}
+.st-list li a.st-lst1{background-position: 15px 15px;}
+.st-list li a.st-lst2{background-position: 11px -60px;}
+.st-list li a.st-lst3{background-position: 12px -129px;}
+.st-list li a.st-lst4{background-position: 9px -205px;}
+.st-list li a.st-lst5{background-position: 12px -276px;}
+.st-list li a.st-lst6{background-position: 15px -351px;}
+.st-list li a.st-lst7{background-position: 12px -424px;}
+.st-list li a.st-lst8{background-position: 12px -496px;}
+.st-list li a.st-lst9{background-position: 11px -565px;}
+.st-list { min-height: 445px;}
+
+.st-sub{display:none;position:absolute;z-index:12;top:-1px;left: 167px;padding:0 1px;width: 136px;min-height: 48px;background: #fff;}
+.st-sub > li a{height: 39px;line-height: 39px;border-bottom:1px solid #efefef ;background: url("http://ticket.qlypt.com/resources/common/images/star.png") no-repeat 17px;}
+.st-sub > li a{padding-left: 36px;}
+
+/*登录状态栏*/
+#login-bar{line-height:40px;background: #f8f8f8;/*border-bottom: 1px solid #eaeaea;*/}
+#login-bar .fav{display:block;padding-right:20px;font-size: 14px;background: url("http://ticket.qlypt.com/resources/common/images/tab-ld.png") no-repeat right;}
+#login-bar .n-logo{padding-top:8px;margin-right:42px;}
+#login-bar .u-login{float:left;position:relative;z-index:10;margin-left: 20px;}
+#login-bar .u-login a.avatar{float:left;padding-top: 6px;}
+#login-bar .u-login a.avatar img{display:block;width:26px;height:26px;}
+#login-bar .container{height: 100%;background: #f8f8f8;}
+
+.u-login .login-state-cont{position: relative;}
+.u-login .login-sta{float:left;margin-left:12px;color:#d5d5d5;}
+.u-login .login-sta a{color:#333;font-size:12px;}
+.u-login .login-sta a:hover, .u-login .login-sta a:focus {text-decoration: underline}
+.u-login .login-sta a em{display: inline-block;margin-left:10px;width: 12px;height: 7px;background: url("http://ticket.qlypt.com/resources/common/images/arrow-d-g.png") no-repeat;vertical-align: middle;}
+.u-login .login-sta span.wel{display:none;}
+.u-login .log-out{color:#666;margin-left:6px;display: none;}
+.u-login .to-login span{display: none;}
+.u-login .to-login a span{display: inline;text-indent:-24px;}
+.u-login .to-login a{color:#666;font-size:12px;text-decoration:underline;}
+.u-login .to-login a:hover{font-weight:bold;}
+.u-login a.login{margin-right:26px;}
+.u-login .nav-sub-wrap{position:absolute;top:32px;left:5px;width: 97px;height: 400px;display: none;}
+
+.u-login .nav-sub-wrap .nav-sub{display: block;top:10px;left:0;width: 97px;}
+.u-login .nav-sub-wrap .nav-sub li a{width: 100%;color:#fff;font-size:12px;}
+.u-login .nav-sub-wrap .triangle-border-up{display: block;}
+.u-login-on .nav-sub-wrap{display: block;}
+.triangle-border-up { position: absolute; top: 0; left: 50%; margin-left: -10px; width: 0; height: 0; border-width: 0 10px 10px; border-style: solid; border-color: transparent transparent #a3a3a3; }
+
+/*轮播图*/
+.flexslider { position: relative; height: 540px; overflow: hidden; background: url(http://ticket.qlypt.com/resources/common/images/loading.gif) 50% no-repeat; }
+.slides { position: relative; z-index: 1; }
+.slides li { height: 540px; }
+.slides li.sd1 { background: url(../img/slider1.jpg) 50% 0 no-repeat; }
+.slides li.sd2 { background: url(../img/slider2.jpg) 50% 0 no-repeat; }
+.slides li.sd3 { background: url(../img/slider3.jpg) 50% 0 no-repeat; }
+.slides li.sd4 { background: url(../img/slider4.jpg) 50% 0 no-repeat; }
+.slides li.sd5 { background: url(../img/slider5.jpg) 50% 0 no-repeat; }
+.flex-control-nav { position: absolute; bottom: 10px; z-index: 2; width: 100%; text-align: center; }
+.flex-control-nav li { display: inline-block; width: 10px; height: 10px; margin: 0 5px; *display:inline;
+    zoom: 1; }
+.flex-control-nav a { display: inline-block; width: 10px; height: 10px; line-height: 40px; overflow: hidden; background: url(http://ticket.qlypt.com/resources/common/images/dot.png) no-repeat; cursor: pointer; }
+.flex-control-nav .flex-active { background: url(http://ticket.qlypt.com/resources/common/images/dot-hover.png) no-repeat; }
+.flex-direction-nav { position: absolute; z-index: 3; width: 100%; top: 45%; }
+.flex-direction-nav li a { display: block; width: 61px; height: 61px; overflow: hidden; cursor: pointer; position: absolute; }
+.flex-direction-nav li a.flex-prev { left: 40px; background: url(http://ticket.qlypt.com/resources/common/images/prev.png) center center no-repeat; }
+/*.flex-direction-nav li a.flex-prev:hover { background: url(http://ticket.qlypt.com/resources/common/images/prev-hover.png) center center no-repeat; }
+*/.flex-direction-nav li a.flex-next { right: 40px; background: url(http://ticket.qlypt.com/resources/common/images/next.png) center center no-repeat; }
+/*.flex-direction-nav li a.flex-next:hover { background: url(http://ticket.qlypt.com/resources/common/images/next-hover.png) center center no-repeat; }
+*/
+
+.slide { float:right;width: 820px; height: 500px; overflow: hidden; position: relative; background-color: #000; z-index: 10; }
+.slide ul { height: 500px; }
+.slide ul li { width: 820px; height: 500px; float: left;}
+.slide .bg { width: 820px; height: 34px; position: absolute; background-color: #000; bottom: 0; left: 0; border-top: 1px solid #fff; filter: alpha(opacity=30); opacity: 0.3; z-index: 5; }
+.slide .num { overflow: hidden; zoom: 1; position: absolute;left: 50%; bottom: 16px; z-index: 10;margin-left: -54px; }
+.slide .num span { display: inline-block;margin-right: 8px; width: 10px; height: 10px;cursor: pointer; overflow: hidden;background: url("http://ticket.qlypt.com/resources/common/images/dot.png") no-repeat; }
+.slide .num span.on { background: url("http://ticket.qlypt.com/resources/common/images/dot-hover.png") no-repeat;}
+.slide .skip { display: none; _display: block; width: 49px; height: 49px;  position: absolute; top: 50%; margin-top: -24px; text-indent: -1000em; cursor: pointer; }
+.slide .prev { background: url("http://ticket.qlypt.com/resources/common/images/prev.png") no-repeat; left: 21px;}
+.slide .prev:hover { background: url("http://ticket.qlypt.com/resources/common/images/prev-hover.png") no-repeat;}
+.slide .next { background: url("http://ticket.qlypt.com/resources/common/images/next.png") no-repeat; right: 21px; }
+.slide .next:hover { background: url("http://ticket.qlypt.com/resources/common/images/next-hover.png") no-repeat; }
+.slide:hover .prev, .slide:hover .next { display: block; }
+.slide .num { bottom: 11px; }
+
+
+/*演出项目*/
+#sec1 .container{padding: 36px 0 20px; background: #fff;}
+.pro-list { width: 1000px; }
+.pro-list li { float: left; position: relative; margin-right: 20px; width: 150px; padding-bottom: 10px;}
+.pro-list li img { display: block; width: 150px; height: 187px; }
+.pro-list li.last { margin: 0; }
+.pro-list li .l-info { margin-top: 5px; font-family: "Microsoft YaHei"; font-size: 14px; color: #444; }
+.pro-list li .l-info p.tit { height: 38px;overflow: hidden; }
+.pro-list li .l-info p.price {padding-top: 5px; color: #999;font-size: 12px; }
+.pro-list li .l-info p.price strong {padding-right: 5px;font-size: 14px;}
+.price strong i{font-style: normal;font-weight: normal;font-family: arial;}
+
+/*精彩回眸*/
+/*.review { width:395px;overflow:hidden;padding-left:20px;margin-top: 6px; font-family: "Microsoft YaHei";border-left:1px dashed #e8e8e8; }
+.review li { padding-left: 14px;font-size: 16px; color: #555; }
+.review li a.title { line-height: 36px; color: #555; }*/
+.review{width:395px;padding:0 0 0 20px;border-left:1px dashed #e8e8e8;}
+.review li{height:40px;background:none;padding-left:0;font-size:14px;color:#666;line-height:40px;border-bottom:1px dashed #e8e8e8;}
+.review li a{display:block;color:#666;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;}
+.review li a em{padding-right:12px;}
+.review li a strong{padding-right:10px;color:#444;}
+.review li p.date{display: none;}
+
+/*演出预告*/
+#schedul { background: #f2f3f7; padding: 25px 0 45px; }
+.item-list { text-align: center; margin-right: -20px; margin-top: 15px; }
+.item-list li { float: left; width: 234px; margin-right: 19px; padding-bottom: 24px; font-family: 'Microsoft Yahei'; border: 1px solid #e1e1e1;/*display:inline;*/ background: #fff; }
+.item-list li a { display: block; }
+.item-list li img { display: block; width: 234px; height: 117px; }
+.item-list li h3 { font-size: 13px; margin-top: 6px; }
+.item-list li h3, .item-list li p { text-align: left; padding-left: 6px; }
+.item-list li p.date { padding-right: 10px; padding-top: 20px; text-align: right; font-size: 12px; }
+.item-pic { position: relative; }
+.item-pic .triangle { position: absolute; left: 174px; bottom: 0; width: 28px; height: 10px; background: url(http://ticket.qlypt.com/resources/common/images/triangle.png) no-repeat; }
+
+/*移动产品下载区*/
+#sec2 .container{background: #fff;}
+.m-zone .m-list{margin-top: 18px;}
+.m-zone .m-list li{position:relative;float:left;margin-right:17px;width: 235px;height: 70px;border:1px solid #d9d9d9;border-radius: 2px;}
+.m-zone .m-list li.last{margin:0;}
+.m-list li a{display:block;height: 70px;font-size: 16px;line-height:70px;background: url("http://ticket.qlypt.com/resources/common/images/m-list-icon.png") no-repeat;}
+.m-list li a:hover{color:#c20006;}
+.m-list li a span.tw-ln{display:block;padding-top: 18px;line-height: normal;}
+.m-list li.m1 a{padding-left: 82px;background-position: 38px 11px;}
+.m-list li.m1 a:hover{background-position: 38px -79px;}
+.m-list li.m2 a{padding-left: 98px;background-position: 34px -165px;}
+.m-list li.m2 a:hover{background-position: 34px -245px;}
+.m-list li.m3 a{padding-left: 100px;background-position: 30px -327px;}
+.m-list li.m3 a:hover{background-position: 30px -407px;}
+.m-list li.m4 a{padding-left: 80px;background-position: 28px -494px;}
+.m-list li.m4 a:hover{background-position: 29px -574px;}
+.m-list li .qr-code{display:none;position:absolute;top:-164px;width: 235px;height: 160px;border:1px solid #c20006;background: #fffafa ;}
+.m-list li:hover .qr-code{display: block;}
+.m-list li .qr-code img{position:absolute;top:50%;left:50%;margin-top:-56px;margin-left:-56px;width:112px;height:112px;}
+
+/*剧院动态*/
+#sec3 .container{padding: 12px 0 50px; background: #fff;}
+/*.image-text { padding: 12px 0 0; }*/
+.image-text li { padding: 6px 0; overflow: hidden; }
+.image-text .u-img { float: left; position: relative; }
+.image-text .u-img img {display: block; width: 210px; height: 150px; }
+.image-text .u-txt { float: right; width: 100%; margin-left: -102px; }
+.image-text .u-txt a:hover { text-decoration: underline; }
+.image-text .u-txt h3, .image-text .u-txt .time { font-family: 'Microsoft YaHei'; }
+.image-text .u-txt h3 { font-size: 13px; padding-bottom: 4px; }
+.image-text .u-txt .u-txt-wrap { margin-left: 102px; }
+.image-text .u-txt .u-txt-con { color: #666; margin-top: 10px; line-height: 24px; font-family: 'Microsoft YaHei'; font-size: 14px; }
+
+.t-news .image-text .u-txt a:hover{text-decoration: none;}
+.t-news { width: 564px; padding-right: 20px; font-family: "Microsoft YaHei"; }
+.t-news li{float: left;}
+/*列表第一种形式*/
+.t-news li.imp{padding:20px 0;margin-left: 0;border-bottom: 1px dashed #f0f0f0;}
+.t-news li.imp .txt-con{display: block;line-height: 26px;}
+.t-news li.imp .u-img img { display: block; width: 240px; height: 120px; }
+.t-news li.imp .u-txt { margin-left: -256px; color: #666; font-size: 14px; }
+.t-news li.imp .u-txt h3 { font-size: 18px; line-height: 18px; padding-bottom: 18px; }
+li.imp .u-txt h3 a{float: left;width: 180px;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;font-size: 16px;color: #444;font-weight: bold;}
+li.imp .u-txt h3 .dt-t{float: right;font-size: 12px;color:#777;}
+.t-news li.imp .u-txt .u-txt-wrap { margin-left: 256px; }
+.t-news li.imp .date { text-align: right; padding-top: 24px;display: none; }
+
+/*列表第二种形式*/
+.forced{margin-top:20px;padding: 0 0 0 20px;border-left:1px dashed #f0f0f0 ;}
+.forced .latest{padding-bottom: 12px;line-height: 12px;}
+.forced li.imp-s2{width:395px;padding:0 0 20px;border-bottom: 1px dashed #e8e8e8;}
+.forced li.imp-s2 .txt-con{display: block;line-height: 26px;}
+.forced li.imp-s2 .u-img img { display: block; width: 140px; height: 175px; }
+.forced li.imp-s2 .u-txt { margin-left: -152px; color: #666; font-size: 14px; }
+.forced li.imp-s2 .u-txt h3 { font-size: 16px;font-weight: bold; line-height: 18px; padding-bottom: 10px; }
+.forced li.imp-s2 .u-txt .u-txt-wrap { margin-left: 152px; }
+.forced li.imp-s2 .date { text-align: right; padding-top: 24px;display: none; }
+
+/*列表第三种形式*/
+.forced li.txt-ls{padding:0;width:395px;background:none;margin-bottom:0;font-size:14px;line-height:48px;color:#666;border-bottom:1px dashed #e8e8e8;}
+.forced li.txt-ls a{display:block;color:#666;overflow:hidden;white-space: nowrap;text-overflow:ellipsis;}
+.forced li.txt-ls a em{padding-right:12px;}
+.forced li.txt-ls a strong{padding-right:10px;color:#444;}
+.forced li.txt-ls p.date{display: none;}
+
+/*视频*/
+.video-wrap { padding-left: 10px; }
+.video-con { position: relative; width: 370px; height: 390px; margin-top: 20px; background: url(http://ticket.qlypt.com/resources/common/images/v-bg.jpg) no-repeat top left; overflow: hidden; }
+.video-cover { position: relative; width: 330px; height: 250px; margin: 12px auto 0; }
+.video-cover img { display: block; width: 330px; height: 250px; }
+.video-cover .play-btn { position: absolute; top: 50%; left: 50%; margin-top: -26px; margin-left: -26px; width: 52px; height: 52px; background: url(http://ticket.qlypt.com/resources/common/images/play-btn.png) no-repeat; }
+.video-tit { margin-top: 60px; text-align: center; font-family: "Microsoft YaHei"; }
+.video-tit a { color: #333; font-size: 18px; }
+/*反馈*/
+/*.ask-q-wrap{background:#f8f8f8;}*/
+.ask-q{width:1000px;margin:0 auto;padding:26px 0 15px;}
+.ask-q dl{float:left;width:165px;margin-right:43px;font-family:"Microsoft YaHei";font-size:14px;color:#444;}
+.ask-q dl.last{margin-right:0;}
+.ask-q dt{padding-bottom:8px;border-bottom:1px solid #999;font-weight:bold;color:#444;}
+.ask-q dd{padding:5px 0;}
+.ask-q dd a{font-size:13px;color:#888;line-height:20px;}
+
+.ask-q dl.aq21{width: 150px;text-align:center;background:#fff;border:1px solid #cfcfcf;box-shadow: 0 0 6px #cfcfcf;}
+.ask-q dl.aq21 dt{display: none;}
+.ask-q dl.aq21 dd img{display: block;margin:12px auto 0;width: 112px;height: 112px;box-shadow: 0 0 6px #cfcfcf;}
+.ask-q dl.aq21 .follow{padding:5px 19px 0;line-height: 18px;}
+.ask-q dl.aq21 dd.aq-icon{display: none;}
+
+/*footer*/
+/*.footer-wrap{background:#eee;border-top:1px solid #fff;}*/
+.footer{height:196px;text-align: center;line-height: 24px;}
+.footer,.footer a{color:#444;font-family:"Microsoft YaHei";font-size:14px;}
+.footer .quick-links{padding-top: 30px;padding-bottom:4px;}
+.footer .divider{margin:0 10px;}
+.footer p{padding-top:5px;}
+table.footer-table{margin:0px auto; border: 0px;}
+.footer p.t-spt span{margin:0 10px 0 16px;color:#334e8f;}
+.footer p.t-spt img{vertical-align:middle;}
+
+/*
+	针对性的样式调整
+*/
+.reset-box .item span.mesg{width:100px;text-align: left;}
+.wrapper-in #customer-form .reset-box p a.customer-form-ml0{margin-left: 0}
+#customer-resend{color:red;}
+#customer-form .line-error-msg{display: block;height: 36px;line-height: 36px;float: left;}
+#customer-form .reset-box .for-paypassword-reset{padding-bottom: 10px;}
+.reset-box .for-paypassword-reset .c11{display: block;padding-left: 130px;}
+.container .tab-l li a:hover, .container .tab-l li a.on{border-bottom: 3px solid #e60000;}
+.order-tl .p-stat span.c13{color: #fa483c}
+.login-wrap #customer-form .accounts-secu  .li-one-line{width:430px;}
+.login-wrap #customer-form .accounts-secu  .li-one-line input{width:200px;}
+
+
+/*--------------wxm增加---------------------*/
+.ly-style .btn-bl, .ly-style .pm-bank .bk-o {
+    color: #e60000;
+}
+
+.ly-style .tab-l li a:hover,
+.ly-style .tab-l li a.on {
+    border-color: #e60000;
+}
+
+.ly-style  #order-confirm.btn-l-r:hover,
+.ly-style  #order-confirm.btn-l-r:focus {
+    color: #fff;
+}
+
+.pfm-dt-box .piao-con-set li span ,
+.pfm-dt-box .pfm-dt-con li span.label {
+    width: 60px;
+}
+
+.ly-style .btn-l-r,
+.ly-style .btn-l-g ,
+.ly-style .btn-l-r3 {
+    background: #e60000;
+    border-radius: 8px;
+}
+
+
+.ly-style .btn-l-r3 {
+    border-radius: 8px;
+}
+
+.ly-style .btn-l-r:hover,
+.ly-style .btn-l-g:hover ,
+.ly-style .btn-l-r3:hover {
+    text-decoration: underline;
+}
+
+.sec-header h2 {
+    font-size: 16px;
+}
+
+#orderDiscount, #discountCodes {
+    min-width: 200px;
+}
+
+.ly-style .pm-terms li a:hover,
+.ly-style .pm-terms li a.on {
+    color: #e60000;
+    border-bottom: 3px solid #e60000;
+}
+
+.ly-style .tool-transform li span {
+    color: #e60000;
+}
+
+.sec-header .back {
+    color: #333;
+}
+
+.sec-header .back:hover {
+    cursor: pointer;
+}
+
+span.price {
+    display: inline-block;
+    min-width: 80px;
+}
+
+.m-shop-cart {
+    padding: 10px;
+    background: url("http://ticket.qlypt.com/resources/common/images/shopping-cart.png") no-repeat center;
+    background-size: 100% 50%;
+    margin-right: 6px;
+}
+
+.popup-box-inner .box-btn-r,.popup-box-inner .box-btn-b {background: #e60000; border-radius: 4px;color: #fff;padding: 5px 10px;}
+
+
+.pm-terms li a:hover, .pm-terms li a.on {
+    height: auto !important;
+}
+
+.pm-terms li a , .pm-terms li {
+    height: 37px!important;
+}
+
+/*从bootstrap拷出来的样式*/
+.order-submit .form-control {
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+@media (min-width: 768px) {
+    .order-submit .form-inline .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-4 {
+        width: 33.33333333%;
+    }
+
+    .col-md-6 {
+        width: 50%;
+    }
+
+    .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+        float: left;
+    }
+
+}
+
+.text-right {
+    text-align: right;
+}
+
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+/*
+input {
+    margin: 0;
+    padding: 0;
+}
+*/
+
+.order-submit .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.order-submit *:before,.order-submit  *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.clearfix:before , .clearfix:after ,.row:before, .row:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.order-submit label {
+    font-weight: bold;
+    max-width: 100%;
+}
+
+.order-submit .form-inline .radio,.order-submit .form-inline .checkbox {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.order-submit .radio, .order-submit .checkbox {
+    position: relative;
+}
+
+.order-submit .form-inline {
+    font-size: 14px;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif;
+}
+
+
+.order-submit * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-control[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1000px !important;
+    }
+}
+
+
+/* 礼品卡添加样式 */
+.inline-block {
+    display: inline-block;
+}
+
+.order-submit .form-control.gift-card-select {
+    width: 200px;
+    display: inline-block;
+}
+
+.order-submit .form-control.gift-card-input {
+    width:  100px;
+    display: inline-block;
+}
+
+.order-submit .form-control.unbind-gift-card-input {
+    width: 200px;
+    display: inline-block;
+}
+
+.use-gift-card-button {
+    border: 1px solid #e60000;
+    color: #e60000;
+    background: transparent;
+    height: 25px;
+    border-radius: 4px;
+    font-weight: bold;
+}

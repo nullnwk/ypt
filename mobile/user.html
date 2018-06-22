@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Mobile-Demo</title>
+    
+    <!--公共css-->
+    <link type="text/css" href="css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="css/public.css" rel="stylesheet"/>
+    <link type="text/css" href="css/reset.css" rel="stylesheet"/>
+    <link type="text/css" href="css/ypt-font.css" rel="stylesheet"/>
+    <!--个人中心css-->
+    <link type="text/css" href="css/user.css" rel="stylesheet">
+    <link rel="stylesheet" href="fonts2/iconfont.css">
+    
+    <!--公共-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script src="js/config.js"></script>
+    <script type="text/javascript" src="js/url.js"></script>
+    <script type="text/javascript" src="js/security.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <!--个人中心-->
+    <script type="text/javascript" src="js/user-options.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+
+</head>
+
+<body>
+    <!--导航-->
+    <div class="navbar navbar-default navbar-fixed-top" id="nav-bar">
+      <div class="container-fluid">
+        <a class="ypt-icon ypt-icon-back pageBtn nav-back" href="#"></a>
+        <p class="page-title"></p>
+      </div>
+    </div>
+
+    <!--我的-->
+    <div class="container-fluid site-page site-page-active" id="user-nav">
+        <div class="row">
+            <!--顶部-->
+            <table class="table nav-top">
+                <tr class="login-bar">
+                    <td colspan="3">
+                        <a class="user-img">
+                            <img src=""/>
+                        </a>
+                        <a id="user-login">
+                            <span class="user-name-txt">立即登录</span>
+                            <i class="ypt-icon ypt-icon-right"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="top-menus">
+                    <td>
+                        <a class="pageBtn" href="user-coupon">
+                            <span class="ypt-icon ypt-icon-wodeyouhuiquan"></span>
+                            <span>优惠券</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pageBtn" href="user-points">
+                            <span class="ypt-icon ypt-icon-jifen"></span>
+                            <span>积分</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pageBtn" href="user-cards">
+                            <span class="ypt-icon ypt-icon-pay"></span>
+                            <span>我的卡包</span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+
+            <!--订单-->
+            <table class="table nav-second">
+                <tr class="order-bar pageBtn" href="user-orders">
+                    <td colspan="1"><a>我的订单</a></td>
+                    <td colspan="2" class="to-all-orders">
+                        <a><span>点击查看所有订单</span><i class="ypt-icon ypt-icon-right"></i></a>
+                    </td>
+                </tr>
+                <tr class="second-menus">
+                    <!-- <td><a state="1" type="#paied"><span class="ypt-icon ypt-icon-redpacket"></span>已支付</a></td>
+                    <td><a state="2" type="#unPaied"><span class="ypt-icon ypt-icon-send"></span>未支付</a></td> -->
+                    <!-- <td><a state="3" type="#recieved"><span class="ypt-icon ypt-icon-countdown"></span>已签收</a></td> -->
+                    <!-- <td><a><span class="ypt-icon ypt-icon-mark"></span>待评论</a></td> -->
+                    <td><a qType="1" type="#willWatch"><span class="ypt-icon ypt-icon-iconfontplay2"></span>待观看</a></td>
+                    <td><a qType="0" type="#watched"><span class="ypt-icon ypt-icon-video"></span>已观看</a></td>
+                    <td><a href="user-comment"><span class="ypt-icon ypt-icon-community"></span>评价</a></td>
+                </tr>
+            </table>
+
+            <!--菜单-->
+            <div class="col-xs-12 main-menus">
+                <div class="list-group">
+                  <a href="user-address" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-addressbook"></span>
+                    <span>地址管理</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                  <!-- <a href="user-cards" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-pay"></span>
+                    <span>我的卡包</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a> -->
+                  <a href="user-msg" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-letter"></span>
+                    <span>我的消息</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                  <a href="user-favour" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-favor"></span>
+                    <span>我的收藏</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                  <a href="user-comment" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-wodefankui"></span>
+                    <span>我的评论</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                  <a href="user-about" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-group"></span>
+                    <span>关于我们</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                </div>
+            </div>
+
+            <div class="col-xs-12 main-menus">
+                <div class="list-group">
+                  <a href="user-feedback" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-punch"></span>
+                    <span>意见反馈</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                  <a class="list-group-item" id="callserve">
+                    <span class="ypt-icon ypt-icon-phone"></span>
+                    <span>客服电话</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                </div>
+            </div>
+
+            <div class="col-xs-12 main-menus">
+                <div class="list-group">
+                  <!-- <a href="user-account" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-profile"></span>
+                    <span>账户设置</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a> -->
+                 <a href="sys-setting" class="list-group-item pageBtn">
+                    <span class="ypt-icon ypt-icon-settings"></span>
+                    <span>系统设置</span>
+                    <i class="ypt-icon ypt-icon-right"></i>
+                  </a>
+                </div>
+            </div>
+            <!--end-->
+        </div>
+    </div>
+
+    <!--我的订单-->
+    <div class="container-fluid site-page" id="user-orders">
+        <div class="row user-order-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active paied" type="1">
+                        <a href="#paied" aria-controls="paied" role="tab" data-toggle="tab">
+                            已支付
+                            <!-- (<span id="paiedNo">0</span>) -->
+                        </a>
+                    </li>
+                    <li role="presentation" class="unPaied" type="2">
+                        <a href="#unPaied" aria-controls="unPaied" role="tab" data-toggle="tab">
+                            未支付
+                            <!-- (<span id="unPaiedNo">0</span>) -->
+                        </a>
+                    </li>
+                    <!-- <li role="presentation" class="recieved">
+                        <a href="#recieved" aria-controls="recieved" role="tab" data-toggle="tab">
+                            已签收(<span id="recievedNo">0</span>)
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="row user-order-body">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="paied">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="unPaied">
+                </div>
+                <!-- <div role="tabpanel" class="tab-pane" id="recieved">
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!--订单详情-->
+    <div class="container-fluid site-page" id="order-detail">
+        <div class="order-state-row row ypt-f14">
+            <span class="detail-state"></span>
+            <i class="ypt-icon ypt-icon-roundcheck ypt-fc-green"></i>
+        </div>
+        <div class="order-state-row row ypt-f14">取票地址: 
+            <span class="detail-address"></span>
+        </div>
+        <div class="order-project-row row">
+            <table class="table">
+                <tr class="order-pro-tr">
+                    <td style="width: 30%" class="order-pro-img"><img src=""></td>
+                    <td class="order-pro-txt">
+                        <h2 class="ypt-f14 detail-name"></h2>
+                        <p class="ypt-f14 detail-sTime"></p>
+                        <p class="ypt-f14 detail-site"></p>
+                        <p class="ypt-f14 ypt-fc-red order-pro-money detail-money"></p>
+                    </td>
+                </tr>
+                <tr class="order-detail-moneys">
+                    <td>
+                        <p class="ypt-f14">
+                            <span class="ypt-fc-grey">商品金额:</span></br>
+                            <span class="ypt-fc-grey">优惠金额:</span></br>
+                            <b>实际支付:</b>
+                        </p>
+                    </td>
+                    <td class="order-moneys-td">
+                        <p class="ypt-f14">
+                            <span class="ypt-fc-grey unitPrice"></span></br>
+                            <span class="ypt-fc-grey favorableMoney"></span></br>
+                            <b class="ypt-fc-red orderMoney"></b>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="order-detail-info">
+                    <td colspan="2">
+                        <p class="ypt-f14 ypt-fc-grey">
+                            <span>订单编号: <span class="detail-no"></span></span></br>
+                            <span>下单时间: <span class="detail-time"></span></span></br>
+                            <span class="detail-pay">支付方式: <span></span></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="" id="seatList">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="order-oper-btns">
+                        <a class="btn btn-primary active detail-btn-pay">去支付</a>
+                        <a class="btn btn-primary detail-btn-comment">去评价</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--评价订单-->
+    <div class="container-fluid site-page" id="order-comment">
+        <div class="row order-comment">
+            <div class="comment-project-info">
+                <a><img src="" class="comment-img" /></a>
+                <h2 class="comment-title ypt-f14"></h2>
+                <p class="ypt-f14"><b>时间：</b><span class="comment-date"></span></p>
+            </div>
+            <form class="form-horizontal user-form user-form-comment">
+              <div class="form-group">
+                <label class="col-xs-3 control-label">
+                    <span class="user-img">
+                        <img src=""/></br>
+                        <span class="user-name-txt"></span>
+                    </span>
+                </label>
+                <div class="col-xs-9" >
+                    <textarea class="form-control" rows="4" id="comment-content" placeholder="请输入评论内容，最多只能输入100个字"></textarea>
+                </div>
+              </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 ypt-style-mt15">
+                <a id="comment-submit" class="btn btn-primary btn-block active">提交</a>
+            </div>
+        </div>
+    </div>
+
+    <!--我的积分-->
+    <div class="container-fluid site-page" id="user-points">
+        <div class="row ypt-style-mb15">
+            <div class="col-xs-12 user-points">
+                <!-- <a class="points-help">使用帮助</a> -->
+                <div class="points-icon"><span class="ypt-icon ypt-icon-selectionfill"></span><span class="points-num" id="integral">**</span></div>
+                <p class="points-tips">小积分大有用，屯起来！</p>
+                <a class="btn-primary btn" id="sign-points">签到</a>
+            </div>
+            <div class="col-xs-12 user-points-nav">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#getPoints" aria-controls="getPoints" role="tab" data-toggle="tab">
+                            <i class="ypt-icon ypt-icon-roundcheck"></i>获取记录
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row user-points-list table-wrap">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="getPoints">
+                    <table class="table" id="getPointsTable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--优惠券-->
+    <div class="container-fluid site-page" id="user-coupon">
+        <div class="row user-coupon-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <div class="user-coupon-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#available" aria-controls="available" role="tab" data-toggle="tab">未使用(<span>0</span>)</a></li>
+                        <li role="presentation"><a href="#applied" aria-controls="applied" role="tab" data-toggle="tab">已使用(<span>0</span>)</a></li>
+                        <li role="presentation"><a href="#expired" aria-controls="expired" role="tab" data-toggle="tab">已过期(<span>0</span>)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="row user-coupon-search ypt-style-mb15">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="输入优惠券码">
+                    <span class="input-group-btn">
+                    <button class="btn btn-primary active" type="button">兑换</button>
+                    </span>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="available">
+                        <p style="text-align:center;padding:10px 0 0 0;">未查询到任何数据</p>
+                        <!-- <table class="table">
+                            <tr class="coupon-item">
+                                <td class="coupon-info">
+                                    <p class="coupon-corner ypt-fc-dark">即将过期</p>
+                                    <p class="coupon-price ypt-f20">￥<span class="ypt-f50">20</span></p>
+                                    <p class="coupon-limit">【满200元可用】</p>        
+                                </td>
+                                <td>
+                                    <span class="coupon-flag">优惠券</span>
+                                    <p class="coupon-cat ypt-fc-dark">
+                                        <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                                    </p>
+                                    <p class="coupon-date">
+                                        <span class="ypt-fc-grey">17.09.08-17.09.09</span>
+                                        <button type="button" class="btn btn-default btn-block" id="use-coupon">立即使用</button> 
+                                    </p>
+                                      
+                                </td>
+                            </tr>
+                        </table> -->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="applied">
+                        <p style="text-align:center;padding:10px 0 0 0;">未查询到任何数据</p>
+                        <!-- <table class="table">
+                            <tr class="coupon-item coupon-item-applied">
+                                <td class="coupon-info">
+                                    <p class="coupon-price ypt-f20">￥<span class="ypt-f50">30</span></p>
+                                    <p class="coupon-limit">【满200元可用】</p>        
+                                </td>
+                                <td>
+                                    <span class="coupon-flag">优惠券</span>
+                                    <p class="coupon-cat ypt-fc-dark">
+                                        <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                                    </p>
+                                    <p class="coupon-date">
+                                        <span class="ypt-fc-grey">17.09.08-17.09.09</span>
+                                        <button type="button" class="btn btn-default btn-block" id="use-coupon">立即使用</button> 
+                                    </p>
+                                      
+                                </td>
+                            </tr>
+                        </table> -->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="expired">
+                        <p style="text-align:center;padding:10px 0 0 0;">未查询到任何数据</p>
+                        <!-- <table class="table">
+                            <tr class="coupon-item coupon-item-applied">
+                                <td class="coupon-info">
+                                    <p class="coupon-price ypt-f20">￥<span class="ypt-f50">40</span></p>
+                                    <p class="coupon-limit">【满200元可用】</p>        
+                                </td>
+                                <td>
+                                    <span class="coupon-flag">优惠券</span>
+                                    <p class="coupon-cat ypt-fc-dark">
+                                        <b>限票类：</b><span class="ypt-fc-grey">2017许冠杰巡回演唱会优惠券</span>
+                                    </p>
+                                    <p class="coupon-date">
+                                        <span class="ypt-fc-grey">17.09.08-17.09.09</span>
+                                        <button type="button" class="btn btn-default btn-block" id="use-coupon">立即使用</button> 
+                                    </p>
+                                      
+                                </td>
+                            </tr>
+                        </table> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--次卡-->
+    <div class="container-fluid site-page" id="user-cards">
+        <div class="row user-coupon-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <div class="user-coupon-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#availableCard" aria-controls="availableCard" role="tab" data-toggle="tab">可用(<span>0</span>)</a></li>
+                        <li role="presentation"><a href="#appliedCard" aria-controls="appliedCard" role="tab" data-toggle="tab">已用(<span>0</span>)</a></li>
+                        <li role="presentation"><a href="#expiredCard" aria-controls="expiredCard" role="tab" data-toggle="tab">过期(<span>0</span>)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row user-cards-wrap">
+            <div class="col-xs-12">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="availableCard">
+                        <div id="availableCardWrap" class="cardsWrap"></div>
+                        <table class="table no-card" style="display: none;">
+                            <tr>
+                                <td class="card-info">
+                                    <a class="btn-block btn-primary active" id="buy-card">暂无次卡,去购买</a>
+                                    <a class="btn-block btn-primary bind-card">已有次卡,去绑定</a>      
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane cardsWrap" id="appliedCard"></div>
+                    <div role="tabpanel" class="tab-pane cardsWrap" id="expiredCard"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--次卡订单-->
+    <div class="container-fluid site-page" id="card-orders">
+        <div class="row user-coupon-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <div class="user-coupon-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active" type="3"><a href="#unPaiedOrder" aria-controls="unPaiedOrder" role="tab" data-toggle="tab">待支付</a></li>
+                        <li role="presentation" type="0"><a href="#paiedOrder" aria-controls="paiedOrder" role="tab" data-toggle="tab">已支付</a></li>
+                        <li role="presentation" type="2"><a href="#expiredOrder" aria-controls="expiredOrder" role="tab" data-toggle="tab">失效</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row user-orders-wrap">
+            <div class="col-xs-12">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="unPaiedOrder"></div>
+                    <div role="tabpanel" class="tab-pane cardsWrap" id="paiedOrder"></div>
+                    <div role="tabpanel" class="tab-pane cardsWrap" id="expiredOrder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--绑定次卡-->
+    <div class="container-fluid site-page" id="bind-card">
+        <div class="row user-watcher ypt-style-mb15">
+            <form class="form-horizontal user-form">
+              <!-- <div class="form-group">
+                <label for="" class="col-xs-3 control-label">手机号码</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" id="bind-phone" placeholder="请输入手机号码">
+                </div>
+              </div> -->
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">卡号</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" id="bind-no" placeholder="请输入卡号">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">密码</label>
+                <div class="col-xs-9 ypt-fc-red" >
+                    <input type="password" class="form-control" id="bind-pass" placeholder="请输入密码">
+                </div>
+              </div>
+            </form>
+            <div class="col-xs-12 ypt-style-mt15">
+                <a id="bind-card-ok" class="btn btn-primary btn-block active">提交</a>
+            </div>
+        </div>
+    </div>
+
+    <!--购买次卡-->
+    <div class="container-fluid site-page" id="buy-card-form">
+        <div class="row user-watcher ypt-style-mb15">
+            <form class="form-horizontal user-form">
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">次卡类型</label>
+                <div class="col-xs-9">
+                    <select class="form-control" id="card-type">
+                      <option value="1">亲子卡</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">购卡数量</label>
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" id="card-count" placeholder="请输入购卡数量">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">应付金额</label>
+                <div class="col-xs-9 ypt-fc-red" >
+                    &yen;<span id="card-money">0.00</span>
+                </div>
+              </div>
+            </form>
+            <div class="col-xs-12 buy-card-tips">
+            </div>
+            <div class="navbar-fixed-bottom">
+              <table class="table btns-bottom">
+                <tr>
+                    <td><a id="card-confirm" class="btn btn-primary btn-block active">下一步</a></td>
+                </tr>
+              </table>
+            </div>
+        </div>
+    </div>
+
+    <!--支付方式-->
+    <div class="container-fluid site-page" id="pay-way">
+        <div class="row">
+            <div class="col-xs-12 card-pay-order-info ypt-fc-grey">
+                <p>订单提交成功，请您尽快付款！</p>
+                <p>订单号：<span id="card-order-no" class="ypt-fc-dark"></span></p>
+                <p>请您在订单提交后24小时内完成支付，否则订单会自动取消！</p>
+            </div>
+            
+            <div class="list-group">
+              <a class="list-group-item">
+                <img src="img/zhifubao.jpg"/>
+                <div class="pay-tips">
+                    <p class="ypt-fc-dark">支付宝</p>
+                    <p class="ypt-fc-grey">推荐已安装支付宝的用户使用</p>
+                </div>
+                <i class="ypt-icon ypt-icon-roundcheck chosen-pay" type="支付宝" payway="A01"></i>
+              </a>
+
+              <a class="list-group-item">
+                <img src="img/weixin.jpg"/>
+                <div class="pay-tips">
+                    <p class="ypt-fc-dark">微信</p>
+                    <p class="ypt-fc-grey">推荐已安装微信的用户使用</p>
+                </div>
+                <i class="ypt-icon ypt-icon-roundcheck" type="微信" payway="W01"></i>
+              </a>
+            </div>
+
+            <div class="navbar-fixed-bottom">
+              <table class="table btns-bottom">
+                <tr>
+                    <td style="width: 60%;padding: 0 0 0 15px;line-height: 42px;">应付金额：<span class="ypt-fc-red">&yen; <strong id="pay-amt">0.00</strong></span></td>
+                    <td><a id="pay-for-card" class="btn btn-primary btn-block active">立即支付</a></td>
+                </tr>
+              </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!--地址管理-->
+    <div class="container-fluid site-page" id="user-address">
+    </div>
+
+    <!--增加地址-->
+    <div class="container-fluid site-page" id="add-address">
+        <div class="row user-data ypt-style-mb15">
+            <form class="form-horizontal user-form" id="add-adr-form">
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">收货人</label>
+                <div class="col-xs-9">
+                  <input type="text" class="form-control" id="adr-name" placeholder="请填写收货人姓名">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">手机号</label>
+                <div class="col-xs-9">
+                  <input type="text" class="form-control" id="adr-phone" placeholder="请输入手机号码">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">所在省</label>
+                <div class="col-xs-9">
+                  <select class="form-control area-select" id="area-province"></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">所在市</label>
+                <div class="col-xs-9">
+                  <select class="form-control area-select" id="area-city"></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">所在区(县)</label>
+                <div class="col-xs-9">
+                  <select class="form-control area-select" id="area-district"></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">详细地址</label>
+                <div class="col-xs-9">
+                  <input type="text" class="form-control" id="adr-detail" placeholder="请输入详细地址">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">是否默认</label>
+                <div class="col-xs-9">
+                  <input type="checkbox" id="adr-state">
+                </div>
+              </div>
+              
+            </form>
+        </div>
+        <div class="row user-data ypt-style-mt15">
+            <div class="col-xs-12">
+                <a class="btn btn-block btn-primary active" id="save-address">保存</a>
+            </div>
+        </div>
+    </div>
+
+    <!--我的观看-->
+    <div class="container-fluid site-page" id="user-watch">
+        <div class="row user-order-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="watched active" type="0"><a href="#watched" aria-controls="watched" role="tab" data-toggle="tab">已观看</a></li>
+                    <li role="presentation" class="willWatch" type="1"><a href="#willWatch" aria-controls="willWatch" role="tab" data-toggle="tab">待观看</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row user-order-body">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="watched">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="willWatch">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--我的信息-->
+    <div class="container-fluid site-page" id="user-msg">
+        <div class="row user-order-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tickets" aria-controls="tickets" role="tab" data-toggle="tab">购票提醒</a></li>
+                    <li role="presentation"><a href="#showInfo" aria-controls="showInfo" role="tab" data-toggle="tab">演出提醒</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row user-order-body">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tickets">
+                    <p class="no-data"><img src="img/no_message.png"></br><span>暂无消息</span><p>
+                    <!-- <div class="order-item">
+                        <table class="table">
+                            <tr class="order-info">
+                                <td class="order-img">
+                                    <a href=""><img src="img/demo.jpg"></a>        
+                                </td>
+                                <td class="order-detail">
+                                    <h2>不服来将--2017济南何洁演唱会</h2> 
+                                    <p class="order-dateAndAdr ypt-fc-grey ypt-f14">时间: <span>2017.09.08-10.18</span></br>地点: <span>山东省济南市大剧院</span></p>
+                                    <p class="order-amt ypt-fc-red">&yen;188.00元</p> 
+                                    <a class="btn btn-primary">购票成功</a>
+                                </td>
+                                
+                            </tr>
+                        </table>
+                    </div> -->
+                </div>
+                <div role="tabpanel" class="tab-pane" id="showInfo">
+                    <p class="no-data"><img src="img/no_message.png"></br><span>暂无消息</span><p>
+                    <!-- <div class="order-item">
+                        <table class="table">
+                            <tr class="order-info">
+                                <td class="order-img">
+                                    <a href=""><img src="img/demo.jpg"></a>        
+                                </td>
+                                <td class="order-detail">
+                                    <h2>不服来将2017济南何洁演唱会</h2> 
+                                    <p class="order-dateAndAdr ypt-fc-grey ypt-f14">时间: <span>2017.09.08-10.18</span></br>地点: <span>山东省济南市大剧院</span></p>
+                                    <p class="order-amt ypt-fc-red">&yen;188.00元</p> 
+                                </td>
+                            </tr>
+                            <tr class="order-btns">
+                                <td colspan="2">
+                                    <span class="ypt-f14 ypt-fc-red">距离演出开场还有01:59</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--我的关注-->
+    <div class="container-fluid site-page" id="user-favour">
+        <div class="row user-order-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#shows" type="0" role="tab" data-toggle="tab">全部剧目</a></li>
+                    <li role="presentation"><a href="#news" role="tab" data-toggle="tab" type="1">新闻动态</a></li>
+                    <li role="presentation"><a href="#policy"  role="tab" data-toggle="tab" type="2">政策法规</a></li>
+                    <li role="presentation"><a href="#notice" role="tab" data-toggle="tab" type="3">通知公告</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row user-order-body">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="shows"></div>
+                <div role="tabpanel" class="tab-pane" id="news"><table class="table"></table></div>
+                <div role="tabpanel" class="tab-pane" id="policy"><table class="table"></table></div>
+                <div role="tabpanel" class="tab-pane" id="notice"><table class="table"></table></div>
+            </div>
+        </div>
+    </div>
+
+    <!--绑定-->
+    <div class="container-fluid site-page" id="user-bind">
+
+        <div class="row user-data ypt-style-mb15">
+            <form class="form-horizontal user-form">
+              <div class="form-group">
+                <label for="" class="col-xs-4 control-label">手机归属地</label>
+                <div class="col-xs-8 txt-right">
+                  中国大陆 <i class="ypt-icon ypt-icon-right"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-12 control-label">安全中心绑定号码</label>
+                <div class="col-xs-12">+86 156****5688</div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-2 control-label">+86</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control"  placeholder="请输入新手机号">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-7">
+                  <input type="text" class="form-control"  placeholder="请输入验证码">
+                </div>
+                <div class="col-xs-2 code-wrap">
+                    <img src="img/code.png" class="msgCode"/>
+                </div>
+                <div class="col-xs-3 code-refresh">
+                    <a href="">换一张</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-7">
+                  <input type="text" class="form-control"  placeholder="请输入验证码">
+                </div>
+                <div class="col-xs-5 code-get">
+                    <a class="btn btn-default btn-block">获取验证码</a>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+
+    <!--我的评论-->
+    <div class="container-fluid site-page" id="user-comment">
+        <div class="row user-comment-nav ypt-style-mb15">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active" state="2"><a href="#commented" aria-controls="commented" role="tab" data-toggle="tab">已评价</a></li>
+                    <li role="presentation" state="1"><a href="#willComment" aria-controls="willComment" role="tab" data-toggle="tab">待评价</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row user-comment-body">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="commented"></div>
+                <div role="tabpanel" class="tab-pane" id="willComment"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--重置密码-->
+    <div class="container-fluid site-page" id="user-passwordReset">
+
+        <div class="row user-data ypt-style-mb15">
+            <form class="form-horizontal user-form">
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">原密码</label>
+                <div class="col-xs-9">
+                  <input type="password" class="form-control" placeholder="请输入原密码">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">新密码</label>
+                <div class="col-xs-9">
+                  <input type="password" class="form-control" placeholder="请输入新密码">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">确认密码</label>
+                <div class="col-xs-9">
+                  <input type="password" class="form-control"  placeholder="请输入确认密码">
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+
+    <!--关于我们-->
+    <div class="container-fluid site-page" id="user-about">
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td class="logo" colspan="2" style="text-align: center;padding: 40px 0 50px 0">
+                        <img src="img/logo.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td>系统版本</td>
+                    <td>2.1.1</td>
+                </tr>
+                <tr>
+                    <td>版权所有</td>
+                    <td>山东艺票通</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--意见反馈-->
+    <div class="container-fluid site-page" id="user-feedback">
+        <div class="row">
+            <div class="col-xs-12">
+                <textarea class="form-control" rows="5" id="feed-txt"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="btn btn-block btn-primary active" id="feed-submit">保存</a>
+            </div>
+        </div>
+    </div>
+
+    <!--账户管理-->
+    <div class="container-fluid site-page" id="user-account">
+        <div class="row user-img-wrap ypt-style-mb15">
+            <a class="user-img ypt-style-mb15" id="choose-img">
+                <img src="">
+            </a>
+            <form id="uploadForm" style="display: none;">
+                <input type="file" name="file" id="chooseInput" accept="image/*">
+                <input type="submit" name="submit" value="submit" id="submit">
+            </form>
+            <!-- <a class="ypt-fc-grey">点击修改头像</a> -->
+        </div>
+
+        <div class="row user-data ypt-style-mb15">
+            <form class="form-horizontal user-form" id="watcher-add-form">
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">昵称</label>
+                <div class="col-xs-9">
+                  <input type="text" class="form-control user-name" id="user-name"  placeholder="请填写您的昵称">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">性别</label>
+                <div class="col-xs-9">
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" id="sexRadio1" value="option1"> 男
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" id="sexRadio2" checked value="option2"> 女
+                    </label>
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                <label for="" class="col-xs-3 control-label">出生日期</label>
+                <div class="col-xs-9">
+                  <input type="text" class="form-control" id="user-birth" placeholder="2018-01-01">
+                </div>
+              </div> -->
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">出生年</label>
+                <div class="col-xs-9">
+                  <select class="form-control" id="birth-y">
+                </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">出生月</label>
+                <div class="col-xs-9">
+                  <select class="form-control" id="birth-m">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="col-xs-3 control-label">出生日</label>
+                <div class="col-xs-9">
+                  <select class="form-control" id="birth-d">
+                    </select>
+                </div>
+              </div>
+            </form>
+        </div>
+
+        <!-- <div class="row table-wrap user-menu-list">
+            <table class="table">
+                <tr class="pageBtn" href="#user-security" page-name="安全中心">
+                    <td class="menu-name">安全中心</td>
+                    <td class="menu-arrow ypt-fc-grey">绑定手机号，账号更安全<span class="ypt-icon ypt-icon-right"></span></td>
+                </tr>
+                <tr>
+                    <td class="menu-name">常用观演人</td>
+                    <td class="menu-arrow ypt-fc-grey"><span class="ypt-icon ypt-icon-right"></span></td>
+                </tr>
+            </table>
+        </div> -->
+        <div class="row ypt-style-mt15">
+            <div class="col-xs-12">
+                <a class="btn btn-block btn-primary active" id="save-acct">保存</a>
+            </div>
+        </div>
+    </div>
+
+    <!--系统设置-->
+    <div class="container-fluid site-page" id="sys-setting">
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td>清除缓存</td>
+                    <td class="alignRight"><span id="cacheSize"></span><i class="ypt-icon ypt-icon-right"></td>
+                </tr>
+                <tr>
+                    <td>服务条款</td>
+                    <td class="alignRight"><i class="ypt-icon ypt-icon-right"></td>
+                </tr>
+                <tr>
+                    <td>版本更新</td>
+                    <td class="alignRight"><i class="ypt-icon ypt-icon-right"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="row ypt-style-mt15">
+            <div class="col-xs-12">
+                <a class="btn btn-block btn-primary active" id="logOut">退出登录</a>
+            </div>
+        </div>
+    </div>
+
+    <!--成功页面-->
+    <div class="container-fluid site-page" id="success-page">
+        <div class="row">
+            <div class="col-xs-12">
+                <p >
+                    <i class="ypt-icon ypt-icon-roundcheck"></i></br>
+                    <span id="success-tips" class="ypt-fc-dark"></span>
+                </p>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-block active homeBack ypt-style-mt15">确定</a>
+    </div>
+
+    <!--弹出框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-warning">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-title"></h4>
+          </div>
+          <div class="modal-body" id="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <a type="button" class="btn btn-primary active" id="callSubmit" href="tel://4000099566">确定</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--支付二维码-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-code">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">扫码支付</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="modal-ok" data-dismiss="modal">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--校验提示--> 
+    <div class="modal fade" tabindex="-1" role="dialog" id="validate-wrap">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="validate-tips">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div style="margin-bottom:50px" class="bottomTap"></div>
+    <div class="container-fluid ypt_bgcol_fff ypt_pad_0 ypt_mar_0 bottomTap" id="bottomTap">
+        <ul class="row ypt_pad_0 ypt_mar_0">
+            <a href="newIndex.html">
+                <li class="col-xs-4 text-center">
+                    <i class="iconfont ypt-icon-fangzi">
+                        <p style="font-size:16px">推荐</p>
+                    </i>
+                </li>
+            </a>
+            <a href="discover_page.html">
+                <li class="col-xs-4 text-center">
+                    <i class="iconfont ypt-icon-faxian">
+                        <p style="font-size:16px">发现</p>
+                    </i>
+                </li>
+            </a>
+            <a href="user.html">
+                <li class="col-xs-4 text-center" style="margin: 0;padding: 0;color:#ed4b40;background: #eee;">
+                    <i class="iconfont ypt-icon-profile1">
+                        <p style="font-size:16px">我的</p>
+                    </i>
+                </li>
+            </a>
+        </ul>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,203 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.ttf?t=1526976461667') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:22px;
+  font-style:normal;
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ypt-icon-appreciate:before { content: "\e644"; }
+
+.ypt-icon-check:before { content: "\e645"; }
+
+.ypt-icon-close:before { content: "\e646"; }
+
+.ypt-icon-edit:before { content: "\e649"; }
+
+.ypt-icon-emoji:before { content: "\e64a"; }
+
+.ypt-icon-favor:before { content: "\e64c"; }
+
+.ypt-icon-loading:before { content: "\e64f"; }
+
+.ypt-icon-location:before { content: "\e651"; }
+
+.ypt-icon-phone:before { content: "\e652"; }
+
+.ypt-icon-roundcheck:before { content: "\e657"; }
+
+.ypt-icon-roundclose:before { content: "\e659"; }
+
+.ypt-icon-roundright:before { content: "\e65b"; }
+
+.ypt-icon-search:before { content: "\e65c"; }
+
+.ypt-icon-unfold:before { content: "\e661"; }
+
+.ypt-icon-camera:before { content: "\e665"; }
+
+.ypt-icon-notification:before { content: "\e66b"; }
+
+.ypt-icon-order:before { content: "\e66c"; }
+
+.ypt-icon-pay:before { content: "\e673"; }
+
+.ypt-icon-send:before { content: "\e675"; }
+
+.ypt-icon-ticket:before { content: "\e677"; }
+
+.ypt-icon-back:before { content: "\e679"; }
+
+.ypt-icon-discover:before { content: "\e67e"; }
+
+.ypt-icon-scan:before { content: "\e689"; }
+
+.ypt-icon-settings:before { content: "\e68a"; }
+
+.ypt-icon-question:before { content: "\e691"; }
+
+.ypt-icon-form:before { content: "\e699"; }
+
+.ypt-icon-pic:before { content: "\e69b"; }
+
+.ypt-icon-pulldown:before { content: "\e69f"; }
+
+.ypt-icon-pullup:before { content: "\e6a0"; }
+
+.ypt-icon-right:before { content: "\e6a3"; }
+
+.ypt-icon-refresh:before { content: "\e6a4"; }
+
+.ypt-icon-delete:before { content: "\e6b4"; }
+
+.ypt-icon-profile:before { content: "\e6b7"; }
+
+.ypt-icon-home:before { content: "\e6b8"; }
+
+.ypt-icon-message:before { content: "\e6bc"; }
+
+.ypt-icon-addressbook:before { content: "\e6bd"; }
+
+.ypt-icon-lock:before { content: "\e6c0"; }
+
+.ypt-icon-unlock:before { content: "\e6c2"; }
+
+.ypt-icon-friendadd:before { content: "\e6ca"; }
+
+.ypt-icon-friend:before { content: "\e6cc"; }
+
+.ypt-icon-goods:before { content: "\e6cd"; }
+
+.ypt-icon-present:before { content: "\e6d3"; }
+
+.ypt-icon-roundadd:before { content: "\e6d9"; }
+
+.ypt-icon-redpacket:before { content: "\e6e0"; }
+
+.ypt-icon-selectionfill:before { content: "\e6e1"; }
+
+.ypt-icon-similar:before { content: "\e6e2"; }
+
+.ypt-icon-info:before { content: "\e6e5"; }
+
+.ypt-icon-recharge:before { content: "\e6ed"; }
+
+.ypt-icon-vipcard:before { content: "\e6ee"; }
+
+.ypt-icon-friendfavor:before { content: "\e6f1"; }
+
+.ypt-icon-flashlightopen:before { content: "\e6fd"; }
+
+.ypt-icon-searchlist:before { content: "\e6fe"; }
+
+.ypt-icon-mobile:before { content: "\e704"; }
+
+.ypt-icon-copy:before { content: "\e706"; }
+
+.ypt-icon-countdown:before { content: "\e708"; }
+
+.ypt-icon-notice:before { content: "\e70a"; }
+
+.ypt-icon-choiceness:before { content: "\e715"; }
+
+.ypt-icon-creative:before { content: "\e719"; }
+
+.ypt-icon-female:before { content: "\e71a"; }
+
+.ypt-icon-pullright:before { content: "\e720"; }
+
+.ypt-icon-mark:before { content: "\e731"; }
+
+.ypt-icon-bind:before { content: "\e70f"; }
+
+.ypt-icon-album:before { content: "\e734"; }
+
+.ypt-icon-people:before { content: "\e736"; }
+
+.ypt-icon-repair:before { content: "\e738"; }
+
+.ypt-icon-attention:before { content: "\e73d"; }
+
+.ypt-icon-command:before { content: "\e73f"; }
+
+.ypt-icon-community:before { content: "\e741"; }
+
+.ypt-icon-calendar:before { content: "\e74a"; }
+
+.ypt-icon-group:before { content: "\e753"; }
+
+.ypt-icon-backdelete:before { content: "\e756"; }
+
+.ypt-icon-post:before { content: "\e759"; }
+
+.ypt-icon-punch:before { content: "\e764"; }
+
+.ypt-icon-safe:before { content: "\e769"; }
+
+.ypt-icon-iconfontplay2:before { content: "\e71b"; }
+
+.ypt-icon-text:before { content: "\e791"; }
+
+.ypt-icon-youhuiquan:before { content: "\e765"; }
+
+.ypt-icon-zuobiao:before { content: "\e76a"; }
+
+.ypt-icon-profile1:before { content: "\e608"; }
+
+.ypt-icon-wodefankui:before { content: "\e656"; }
+
+.ypt-icon-wodeyouhuiquan:before { content: "\e65a"; }
+
+.ypt-icon-faxian:before { content: "\e67f"; }
+
+.ypt-icon-video:before { content: "\e600"; }
+
+.ypt-icon-star:before { content: "\e629"; }
+
+.ypt-icon-jifen:before { content: "\e61a"; }
+
+.ypt-icon-fangzi:before { content: "\e60f"; }
+
+.ypt-icon-duozhongzhifu:before { content: "\e7ac"; }
+
+.ypt-icon-erweima:before { content: "\e7ad"; }
+
+.ypt-icon-yishouchu:before { content: "\e7bb"; }
+
+.ypt-icon-medal:before { content: "\e7c2"; }
+
+.ypt-icon-ask:before { content: "\e7ca"; }
+
+.ypt-icon-swticonyinle2:before { content: "\e614"; }
+
+.ypt-icon-order1:before { content: "\e613"; }
+
+.ypt-icon-letter:before { content: "\e6a8"; }
+
+.ypt-icon-Edit:before { content: "\e616"; }

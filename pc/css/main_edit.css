@@ -1,0 +1,25 @@
+/*é‡ç½®*/
+#content_showInfo .pagination {position:static}
+#content_showInfo .pagination > li{display:inline-block}
+#content_showInfo #list .pagination li{border:none}
+a:hover{
+	color: #fa483c;
+}
+#content_index .classify .top a:hover{
+	color: #fa483c;
+	text-decoration:underline;
+}
+#headSearch .mt5 .mr5 a:hover{
+	color: #fa483c;
+	text-decoration:underline;
+}
+#footer a:hover{
+	color: #fa483c;
+	text-decoration:underline;
+}
+.location a:hover{
+	color: #fa483c;
+	text-decoration:underline;
+}
+#content_showInfo.content_newsList .pagination {position:absolute}
+

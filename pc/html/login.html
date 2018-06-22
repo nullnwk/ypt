@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户登录</title>
+	<script src="../js/jquery-1.7.2.min.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/security.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../logic/loginAndReg.js"></script>
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/loginAndReg.css">
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+	<div id="logReg_head"></div>
+	<input type="hidden" name="page" id="page" value="login">
+	<!--<div class="p0" style="width: 1200px; background-color: #007aff">-->
+		<div style="position: relative;"><img src="../img/login_bg.png"></div>
+		<div class="login-main " style="position: absolute;">
+			<table  class="login-table" style="">
+				<tr>
+					<td colspan="2"><h5>账户登录</h5></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="login-div-out">
+							<img class="login-img" src="../img/login_user.png">
+							<input class="login-input dq" type="text"  placeholder="请输入用户名" maxlength="30" id="username">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="login-div-out">
+							<img class="login-img" src="../img/login_pwd.png">
+							<input class="login-input dq" type="password" placeholder="请输入密码" maxlength="30" id="userpwd">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="35%"><div class="login-div-out1"><input type="checkbox" id="remember" style="vertical-align:middle; margin-top: -2px;">&nbsp;&nbsp;下次自动登录</div></td>
+					<td width="65%" style="text-align: right"><div class="login-div-out1"><a href="forgetPwd.html" class="col_blue4">忘记密码？</a><a href="register.html" class="col_blue4">立即注册</a></div></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="button" class="button loginBtn" style="border: none;" id="loginBTN" value="立即登录">
+					</td>
+				</tr>
+				<!--<tr>-->
+					<!--<td colspan="2" align="center">-->
+						<!--<div class="login-div-out1">-->
+							<!--<table width="90%">-->
+								<!--<tr style="text-align: center">-->
+									<!--<td><img style="margin-top: -3px;" src="../img/icon_wechat.png" width="16px"> 微信登录</td>-->
+									<!--<td><img style="margin-top: -3px;" src="../img/icon_QQ.png" width="16px"> QQ账号</td>-->
+									<!--<td><img style="margin-top: -3px;" src="../img/icon_xlweibo.png" width="16px"> 新浪微博</td>-->
+								<!--</tr>-->
+							<!--</table>-->
+						<!--</div>-->
+					<!--</td>-->
+				<!--</tr>-->
+			</table>
+		</div>
+	<!--</div>-->
+	<div id="logReg_foot"></div>
+</body>
+</html>

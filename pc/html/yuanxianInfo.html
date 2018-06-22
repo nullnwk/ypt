@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>院线介绍</title>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<script src="../js/idangerous.swiper.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/clipboard.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/base64.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OKxZsvlTuIBN16u1WpGt7K9eZXf8HS1s"></script>
+	<script src="../logic/yuanxian.js"></script>
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" href="../css/include.css">
+	<link rel="stylesheet" href="../css/tpl_list_new.css">
+</head>
+<body>
+<div id="header"></div>
+<input type="hidden" name="page" id="page" value="info">
+<div id="content_showInfo" class="bg_f9 col-xs-12 p0">
+	<div class="container p0">
+		<!-- 主体开始 -->
+		<div class="content main wrap_index clearfix">
+			<!----------------------------第二屏第一部分----------------------------->
+			<div class="g-main3">
+				<!-----------------------------内容--------------------------------->
+				<!-----------------------------左侧内容--------------------------------->
+				<div class="m-box">
+					<!-------------------路径-------------------------->
+
+					<!------------------/路径-------------------------->
+					<!---------------------通知公告------------------------>
+					<div class="m-ct4 m-box31" id="printdv">
+						<div class="m-crumb nr_crumb">
+							<span>当前位置：</span>
+							<span><a href="/" target="_blank">首页</a>&gt;</span>
+							<span> <a href="yuanxianList.html" target="_blank">院线介绍</a> &gt; </span>
+							<span class="deptName"></span>
+						</div>
+						<!-- 简介信息20160515 -->
+						<div class="m-info">
+
+						</div>
+
+						<!-- 简介信息20160515 -->
+
+						<div id="printdv0">
+							<div class="m-ct4">
+								<!-- <div class="m-top"></div> -->
+								<div class="m-hd">
+									<h1 class="deptName"> <!-- 主标题换行 -->
+										</h1>
+
+									<h2></h2></div>
+							</div>
+						</div>
+						<!-------------------------功能20160515---------------------------->
+						<div class="m-btn1">
+							<!--<div style="float: right;">-->
+								<!--<div class="bshare-custom dropdown ">-->
+									<!--<div class="bsPromo bsPromo2"></div>-->
+									<!--<div class="bsPromo bsPromo2"></div>-->
+									<!--<a id="drop4" href="/site/detail-210" class="m-sharebtn" data-toggle="dropdown"-->
+									   <!--role="button" aria-haspopup="true" aria-expanded="false"> </a>-->
+									<!--<ul id="menu1" class="dropdown-menu fx" aria-labelledby="drop4"-->
+										<!--style="right: 0px;min-width: 80px;">-->
+										<!--<li><a title="分享到微信" class="bshare-weixin"></a></li>-->
+										<!--<li><a title="分享到新浪微博" class="bshare-sinaminiblog"></a></li>-->
+									<!--</ul>-->
+									<!--<script type="text/javascript" charset="utf-8"-->
+											<!--src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>-->
+									<!--<script type="text/javascript" charset="utf-8"-->
+											<!--src="http://static.bshare.cn/b/bshareC0.js"></script>-->
+								<!--</div>-->
+							<!--</div>-->
+							<div style="width: 250px; float: right; display: inline;">
+								<span class="btn1">
+									<a onclick="printpage();"> </a>
+								</span>
+								<span class="btn2">
+									<a href="javascript:alert('复制成功');" id="copy" data-clipboard-target="msize_s"> </a>
+								</span>
+								<span>
+									<a href="javascript:SetFont_S(22);" class="btn31"> </a>
+								</span>
+								<span>
+									<a href="javascript:SetFont_S(18);" class="btn32"> </a>
+								</span>
+								<span>
+									<a href="javascript:SetFont_S(16);" class="btn33"> </a>
+								</span>
+							</div>
+							<!-- JiaThis Button BEGIN -->
+							<div class="jiathis_style">
+								<a class="jiathis_button_weixin"></a>
+								<a class="jiathis_button_cqq"></a>
+								<a class="jiathis_button_copy"></a>
+								<a href="http://www.jiathis.com/share?uid=2159962" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+							</div>
+							<script type="text/javascript">
+								var jiathis_config = {data_track_clickback:'true'};
+							</script>
+							<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=2159962" charset="utf-8"></script>
+							<!-- JiaThis Button END -->
+						</div>
+						<!------------------------/功能20160515----------------------------->
+						<!-------------------------内容---------------------------->
+
+						<div class="m-content">
+							<div id="msize_s">
+								<!-- 复制全文开始 -->
+								<!--content.begin-->
+								<!-- 插入多图 --
+							   --插入多图  -->
+								<p></p>
+
+								<div class="m-content-table">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tbody>
+										<tr>
+											<th scope="row" width="25%">剧院名称:</th>
+											<td class="deptName"></td>
+										</tr>
+										<tr>
+											<th scope="row">地　　址:</th>
+											<td id="adress"></td>
+										</tr>
+										<tr>
+											<th scope="row">邮政编码:</th>
+											<td>250000</td>
+										</tr>
+										<tr>
+											<th scope="row">开放时间:</th>
+											<td>8:00-22:00</td>
+										</tr>
+										<tr>
+											<th scope="row">咨询电话:</th>
+											<td id="tel"></td>
+										</tr>
+										<!--<tr>-->
+											<!--<th scope="row">官方网站:</th>-->
+											<!--<td></td>-->
+										<!--</tr>-->
+										<tr>
+											<th scope="row" valign="middle">地图标注:</th>
+											<td>
+												<div id="maps" val="info" style="height: 380px;"></div>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="m-btn1" style="margin: 0 auto 40px auto;height: 40px;width: 100%;"></div>
+								<div id="content">
+								<!--<p>-->
+									<!--　　山东文化娱乐中心历山剧院坐落在泉城风景秀丽的千佛山北麓，位于济南文化区与休闲商务区的结合部，是山东省文化厅、山东省演艺集团直属的综合性文化娱乐场所。东部有大专院校、文艺院团、高档社区相毗邻，西部与银座新天地、银座商城、泉城广场、泉城路商业街、恒隆广场等大型商业圈相连接，交通便利，地理位置优越。距济南国际机场40公里，经高架高速公路40分钟到达，距济南站10公里，西客站20公里。</p>-->
+
+								<!--<p>-->
+									<!--　　山东文化娱乐中心下设历山剧院，集演出、会议、展览、餐饮为一体，按功能划分为：演艺厅、数码厅、展厅、贵宾接待室、宴会厅、多功能会议厅及停车场，剧场内设中央空调、现代化国内一流的舞台灯光音响、电影数码立体声等现代化设备和设施，是观赏演出、休闲娱乐、商贸洽谈的理想场所。剧场近千平方米的观众休息厅，为观众休息、出入提供了宽敞、明亮的安全空间。</p>-->
+
+								<!--<p>-->
+									<!--　　历山剧院近十年来，接待各类演出约计1300余场，04年开始在济南创立儿童剧亲子剧场，至2013年，邀请国内各大知名院团演出儿童剧200余场;06年至09年，承接“泉城大舞台系列演出活动”演出400余场;06年“全国地方戏优秀剧目评比展演”;07年“2007济南国际幽默艺术周”;08年“第五届中国京剧艺术节”;09年向祖国献礼-->
+									<!--为全运喝彩暨第八届山东省艺术节及山东第三届国际小剧场话剧节系列演出活动;10年中国首届MC民谣盛典音乐节;11年“2011中国济南第三届国际亲子剧节”、“第十八届中韩戏剧节”“第四届山东国际小剧场话剧节”;12年“喜迎十八大，相约十艺节”全省优秀剧目展演。</p>-->
+
+								<!--<p>-->
+									<!--　　为迎接第十届中国艺术节，在上级领导和相关部门的关怀与支持下，剧院正在对剧院舞台、设施、设备等五大类项目进行改造、维修和购置。改造后的剧院不但可满足大型歌剧、交响乐、芭蕾舞、音乐剧等各种演出的需求，更将以高品味的文化活动、高质量的服务，赢得市场和观众。</p>-->
+
+								<!--<p style="text-align:center"><img-->
+										<!--src="http://www.qlypt.com/uploads/editor/image/20170605/15e2c7b8c15ee08eb8341ca90b6ec4b0.jpg"-->
+										<!--title="20170605\15e2c7b8c15ee08eb8341ca90b6ec4b0.jpg"-->
+										<!--alt="15e2c7b8c15ee08eb8341ca90b6ec4b0.jpg"></p>-->
+
+								<!--<p style="text-align:center"><br></p>-->
+
+								<!--<p><br></p>-->
+								</div>
+							</div>
+						</div>
+						<!------------------------/内容------------------------------>
+						<div style="height:45px"></div>
+						<div style="height:20px"></div>
+					</div>
+					<!--------------------/通知公告------------------------>
+				</div>
+				<!----------------------------/左侧内容--------------------------------->
+
+				<div class="blank30"></div>
+				<!----------------------------内容--------------------------------->
+			</div>
+			<!-------------------------/第二屏第一部分------------------------------->
+
+		</div>
+		<!-- 主体结束 -->
+	</div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>演出列表test</title>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/jquery.mloading.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../logic/url.js"></script>
+	<script src="../logic/test.js"></script>
+
+	<link rel="stylesheet" href="../css/include_m.css">
+	<link href="../css/public.css" rel="stylesheet">
+
+</head>
+<body>
+<input type="hidden" name="page" id="page" value="newsList">
+<div class="container-fluid wrap p0" id="news">
+	<!--head开始-->
+	<div class="head">
+		<table width="100%" class="mt10">
+			<tr>
+				<td class="pull-left"><a class="ml10" href="javascript:void(0)" onclick="backToFront('index')"><img src="../img/icon_back.png" style="width: 19px;"></a></td>
+				<td class="text-center"><span class="size14-xs" id="title">演出列表</span></td>
+				<td class="pull-right" id="titleRightTD"><a class="mr10" href="javascript:void(0)" onclick=""><img src="../img/icon_search.png" style="width: 19px;"></a></td>
+			</tr>
+		</table>
+	</div>
+	<!--head结束-->
+
+	<!--新闻类型-->
+	<div class="container-news p0 m0-xs bor-none-xs mt50 active" style="background-color: #fff;" id="main_content">
+		<div class=" col-sm-12 ">
+
+			<div class="row ypt-news-coupon-body">
+
+				<div class="col-sm-12 size13-xs" id="nav_title">
+					<ul class="text-left ml20" role="tablist" id="list">
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>提交订单</title>
+
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<script src="../js/idangerous.swiper.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/base64.js"></script>
+	<script src="../js/area.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../logic/commit.js"></script>
+
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" href="../css/include.css">
+	<link href="../css/public_mys.css" rel="stylesheet">
+
+	<style>
+		.hov:hover{
+			background-color: #ffedda;
+			cursor: pointer;
+		}
+		.hovhand:hover{
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<div id="header"></div>
+<div class="container-fluid wrap p0 bg_ff" id="orderCommit">
+	<!--步骤图-->
+	<div class="top size13 container mt10 p0 m0-xs ">
+		<div class="col-sm-12 text-center">
+			<img src="../img/commit_2.png">
+		</div>
+	</div>
+	<!--购票人信息-->
+	<div class="size13 size13-xs bor_e3 container mt20 p0 m0-xs bor-none-xs" style="background-color: #ffffff">
+		<div class="row">
+			<div class="col-sm-8 p0 pl15">
+				<div class="col_5f p_l20 p_tb10 bg_f6 bor_b_e3 bor_r_e3 size16">购票人信息</div>
+				<div class="p_tb10 bor_r_e3 size13 size10-xs pt10-xs pt10">
+					<!--现场取票/快递配送/上门取票 choose-->
+					<div class=" col-sm-12">
+						<div class="overflow mb0-xs">
+							<div class="clearfix-xs"></div>
+							<div class="pull-left col-sm-10 p0">
+								<div class="size13 size10-xs pull-left  mr10 mb10 option pos_rel selected" can="yes" val="xch">
+									现场取票
+									<img src="../img/selected.png" class="pos_abs selected_i" alt="">
+								</div>
+								<div class="size13 size10-xs pull-left  mr10 mb10 option pos_rel" can="yes" val="post">
+									快递配送
+									<img src="../img/selected.png" class="pos_abs selected_i" alt="">
+								</div>
+								<div class="size13 size10-xs pull-left  mr10 mb10 option pos_rel" can="yes" val="getin">
+									上门取票
+									<img src="../img/selected.png" class="pos_abs selected_i" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--现场取票-->
+					<div class="p20" id="tab_idCard">
+						<table style="width: 100%;">
+							<tr>
+								<td width="15%" class="p_tb10"><span class="col_97 mr10">取票地点:</span></td>
+								<td width="85%" class="p_tb10" id="ticketPlace"></td>
+							</tr>
+							<tr>
+								<td colspan="2" class="p_tb5"><div class="bor_b_db"></div></td>
+							</tr>
+							<tr>
+								<td class="p_tb10"><span class="col_97 mr10">取票人手机号:</span></td>
+								<td class="p_tb10"><input type="text" class="myBorder" value="" style="width: 150px; height: 30px;" id="type1_input_tel" maxlength="11"></td>
+							</tr>
+						</table>
+					</div>
+					<!--快递配送-->
+					<div class="p20" id="tab_post" style="height: 100%; display: none;">
+						<div class="size10 size10-xs" id="addNew_DIV" style=" display: none;">
+							<div class=""><span class="col_red mr10">*</span><span class="col_97 mr10">收货人:</span>
+								<br/><span><input type="text" class="bor_cc mt5" style="width: 270px; height: 25px;" id="type2_input_person"></span></div>
+							<div class="mt5"><span class="col_red mr10">*</span><span class="col_97 mr10">所在地区:</span></div>
+
+							<div class="mt5">
+								<!--<select id="s_province" name="s_province" class="bor_cc" style="height: 30px; width: 70px; text-align: center;"></select>&nbsp;&nbsp;  -->
+								<!--<select id="s_city" name="s_city" class="bor_cc" style="height: 30px; width: 90px; text-align: center;"></select>&nbsp;&nbsp; -->
+								<!--<select id="s_county" name="s_county" class="bor_cc" style="height: 30px; width: 80px; text-align: center;"></select>-->
+								<!--<script type="text/javascript" src="../js/area.js"></script>-->
+								<!--<script type="text/javascript">_init_area();</script>-->
+
+								<select id="cmbProvince" name="cmbProvince" class="bor_cc" style="height: 30px; width: 70px; text-align: center;"></select>
+								<select id="cmbCity" name="cmbCity" class="bor_cc" style="height: 30px; width: 90px; text-align: center;"></select>
+								<select id="cmbArea" name="cmbArea" class="bor_cc" style="height: 30px; width: 80px; text-align: center;"></select>
+								<script type="text/javascript">
+									addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+								</script>
+
+							</div><div id="show" class="mt5"></div>
+
+							<div class="mt5"><span class="col_red mr10">*</span><span class="col_97 mr10">详细地址:</span>
+								<br/><span><input type="text" class="bor_cc mt5" style="width: 270px; height: 25px;" id="type2_input_adress"></span>
+							</div>
+							<div class="mt5"><span class="col_red mr10">*</span><span class="col_97 mr10">手机号码:</span>
+								<br/><span><input type="text" class="bor_cc mt5" style="width: 270px; height: 25px;" id="type2_input_tel"></span>
+							</div>
+							<input type="hidden" name="adressId" id="adressId" value="">
+							<button id="addBTN" class="mt15 bor_none text-center bg_red2 size10 size10-xs col_ff " style="width: 130px; height: 30px;line-height: 30px;">
+								新增
+							</button>
+							<button id="returnBTN" class="ml5 mt15 bor_none text-center bg_b6 size10 size10-xs col_ff " style="width: 130px; height: 30px;line-height: 30px;">
+								返回
+							</button>
+						</div>
+						<div class="size13 size10-xs" id="recive_DIV">
+							<span class="bold">收货人信息</span>
+							<div id="recivePersonDIV">
+								<!--<div class="p0 mt5 hov">-->
+									<!--<div class="pull-left pos_rel mr10 mb10 personSel option-person text-center selected" can="yes" index="0" val="郭玉" style="width: 80px; ">-->
+										<!--<span>郭玉</span>-->
+									<!--</div>-->
+									<!--<div class="mt10" style="height: 40px;">-->
+										<!--<span class="mt10">山东济南历城区山大北路 27号 103室 156****1234</span>-->
+										<!--<div class=" pull-right col_blue4"><a class="ml10 inlineb" href="#">设为默认地址</a><a class="ml10 inlineb" href="#">编辑</a><a class="ml10 inlineb" href="#">删除</a></div>-->
+									<!--</div>-->
+								<!--</div>-->
+
+								<!--<div class="p0 mt5 hov">-->
+									<!--<div class="pull-left pos_rel mr10 mb10 personSel option-person text-center" can="yes" index="1" val="张三" style="width: 80px; ">-->
+										<!--<span>张三</span>-->
+									<!--</div>-->
+									<!--<div class="mt10" style="height: 40px;">-->
+										<!--<span class="mt10">山东济南历城区山大北路 27号 103室 156****1234</span>-->
+										<!--<div class=" pull-right col_blue4"><a class="ml10 inlineb" href="#">设为默认地址</a><a class="ml10 inlineb" href="#">编辑</a><a class="ml10 inlineb" href="#">删除</a></div>-->
+									<!--</div>-->
+								<!--</div>-->
+
+								<!--<div class="p0 mt5 hov">-->
+									<!--<div class="pull-left pos_rel mr10 mb10 personSel option-person text-center" can="yes" index="2" val="李四" style="width: 80px; ">-->
+										<!--<span>李四</span>-->
+									<!--</div>-->
+									<!--<div class="mt10" style="height: 40px;">-->
+										<!--<span class="mt10">山东济南历城区山大北路 27号 103室 156****1234</span>-->
+										<!--<div class=" pull-right col_blue4"><a class="ml10 inlineb" href="#">设为默认地址</a><a class="ml10 inlineb" href="#">编辑</a><a class="ml10 inlineb" href="#">删除</a></div>-->
+									<!--</div>-->
+								<!--</div>-->
+
+								<!--&lt;!&ndash;更多地址-文字&ndash;&gt;-->
+								<!--<p class="p0 mt10 pull-left mb10" style="margin-left: -80px;" id="more"><a href="#">更多地址<img src="../img/dropDown.png"></a></p>-->
+								<!--&lt;!&ndash;更多地址-内容&ndash;&gt;-->
+								<!--<div style="display: none;" id="moreHide">-->
+									<!--<div class="p0 mt5 hov" >-->
+										<!--<div class="pull-left pos_rel mr10 mb10 personSel option-person text-center" can="yes" index="3" val="哈哈1" style="width: 80px; ">-->
+											<!--<span>哈哈1</span>-->
+										<!--</div>-->
+										<!--<div class="mt10" style="height: 40px;">-->
+											<!--<span class="mt10">山东济南历城区山大北路 27号 103室 156****1234</span>-->
+											<!--<div class=" pull-right col_blue4"><a class="ml10 inlineb" href="#">设为默认地址</a><a class="ml10 inlineb" href="#">编辑</a><a class="ml10 inlineb" href="#">删除</a></div>-->
+										<!--</div>-->
+									<!--</div>-->
+									<!--<div class="p0 mt5 hov" >-->
+										<!--<div class="pull-left pos_rel mr10 mb10 personSel option-person text-center" can="yes" index="4" val="哈哈2" style="width: 80px; ">-->
+											<!--<span>哈哈2</span>-->
+										<!--</div>-->
+										<!--<div class="mt10" style="height: 40px;">-->
+											<!--<span class="mt10">山东济南历城区山大北路 27号 103室 156****1234</span>-->
+											<!--<div class=" pull-right col_blue4"><a class="ml10 inlineb" href="#">设为默认地址</a><a class="ml10 inlineb" href="#">编辑</a><a class="ml10 inlineb" href="#">删除</a></div>-->
+										<!--</div>-->
+									<!--</div>-->
+								<!--</div>-->
+							</div>
+							<button id="addNewAdress" class="bor_none text-center bg_red2 size13 size10-xs col_ff" style="width: 100%; height: 30px;line-height: 30px;">
+								+新增收货地址
+							</button>
+						</div>
+					</div>
+					<!--现场取票-->
+					<div class="p20 size13 size10-xs" id="tab_getIn" style="display: none;">
+						<div class="mb5">取票人手机号：<input type="text" style="width: 150px; height: 25px;" id="type3_input_tel" maxlength="11"></div><br/>
+						<div class="mb5"><span class="col_97 mr10">取票地址:</span>山东省济南市历下区票务联盟<span class="col_blue4 ml20"><a class="inlineb" href="#">查看地图</a></span></div><br/>
+						<div class="mb5"><span class="col_97 mr10">营业时间:</span>周一至周五(8：30 - 18:00)</div><br/>
+						<div class="mb5"><span class="col_97 mr10">联系电话:</span>400-0099-566</div><br/>
+						<div class="mb5"><span class="col_97 mr10">提示:支付成功后,请选择工作时间上门取票,取票前请提前1小时致电。</span></div><br/>
+						<a href="javascript:void(0)" class="text-center bg_red2 size14 size13-xs col_ff" style="width: 200px; height: 30px;line-height: 30px;">
+							保存购票人信息
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 p0 pr15 hidden-xs">
+				<div class="col_5f p_l20 p_tb10 bg_f6 bor_b_e3 size16">商品清单</div>
+				<div class="p_tb20 size13 size10-xs pt10 pt10-xs" id="orderListTOP">
+					<!--<table width="95%" class="ml3p mb10" border="0">-->
+						<!--<tr>-->
+							<!--<td style="width: auto" rowspan="5"><img src="../img/poster3.png" width="90"></td>-->
+							<!--<td style="width: auto">【济宁】 波兰“多康多” 女高音钢琴2人组合音乐会</td>-->
+						<!--</tr>-->
+						<!--<tr>-->
+							<!--<td>时间：2018.09.10 20:00</td>-->
+						<!--</tr>-->
+						<!--<tr>-->
+							<!--<td>场馆：济南省会大剧院</td>-->
+						<!--</tr>-->
+						<!--<tr>-->
+							<!--<td align="right"><span class="col_red2">￥760</span> * 1</td>-->
+						<!--</tr>-->
+						<!--<tr>-->
+							<!--<td align="right"><span class="col_8a">1楼12排23号</span></td>-->
+						<!--</tr>-->
+					<!--</table>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--支付方式-->
+	<div class=" size13 size13-xs bor_e3 container mt25 p0 m0-xs bor-none-xs" style="background-color: #ffffff">
+		<div class="col-sm-12 col_5f p_l20 p_tb10 bg_f6 bor_b_e3 size16">支付方式</div>
+		<div class=" col-sm-12 p_b10 mt15">
+			<div class="overflow mb0-xs">
+				<div class="clearfix-xs"></div>
+				<div class="pull-left col-sm-10 p0">
+					<div class="size13 size10-xs pull-left pos_rel mr10 mb10 option selected" can="yes" val="onlineZF">
+						在线支付
+						<img src="../img/selected.png" class="pos_abs selected_i" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--商品清单-->
+	<div class=" bor_e3 container mt25 p0 m0-xs bor-none-xs" style="background-color: #ffffff">
+		<div class=" col-sm-12 col_5f p_l20 p_tb10 bg_f6  size16">商品清单</div>
+		<table class="table size13 size10-xs" id="orderListMiddle">
+			<!--<tr>-->
+				<!--<th class="bor_e8">-->
+					<!--商品名称-->
+				<!--</th>-->
+				<!--<th class="bor_e8">-->
+					<!--座位号-->
+				<!--</th>-->
+				<!--<th class="bor_e8">-->
+					<!--价格-->
+				<!--</th>-->
+				<!--<th class="bor_e8">-->
+					<!--数量-->
+				<!--</th>-->
+				<!--<th class="bor_e8">-->
+					<!--价格小计(元)-->
+				<!--</th>-->
+			<!--</tr>-->
+			<!--<tr>-->
+				<!--<td class="bor_e8">-->
+					<!--<a href="#" class="inlineb"><span class="col_blue4">波兰“多康多” 女高音钢琴2人组合音乐会</span></a> 2018.09.10 周日20:00-->
+				<!--</td>-->
+				<!--<td class="bor_e8">-->
+					<!--一楼12排23号-->
+				<!--</td>-->
+				<!--<td class="bor_e8">-->
+					<!--760.00-->
+				<!--</td>-->
+				<!--<td class="bor_e8">-->
+					<!--1-->
+				<!--</td>-->
+				<!--<td class="bor_e8">-->
+					<!--760.00-->
+				<!--</td>-->
+			<!--</tr>-->
+		</table>
+	</div>
+
+	<!--订单备注-->
+	<div class=" size14 size13-xs container mt25 p0 m0-xs bor-none-xs" style="background-color: #ffffff">
+		<table width="100%" class="size13 size10-xs">
+			<tr>
+				<td style="width: 70px;">订单备注：</td>
+				<td><input type="text" class="myBorder" style="width: 100%; height: 30px;" placeholder="可以填写您对商品的其他要求" id="mark"></td>
+			</tr>
+		</table>
+	</div>
+
+	<!--&lt;!&ndash;发票信息&ndash;&gt;-->
+	<!--<div class="size14 size13-xs bor_e3 container mt20 p0 m0-xs bor-none-xs" style="background-color: #ffffff">-->
+		<!--<div class="col-sm-12 col_5f p_l20 p_tb10 bg_f6 bor_b_e3">发票信息</div>-->
+		<!--<div class="size13 size10-xs col-sm-12 pull-left p20">普通发票(纸质) 个人 明细 <span class="inlineb" data-toggle="modal" data-target="#fapiao_Modal"><span class="col_blue4">修改</span></span></div>-->
+	<!--</div>-->
+	<!--&lt;!&ndash;弹出层-start&ndash;&gt;-->
+	<!--&lt;!&ndash; 模态框（Modal） &ndash;&gt;-->
+	<!--<div class="modal fade size13 size10-xs" id="fapiao_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+		<!--<div class="modal-dialog">-->
+			<!--<div class="modal-content">-->
+				<!--<div class="modal-header bg_f6">-->
+					<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+					<!--<span class="modal-title size14 size13-xs">发票信息</span>-->
+				<!--</div>-->
+				<!--<div class="modal-body bg_ff">-->
+					<!--&lt;!&ndash;发票信息内容&ndash;&gt;-->
+					<!--<div class="overflow mb5 mb0-xs">-->
+						<!--<div class="pull-left  p0">-->
+							<!--<div class="pull-left  mr10 mb10 fapiaoSel option-fapiao pos_rel selected" type="leixing" index="0" can="yes" val="">-->
+								<!--普通发票-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+							<!--<div class="pull-left  mr10 mb10 fapiaoSel option-fapiao pos_rel" type="leixing" index="1" can="yes" val="">-->
+								<!--电子发票-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+							<!--<div class="pull-left  mr10 mb10 fapiaoSel option-fapiao pos_rel" type="leixing" index="2" can="yes" val="">-->
+								<!--增值税发票-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<div class="bg_yellow3 pt5 pb5 pl5"><img src="../img/icon_tanhao.png" style="width: 15px;"><span class="col_red2 ml5">开票金额不包括优惠券和积分支付部分。</span></div>-->
+					<!--<div class="overflow  mb0-xs mt10">-->
+						<!--<div class="pull-left p0" id="fapiaoContent">-->
+							<!--<div class="pull-left mr10 mb10">发票抬头: </div>-->
+							<!--<div class="pull-left  mr10 mb10 taitouSel option-fapiao pos_rel selected" type="taitou" index="0" can="yes" val="" style="width: 250px;">-->
+								<!--个人-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div><br/>-->
+							<!--<div class="pull-left ml60 mr10 mb10 taitouSel option-fapiao pos_rel" type="taitou" index="1" can="yes" val="" style="width: 250px;">-->
+								<!--<input type="text" class="bor_none" value="山东文化传媒有限公司" placeholder="请输入单位名称" style="width: 180px;">-->
+								<!--<button flag="del" class="compBTN bor_none ml0-xs text-right bg_ff size13 size10-xs col_blue4" style="width: 40px; height: 20px;line-height: 20px;">删除</button>-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<button id="addNewComp" class="ml50 bor_none ml0-xs text-center bg_ff size13 size10-xs col_blue4" style="width: 100px; height: 25px;line-height: 25px;">-->
+						<!--新增单位发票-->
+					<!--</button>-->
+					<!--<div class="overflow  mb0-xs mt10">-->
+						<!--<div class="pull-left  p0">-->
+							<!--<div class="pull-left mr10 mb10">发票明细: </div>-->
+							<!--<div class="pull-left mr10 mb10 nrSel option-fapiao pos_rel selected" type="nr" index="0" can="yes" val="">-->
+								<!--明细-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+							<!--<div class="pull-left mr10 mb10 nrSel option-fapiao pos_rel" type="nr" index="1" can="yes" val="">-->
+								<!--办公用品-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+							<!--<div class="pull-left mr10 mb10 nrSel option-fapiao pos_rel" type="nr" index="1" can="yes" val="">-->
+								<!--电脑配件-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<div class="ml60 mt10">-->
+						<!--<button id="commit" class="bor_none ml0-xs text-center bg_red2 size13 size10-xs col_ff" style="width: 60px; height: 25px;line-height: 25px;">-->
+							<!--保存-->
+						<!--</button>-->
+						<!--<button class="bor_none ml0-xs text-center bg_ef size13 size10-xs col_47" data-dismiss="modal" style="width: 60px; height: 25px;line-height: 25px;">-->
+							<!--取消-->
+						<!--</button>-->
+						<!--&lt;!&ndash;<button type="button" class="btn " data-dismiss="modal">取消</button>&ndash;&gt;-->
+					<!--</div>-->
+
+
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--&lt;!&ndash;弹出层-end&ndash;&gt;-->
+
+	<!--优惠券-->
+
+	<div class=" size14 size13-xs bor_e3 container mt25 p0 m0-xs bor-none-xs" style="background-color: #ffffff">
+		<div class="col-sm-12 col_5f p_l20 p_tb10 bg_f6 bor_b_e3 size16">次卡(<span class="ml5 mr5" id="ca_nums"></span>) | 优惠券(<span class="ml5 mr5" id="yhq_nums"></span>) | 优惠码(<span class="ml5 mr5" id="yhm_nums"></span>)</div>
+		<div class="size13 size10-xs col-sm-12 pull-left p20">
+			<div class="row">
+				<div class=" col-sm-12 p_b10">
+					<!--次卡-->
+					<div class="overflow mb15 mt15 mb0-xs bor_b_e8" id="ciMain">
+						<div class="clearfix-xs"></div>
+						<div class="pull-left col-sm-12 p0 mb10" id="ciDIV">
+
+						</div>
+					</div>
+					<!--可用优惠券-->
+					<div class="overflow mb15 mt15 mb0-xs bor_b_e8" id="yhqMain">
+						<div class="clearfix-xs"></div>
+						<div class="pull-left col-sm-12 p0 mb10" id="yhqDIV">
+
+						</div>
+					</div>
+					<!--可用优惠码-->
+					<div class="overflow mb15 mt15 mb0-xs bor_b_e8" id="yhmMain">
+						<div class="clearfix-xs"></div>
+						<div class="pull-left col-sm-12 p0 mb10" id="yhmDIV">
+
+						</div>
+					</div>
+					<!--&lt;!&ndash;不可用优惠券&ndash;&gt;-->
+					<!--<div class="overflow  mt15 mb0-xs">-->
+						<!--<div class="pull-left col-sm-12 p0">-->
+							<!--<div class="size13 pull-left col_67 pos_rel mr10 mb10 option-image" can="no" val="value1" style="background:url('../img/yhq_unenable_bg.png'); width: 213px; height: 103px;">-->
+								<!--<div class="">-->
+									<!--<p class="col_ff ml10 mt5"><span class="size24 size18-xs">￥<span>20</span></span><span class="size10 size10-xs ml10">满<span>200</span>可用</span></p>-->
+									<!--<p class="col_ff ml10 size10 size10-xs">优惠券</p>-->
+									<!--<p class="col_c8 ml10 mt15 size10 size10-xs">有效期至<span>2017-09-08</span></p>-->
+								<!--</div>-->
+								<!--<img src="../img/selected.png" class="pos_abs selected_i" alt="">-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--概览-->
+	<div class="container mt10 p0 m0-xs bor-none-xs" style="background-color: #ffffff">
+		<div class="text-right size13 size10-xs col_38">
+			<table width="100%">
+				<tr style="height: 30px;">
+					<td width="95%" align="right">商品金额：</td>
+					<td width="5%" align="right">￥<span id="totalPirce"></span></td>
+				</tr>
+				<tr style="height: 30px;">
+					<td align="right">运费：</td>
+					<td align="right">￥<span id="trafficPirce">0.0</span></td>
+				</tr>
+				<tr style="height: 30px;">
+					<td align="right">次卡优惠：</td>
+					<td align="right"><span id="saleCardPirce" class="col_red2">￥0.0</span></td>
+				</tr>
+				<tr style="height: 30px;">
+					<td align="right">优惠券折扣：</td>
+					<td align="right"><span id="saleYhqPirce" class="col_red2">￥0.0</span></td>
+				</tr>
+				<tr>
+					<td colspan="3">&nbsp;</td>
+				</tr>
+			</table>
+			<input type="checkbox" id="agree" style="vertical-align:middle; margin: 0px;"><span class="ml10">我已阅读并同意<a class="col_blue4" style="display: inline-block;" href="javascript:void(0)" onclick="$('#xy').modal('show');">《订票服务条款》</a></span>
+		</div>
+	</div>
+	<!--成功-->
+	<div class=" size13 size13-xs bor_red2 container mt10 p0 m0-xs bor-none-xs bg-danger">
+		<div class="p20 col-sm-12 p_b20">
+			<table width="100%" border="0" cellspacing="1" cellpadding="1" class="bg_danger">
+				<tr>
+					<td width="85%" align="right"><span class="size14 size13-xs col_1d">应付总额：</span><span class="size11 size10-xs col_red">￥</span><span class="size20 size16-xs col_red" id="final">0</span></td>
+					<td width="15%">
+						<!--<a href="javascript:void(0)" onclick="commit()" class="inlineb ml30 ml0-xs text-center bg_red2 size14 size14-xs col_ff" style="width: 150px; height: 30px;line-height: 30px;">-->
+						<!--提交订单-->
+						<!--</a>-->
+						<input type="button" class="bg_red2 col_ff ml20" id="commitBTN" value="提交订单" style="width: 150px; height: 30px;line-height: 30px; border: none;">
+					</td>
+				</tr>
+			</table>
+			</table>
+		</div>
+	</div><br/>
+	<!--协议begin-->
+	<div class="modal fade size12 size10-xs" id="xy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width: 800px;">
+	<div class="modal-content">
+	<div class="modal-header bg_f6">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<span class="modal-title size14 size12-xs" id="name">订票服务条款</span>
+	</div>
+	<div class="modal-body">
+	<div style="overflow-y:scroll; width:100%; height:600px;">
+	<table class="tk-table">
+	<tr>
+	<td colspan="2">
+	<!-- 协议开始 -->
+	<div class="agreementpreview agr-content" data-spm-anchor-id="a1zaa.8161610.0.i0.6079cab80js1sk"><h1
+			style="margin: 26px 0 0;text-align: center"><span
+			style="font-size:21px;font-family:Microsoft YaHei;color:black">阿里云网站服务条款</span></h1>
+
+	<p style="text-indent: 377px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;版本： 2017年12月版</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">前言</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><br></p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">欢迎访问阿里云网站并使用我们提供的产品和服务。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><br></p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在完成注册程序或以任何方式使用阿里云网站服务前，请您务必仔细阅读并透彻理解本阿里云网站服务条款(以下或简称“服务条款”)，在确认充分理解后选择接受或不接受本服务条款；一旦您完成“同意条款并注册”或开始以其他方式使用阿里云服务，即表明您已阅读并同意受本服务条款的约束。如您不同意本服务条款或其中任何条款约定，您应不再进行下一步或停止注册程序。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><br></p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云再次提示您审慎阅读、充分理解各条款内容，特别是限制或免除责任的相应条款，限制或免除责任条款将以加粗或其他醒目形式提示您注意。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><br></p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如果您未满18周岁，请在法定监护人的陪同下阅读本服务条款。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">一、 签约主体以及协议范围</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">1.1.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云网站服务条款是您与阿里云计算有限公司（“阿里云”或者“我们”）就使用阿里云网站服务（包含为您提供网站页面信息浏览、账户注册服务等）而订立的有效合约。</span>
+	</p>
+
+	<p style="text-indent: 32px;line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云网站包含域名为</span><a
+			href="http://www.aliyun.com/"><span
+			style="font-family:Microsoft YaHei;color: rgb(51, 51, 51);border: 1px none windowtext;padding: 0">www.aliyun.com</span></a><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">的网站以及阿里云客户端,如APP；但阿里云国际站，包括alibabacloud.com以及所有下属页面和jp.aliyun.com以及所有下属页面除外。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">1.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如您使用或购买阿里云网站上某一具体云服务，您可仍需确认具体服务对应的服务条款；请您审慎阅读、充分理解各条款内容，选择接受或不接受该服务条款。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">二、账户的注册、使用与安全</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1. </span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">注册的资格</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1.1. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您确认，在您完成注册程序或以其他阿里云允许的方式实际使用本服务时，您应当是具备完全民事权利能力和完全民事行为能力的自然人</span><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">、法人或其他组织（以下或简称为“您”）。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">若您是未成年人或限制民事行为能力人，则您不具备前述主体资格，您及您的监护人应承担因您的不当注册行为而导致的一切后果。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1.3. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您还需确保您不是任何国家、国际组织或者地域实施的贸易限制、制裁或其他法律、规则限制的对象，否则您可能无法正常注册及使用阿里云服务。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.2. </span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户注册</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.1.</span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">当您按照注册页面提示填写信息、阅读并同意本服务条款且完成全部注册程序后，您可获得阿里云账户并成为阿里云的用户。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.2.2. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您在注册时候设置或确认的账户名（“账户名称”）及您设置的密码，将在注册成功后成为您的账户</span><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">（账户名称及密码合称“账户”）。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.3. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您设置的账户名不得违反国家法律法规、阿里云的管理规范或容易引起您与阿里云身份的混淆，否则您的账户可能不能注册成功或阿里云有权经通知您后予以注销。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.2.4. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您应当按照法律法规要求或按相应页面的提示，准确提供并及时更新您的账户信息，以使之真实、及时、完整和准确。如您提供的资料错误、不实、过时或不完整的，阿里云可以向您发出询问及/或要求改正的通知，您应按照阿里云的要求配合提供或者更新相关资料。<strong><span
+			style="text-decoration:underline;">因您填写的信息、资料不真实、不及时、不完整或不准确的，您应承担您不能使用阿里云账户（不能注册成功、或账户被冻结、注销）或您在使用过程中的后果和损失。</span></strong></span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.5. </span></strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">阿里云可能会就某些产品或服务的开通，要求您提供更多的身份资料和信息，做进一步的身份认证或资格验证，您的账户只有在通过这些认证和验证之后，方可获得使用相关产品或服务的资格。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.6. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">通常情况下，您的阿里云账户是您在阿里云网站进行一切活动的唯一身份标识，除非另有约定，每一个阿里云账户都可以在本网站独立开展活动。但在下列情形下，阿里云有权根据自己的判断，对同一及/或关联法律主体拥有的多个阿里云账户进行统一处理，如根据不同阿里云账户在注册、登录、使用中的关联信息，阿里云判断其实际为同一用户。关联信息举例：同一证件、同一手机号、同一支付账号、同一设备、同一地址等。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3. </span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户的使用和安全</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.1.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您有权使用您设定的账户</span><span
+				style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">登录阿里云网站，进而使用阿里云提供的其他服务。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.2. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云可能会以<strong>邮件、站内信、短信或电话等方式</strong>通知您服务进展情况以及提示您进行下一步的操作。在服务过程中您应当及时登录到阿里云账户查看和进行交易操作。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.3. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">一个阿里云账户仅能对应唯一的法律主体。除非有法律明文规定、司法裁定或者经阿里云同意的情况下，您不得以任何方式转让、赠与或让他人继承您的阿里云账户。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.4. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您的账户和密码由您自行设置并由您保管，您须对您的阿里云账户和密码保密。您需确保您在每个上网时段结束时，以正确步骤离开网站。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.5. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如发现他人未经授权使用您的阿里云账户和密码，您应立即通知阿里云；阿里云将协助您冻结账户、更改密码或进行其他安全设置；您理解阿里云对您的请求采取行动需要合理时间，阿里云对在采取行动前已经产生的以及由您引发的后果（包括但不限于您的任何损失）不承担任何责任。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.6. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云亦会在网站服务端采取合理的技术措施保障账户的安全。</span>
+	</p>
+
+	<p style="margin: 5px 0"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></strong>
+	</p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">三、账户的冻结、注销及申诉</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1. </span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户的冻结</span></strong>
+	</p>
+
+	<p style="text-indent: 32px;line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您的阿里云账户（全部或部分权限或功能）在如下情况可能被冻结（如阿里云帐户被限制资金转出功能等）</span></span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">，阿里云将通过邮件、站内信、短信或电话等方式通知您：</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.1. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">基于阿里云网站或服务运行和交易安全的需要，如您发生或可能发生破坏或试图破坏阿里云或阿里云关联公司公平交易环境或正常交易秩序的，或任何使用含有阿里云或阿里云关联公司名称、品牌且对他人有误导嫌疑或任何使用某种中英文(全称或简称)、数字、域名等意图表示或映射与阿里云或其关联公司具有某种关联的；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">违反本服务条款、阿里云网站的相关规则、规范（如交易规则、管理规范）、服务说明以及其他服务协议/条款的；</span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0"> </span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.3. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">违反国家法律、法规、政策、法律文书的规定的；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.4. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您遭到他人投诉， 且对方已经提供了相关证据的，而您未按照我们的要求提供相反证据的；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.5. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云根据合理分析判断您的账户操作、</span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">收益、兑换等存在异常的；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.6. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">国家有权机关要求进行的冻结的；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.7. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云合理判断，您发生与如上行为性质相同或产生如上类似风险的其他情况的。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.2. </span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户的注销</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;">3.2.1. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span style="font-family:Microsoft YaHei;">如果出现如上第3.1条情形且情形严重的，或基于国家有权机关的要求，<span
+			style="border:none windowtext 1px;padding:0">您的阿里云账户（全部或部分权限或功能）将被注销，阿里云将通过邮件、站内信、短信或电话等方式通知您。</span></span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.2.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您理解并同意，如您连续</span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">12</span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">个月未通过账户登录过阿里云网站，且您的账户下不存在任何未到期的服务，阿里云有权注销您的账户，您将不能再登录阿里云网站。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.3. </span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">申诉</span></strong>
+	</p>
+
+	<p style="text-indent: 32px;line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">发生前述账户冻结或注销情况下，您应及时予以关注并可以按照程序进行申诉等后续操作：</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">3.3.1. </span></strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您通过申诉程序，向阿里云申请解除上述冻结或注销的，为了您的账户安全，您应配合如实提供身份证明及相关资料，以及阿里云要求的其他信息或文件，以便阿里云进行核实。您应充分理解您的申诉并不必然被允许，阿里云有权决定是否同意您的申诉请求<strong>。</strong></span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">3.3.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您理解并同意，如果您拒绝如实提供身份证明及相关资料，或未能通过阿里云审核，阿里云有权长期冻结该等账户且长期限制账户部分或全部功能。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">四、网站服务及规范</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">4.1</span></strong><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">．</span></strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您有权享受阿里云通过本网站提供的互联网技术服务和信息服务。您同时还应根据本服务条款以及您在购买具体服务时确认的相关条款和条件，履行及时付款、服务管理等责任。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">4.2. </span></strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您使用阿里云的服务，您应保证：</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">4.2.1. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您使用阿里云服务时将遵从国家、地方法律法规、行业惯例和社会公共道德，不会利用阿里云提供的服务进行存储、发布、传播如下信息和内容：</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅰ）违反国家法律法规政策的任何内容（信息）；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅱ）违反国家规定的政治宣传和/或新闻信息；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅲ）涉及国家秘密和/或安全的信息；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅳ）封建迷信和/或淫秽、色情、下流的信息或教唆犯罪的信息；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅴ）博彩有奖、赌博游戏；违反国家民族和宗教政策的信息；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅵ）妨碍互联网运行安全的信息；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅶ）侵害他人合法权益的信息和/或其他有损于社会秩序、社会治安、公共道德的信息或内容；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅷ）您同时承诺不得为他人发布上述不符合国家规定和/或本服务条款约定的信息内容提供任何便利，包括但不限于设置URL、BANNER链接等；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">4.2.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">不应出现任何破坏或试图破坏网络安全等的行为，包括不会利用技术或其他手段破坏或扰乱本网站及阿里云其他客户的网站；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">4.2.3. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您使用阿里云网站的服务应符合本服务条款；</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如您违反上述保证，阿里云除有权根据相关服务条款采取删除信息、中止服务、终止服务的措施，并有权冻结或注销您账户部分或全部功能。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">五、隐私及个人信息的保护</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">&nbsp;&nbsp;</span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您的信任对阿里云非常重要，阿里云深知用户信息安全的重要性，阿里云将按照法律法规要求，采取安全保护措施，保护您的用户信息安全可控。具体详见《<a
+			href="http://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201710161525_98396.html?spm=5176.8142029.631162.law.3836dbccuy7W0b">法律声明及隐私权政策</a>》。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">&nbsp;</span></strong>
+	</p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">六、知识产权</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.1. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">我们尊重知识产权，除非获得了您的同意，阿里云不会擅自使用、修改、复制、公开传播、改变、散布、发行或公开发表您拥有知识产权的成果。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.2. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">任何组织或个人认为阿里云网站的网页内容，如转载文章、云市场服务商发布的商品信息等可能侵犯其合法权益的，可向阿里云（https://report.aliyun.com）提出书面权利通知，阿里云将在收到知识产权权利人合格通知后依法尽快处理。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.3.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">除非另行说明，阿里云网站Logo、“阿里云”、“aliyun”等文字、图形及其组合，以及阿里云网站的其他标识、徽记、阿里云服务的名称、技术文档等的知识产权为阿里云及其关联公司所有。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.4. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您应尊重阿里云和第三方的知识产权和其他合法权利/权益，并保证在发生侵犯前述权益的违法事件时，保护阿里云及其雇员、股东、合作伙伴等免于因该等事件受到影响或损失，阿里云保留在您侵犯阿里云及/或其他第三方的合法权利/权益时终止向您提供服务并不退还任何款项的权利</span></span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">。</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">其他具体信息详见《<a
+			href="http://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201710161525_98396.html?spm=5176.8142029.631162.law.3836dbccuy7W0b">法律声明及隐私权政策</a>》的法律声明部分。</span>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">七、保密</span></strong>
+	</p>
+
+	<p style="text-indent: 0px; margin-bottom: 10px; line-height: 24px;"><span
+			style="font-family:Microsoft YaHei; text-indent: 32px;"><b>&nbsp; </b>阿里云承诺对您注册账户时或使用阿里云服务时提交或知悉的信息采取保密措施，不向第三方披露您的信息，除非：</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">7.1.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">依据本服务条款或者您与阿里云之间其他服务协议、合同、在线条款等规定可以提供的；</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">7.2. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">依据法律法规的规定或行政、司法等职权部门要求应当提供的；</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">7.3.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在不违反本服务条款约定责任的前提下，该保密信息已经公开或能从公开领域获得。</span>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">八、责任范围和责任限制</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.1. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您了解并同意，您应承担因您使用本服务、违反本服务条款或在您的账户下采取的任何行动而导致的任何第三方索赔。如果由此引起阿里云及其关联公司、员工、客户和合作伙伴被第三方索赔的，您应负责处理，并赔偿阿里云及其关联公司由此遭受的全部损失和责任。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;">8.2. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在适用法律许可的范围内，阿里云不对与本服务条款有关或由本服务条款引起的任何间接的、惩罚性的、特殊的、派生的损失承担赔偿责任。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.3. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云在此提示，您在使用阿里云服务期间应当遵守中华人民共和国的法律，不得危害网络安全，不得利用阿里云的服务从事侵犯他人名誉、隐私、知识产权和其他合法权益的活动。阿里云不对您使用阿里云服务的违法或违约行为承担任何责任。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.4.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云用户在阿里云网站的论坛、社区以及云市场上自行上传、提供、发布相关信息，包括但不限于用户名称、公司名称、 联系人及联络信息，相关图片、资讯等，均由用户自行提供，阿里云的用户须对其提供的前述信息依法承担全部责任。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.5.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如果您通过使用阿里云网站或获取来自第三方的任何产品或服务，例如，阿里云云市场上的服务商依托云市场向您提供服务，服务商将对其提供的服务向您负责，阿里云对此第三方服务不承担任何责任。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.6. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在某些情况下，为了帮助您更便捷的使用阿里云的服务，阿里云可能会展示阿里云的参考代码或软件（如属于第三方开源软件，您则应遵守第三方开源软件的相关使用要求），基于相应展示页面的使用说明，该等软件可能允许您予以下载、进行二次开发等相关操作，您应理解并承诺，该等代码的知识产权属于阿里云，您在使用时应明确表明权利人，同时，阿里云不对您能否使用以及使用该等代码、软件的工作和后果负责。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">九、不可抗力和意外事件</span></strong>
+	</p>
+
+	<p style="text-indent: 0px; margin-bottom: 10px; line-height: 24px;"><span
+			style="font-family:Microsoft YaHei; text-indent: 32px;"><b>&nbsp; &nbsp;</b>阿里云的网站可能因为下列不可抗力或意外事件无法正常运行的，阿里云不承担损害赔偿责任：</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">9.1. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">因自然灾害、罢工、暴乱、战争、政府行为、司法行政命令等不可抗力因素；</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">9.2.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">因电力供</span><span
+				style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">应故障、通讯网络故障等公共服务因素；</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">9.3. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">经提前公告或通知的，阿里云在短时间内的系统维护。</span>
+	</p>
+
+	<p style="line-height: 24px"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十、 法律适用与管辖</span></strong>
+	</p>
+
+	<p style="text-indent: 32px;line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款之效力、解释、变更、执行与争议解决均适用中华人民共和国法律。因本服务条款产生之争议应提交至浙江省杭州市西湖区人民法院解决。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十一、通知送达</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">11.1.</span></strong>
+		<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您理解并同意，阿里云可通过网页公告、电子邮件、站内信、短信、电话、系统消息以及即时通信等以上一种或多种通知方式向您发送通知，且阿里云可以信赖您所提供的联系信息是完整、准确且当前有效的；上述通知在发送成功后视为已送达。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">11.2</span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">．</span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">除非本服务条款另有约定或阿里云与您另行签订的协议明确规定了通知方式，您发送给阿里云的通知，应当通过阿里云对外正式公布的通信地址、传真号码、电子邮件地址等联系信息进行送达。</span>
+	</p>
+
+	<p style="line-height: 24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十二、条款的更新和终止</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">12.1. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云有权对本服务条款及相应的服务规则内容进行变更，并将网页公告、电子邮件、站内信、短信等方式予以公告或通知；若您在本服务条款内容变更后继续使用本服务的，表示您已充分阅读、理解并接受修改后的内容，也将遵循修改后的条款内容</span></span></strong><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">。</span></strong>
+	</p>
+
+	<p style="line-height:24px"><strong><span style="font-family:Microsoft YaHei;">12.2.</span></strong>
+		<span style="font-family:Microsoft YaHei;">在您的账户注销或经双方协商一致终止网站服务的，本服务条款终止。</span></p>
+
+	<p style="line-height:24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+	<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十三、其他</span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.1. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款由本服务条款的内容、网站相关页面上展现的规则、规范，服务说明（含操作文档）和您点击确认的其他条款/条件组成，阿里云和您均受其约束，且其中的相关名词可相互引用、解释。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.2. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款的章节标题仅为行文方便而设，不具有法律或合同效力。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.3. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款任一条款被视为废止、无效或不可执行，该条款应视为可分的且不影响本服务条款及其他条款的有效性及可执行性。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.4. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云有权在阿里云官网（</span><a
+			href="http://www.aliyun.com/"><span
+			style="font-family:Microsoft YaHei;color: rgb(51, 51, 51);border: 1px none windowtext;padding: 0">www.aliyun.com</span></a><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">）上发布公告、发站内通知或邮件通知等方式将本服务的权利义务全部或者部分转移给阿里云的关联公司。</span>
+	</p>
+
+	<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.5. </span></span></strong><strong><span
+			style="text-decoration:underline;"><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">除另有约定外，出于服务专业性考虑，阿里云亦可能委托关联公司或其他法律主体向您提供阿里云网站上一项或多项具体服务，同时您可能会与该等公司订立相关条款或条件，请您审慎阅读、充分理解条款和条件内容，选择接受或不接受该条款和条件。</span></span></strong>
+	</p>
+
+	<p style="line-height: 24px"><strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.6. </span></strong><span
+			style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款项下之保密条款、知识产权条款、法律适用与管辖条款以及性质上理应存续的其他条款（如对注册信息的真实性保证等），不因本条款的终止而失效。</span>
+	</p>
+
+	<p style="line-height:24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+	<p style="line-height:24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+	<p><br></p></div>
+	<!-- 协议结束 -->
+	</td>
+	</tr>
+	</table>
+	</div>
+	<!--按钮-->
+	<button class="bor_none ml0-xs text-center bg_ef size13 size10-xs col_47" data-dismiss="modal" style=" width: 100px; height: 30px;line-height: 30px; margin-left: 325px !important; margin-top: 20px !important;">
+		关闭
+	</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	<!--协议end-->
+</div>
+<div id="footer"></div>
+</body>
+</html>

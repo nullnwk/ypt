@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<script src="../js/jquery-1.7.2.min.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../js/security.js"></script>
+	<script src="../logic/loginAndReg.js"></script>
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/loginAndReg.css">
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="logReg_head"></div>
+<input type="hidden" name="page" id="page" value="forget">
+<div style="height: 340px;" >
+	<div class="register-main affix">
+		<p style="border-bottom:1px solid #e5e5e5;"></p>
+		<div id="s1">
+			<table class="img-table">
+				<tr>
+					<td colspan="3" >
+						<img src="../img/forget_point.png" style="width: 10px;" ><span style="margin-left: 10px; color: #fa483c;">通过手机短息验证</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<img src="../img/forget_s1.png" style="width: 390px;" >
+					</td>
+				</tr>
+			</table>
+			<table class="forget-table">
+				<tr>
+					<td colspan="2">
+						<div class="forget-div-out">
+							<img class="reg-img" src="../img/register_tel.png">
+							<input class="reg-input dq" type="text" placeholder="请输入手机号码" maxlength="11" id="forget_username">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td width="70%">
+						<div class="forget-yzm-div-out">
+							<img class="reg-img" src="../img/register_mail.png">
+							<input class="reg-yzm-input dq" type="text" placeholder="短信验证码" maxlength="6" id="forget_msg">
+						</div>
+					</td>
+					<td width="30%" align="right">
+						<input type="button" id="forget_yzmBtn" val="m" class="button yzmBtn" value="获取验证码">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" style="border: none;" class="button loginBtn" id="next1" value="下一步">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="s2" style="display: none;">
+			<table class="img-table">
+				<tr>
+					<td colspan="3" >
+						<img src="../img/forget_point.png" style="width: 10px;" ><span style="margin-left: 10px; color: #fa483c;">通过手机短息验证</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<img src="../img/forget_s2.png" style="width: 390px;" >
+					</td>
+				</tr>
+			</table>
+			<table class="forget-table">
+				<tr>
+					<td colspan="2">
+						<div class="reg-div-out">
+							<img class="reg-img" src="../img/register_pwd.png">
+							<input class="reg-input dq" type="password" placeholder="请输入新密码" maxlength="30" id="forget_pwd">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="reg-div-out">
+							<img class="reg-img" src="../img/register_pwd.png">
+							<input class="reg-input dq" type="password" placeholder="确认密码" maxlength="30" id="forget_re_pwd">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" style="border: none;" class="button loginBtn" id="next2" value="下一步">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="s3" style="display: none;">
+			<table class="img-table">
+				<tr>
+					<td colspan="3" >
+						<img src="../img/forget_point.png" style="width: 10px;" ><span style="margin-left: 10px; color: #fa483c;">通过手机短息验证</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<img src="../img/forget_s3.png" style="width: 390px;" >
+					</td>
+				</tr>
+			</table>
+			<table class="forget-table">
+				<tr>
+					<td align="center">
+						<img src="../img/forget_success.png" style="width: 50px;" ><br><br><span>密码重置成功</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" style="border: none;" class="button loginBtn" id="loginNowBTN" value="立即登录">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<p style="border-bottom:1px solid #e5e5e5;"></p>
+	</div>
+</div>
+<div id="logReg_foot"></div>
+</body>
+</html>

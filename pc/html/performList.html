@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>演出信息</title>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<script src="../js/idangerous.swiper.min.js"></script>
+	<script src="../js/main.js"></script>
+	<script type="text/javascript" src="../js/laydate.dev.js"></script>
+	<script src="../js/pager.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/base64.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../logic/perform.js"></script>
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link href="../css/pager.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/include.css">
+	<link rel="stylesheet" type="text/css" href="../css/screen-style.css">
+	<style>
+		.fenge{
+			color: #e8e8e8;
+		}
+	</style>
+</head>
+<body>
+<div id="header"></div>
+<div id="content_showInfo" class="bg_f9 col-xs-12 p0">
+<div class="container p0">
+<!-- 筛选条件开始 -->
+<div id="filter" class="bor_e8 overflow bg_ff">
+	<div class="left col-sm-9 col-xs-12 p0">
+		<ul class="select">
+			<li class="select-result" style=" border-bottom: #eee 1px solid">
+				<dl class="mtb5">
+					<dt>已选条件：</dt>
+					<dd class="select-no">暂时没有选择过滤条件</dd>
+				</dl>
+			</li>
+			<li class="select-list">
+				<dl id="select1" class="mtb5">
+					<dt>城市：</dt>
+					<dd class="select-all selected"><a href="#">全部</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">济南</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">青岛</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">潍坊</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">德州</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">烟台</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">东营</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">济宁</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">枣庄</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">莱芜</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">菏泽</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">威海</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">东营</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">淄博</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">滨州</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">泰安</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">临沂</a></dd>
+				</dl>
+			</li>
+			<li class="select-list" id="parentType">
+				<dl id="select2" class="mtb5">
+					<dt>剧目：</dt>
+					<dd val='' class="select-all selected"><a href="#">全部</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a771120006' id="lv1"><a href="#">音乐会</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a7e3c10009' id="lv2"><a href="#">话剧歌剧</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a84867000b' id="lv3"><a href="#">芭蕾舞蹈</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a82a6f000a' id="lv4"><a href="#">曲艺杂坛</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a7ad9e0008' id="lv5"><a href="#">儿童亲子</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a78ce70007' id="lv6"><a href="#">演唱会</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a8b79c000e' id="lv7"><a href="#">周边商品</a><span class="fenge"> |</span></dd>
+					<dd val='2c982bbf62518657016251a862a6000c' id="lv8"><a href="#">惠民演出</a></dd>
+				</dl>
+			</li>
+			<li class="select-list" id="childType" style="display: none;">
+				<dl id="select3" class="mtb5">
+					<!--<dt>12</dt>-->
+					<!--<dd class="select-all selected"><a href="#">全部</a><span> |</span></dd>-->
+					<!--<dd><a href="#">话剧</a><span> |</span></dd>-->
+					<!--<dd><a href="#">歌剧</a><span> |</span></dd>-->
+					<!--<dd><a href="#">歌舞剧</a><span> |</span></dd>-->
+					<!--<dd><a href="#">音乐剧</a><span> |</span></dd>-->
+					<!--<dd><a href="#">儿童剧</a><span> |</span></dd>-->
+					<!--<dd><a href="#">其他</a></dd>-->
+				</dl>
+			</li>
+			<li class="select-list">
+				<dl id="select4" class="mtb5">
+					<dt>院线：</dt>
+					<dd class="select-all selected"><a href="#">全部</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">山东省会大剧院</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">历山剧院</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">山东话剧院</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">山东歌舞剧团</a><span class="fenge"> |</span></dd>
+					<dd><a href="#">梨园大戏院</a></dd>
+				</dl>
+			</li>
+			<li class="select-list">
+				<dl id="select5" class="mtb5">
+					<dt>日期：</dt>
+					<dd val="" class="select-all selected"><a href="#">全部</a><span class="fenge"> |</span></dd>
+					<dd val="0"><a href="#">今天</a><span class="fenge"> |</span></dd>
+					<dd val="1"><a href="#">明天</a><span class="fenge"> |</span></dd>
+					<dd val="2"><a href="#">一周内</a><span class="fenge"> |</span></dd>
+					<dd val="3"><a href="#">本月</a><span class="fenge"> |</span></dd>
+				</dl>
+			</li>
+			<li class="select-list">
+				<table width="100%" border="0">
+					<tr>
+						<td>
+							按时间阶段 <input id="stTime" onclick="laydate()" class="myBorder"> 至 <input id="endTime" onclick="laydate()" class="myBorder">
+							<button id="sureBTN" class="mb5 bor_none text-center bg_red2 size10 size10-xs col_ff " style="width: 50px; height: 25px;line-height: 25px;">确定</button>
+						</td>
+					</tr>
+				</table>
+			</li>
+		</ul>
+	</div>
+	<!--今日推荐开始-->
+	<div class="right col-sm-3 size14 col_67 p0 hidden-xs" id="today">
+
+	</div>
+	<!--今日推荐结束-->
+</div>
+<!-- 筛选条件结束 -->
+<!-- 列表及推荐开始 -->
+<div class="container p0">
+	<!-- 列表开始 -->
+	<div class="col-sm-9 p0 mb20" id="list">
+		<div class="bor_e8 bg_ff bor-none-xs header overflow">
+			<div class="pull-left p_l15 size24 size16-xs">全部信息</div>
+			<div class="pull-right size14 hidden-xs col_66">
+				<div class="pull-left col_67 bor_r_e8">排列方式：&nbsp;</div>
+				<div class="pull-left classify_i classify_i_1 pointer bor_r_e8 bg_fa"><img
+						src="http://www.qlypt.com/public/ypt/img/class1.png" alt=""></div>
+				<div class="pull-left classify_i classify_i_2 pointer bg_ff"><img src="http://www.qlypt.com/public/ypt/img/list.png" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="content size14 size13-xs">
+			<ul class="overflow bg_ff type1Box" id="type1Box">
+				<!--<li class="p15 col-sm-3 col-xs-12">-->
+					<!--<a href="http://ticket.qlypt.com/project/info?projectId=565727734471462912">-->
+						<!--<img src="http://60.205.208.8/cms/getImage.action?uuid=b2625239-e014-4123-9ff2-cbb699a02dea" class="poster col-sm-12 p0 col-xs-3" style="height: 256.468px;">-->
+					<!--</a>-->
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs">-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565727734471462912" style="display: inline-block;">-->
+							<!--【济宁】美国女高音男中音和钢琴音乐会-->
+						<!--</a>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：-->
+						<!--<span class="lineHei20">2018-10-13</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：-->
+						<!--<a href="/site/detail-454" style="display: inline-block;">-->
+							<!--<span class="lineHei20">济宁运河音乐厅</span>-->
+						<!--</a>-->
+					<!--</div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥-->
+							<!--<span class="size24 size18-xs">40</span><span class="col_a4 size13-xs">起</span>-->
+						<!--</div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565727734471462912" class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a>-->
+					<!--</div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565723626490433536"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=b4b1e042-fbe0-4ff0-944b-b47576c06151"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565723626490433536"-->
+							<!--style="display: inline-block;">【济宁】德国 ”凯瑟.施密特“ 双吉它组合音乐会</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-09-14</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565723626490433536"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565719561631043584"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=e94621d9-c271-48f5-968a-7a2637052e58"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565719561631043584"-->
+							<!--style="display: inline-block;">【济宁】匈牙利布达佩斯“话语”长笛吉它组合</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-08-25</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565719561631043584"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565713800574144512"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=91122c0b-0b9a-4f5e-86cb-290b529b6a85"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565713800574144512"-->
+							<!--style="display: inline-block;">【济宁】英国吉尔达斯弦乐四重奏组</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-08-17</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565713800574144512"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565709041679077376"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=ac642fda-992a-4582-acec-33414829ed10"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565709041679077376"-->
+							<!--style="display: inline-block;">【济宁】西班牙 安东.玛爱黛双钢琴组合音乐会</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-07-13</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565709041679077376"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565702202098847744"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=b2813f56-04aa-4b65-9ccf-d5bc8c61cc4b"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565702202098847744"-->
+							<!--style="display: inline-block;">【济宁】荷兰 “梅丽丝玛“ 萨克斯四重奏团</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-06-29</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565702202098847744"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565696968672808960"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=2d35aaf5-9d0d-465d-9db7-225311a3727b"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565696968672808960"-->
+							<!--style="display: inline-block;">【济宁】“卡达昂斯”组合法国女单簧管大师罗思恩和希腊女</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-06-22</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565696968672808960"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565685781650345984"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=bad3bd32-b27d-4b18-91db-c1ad5017d1ea"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565685781650345984"-->
+							<!--style="display: inline-block;">【济宁】希腊女钢琴家奈芙爱丽.莫索拉 独奏音乐会</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-05-18</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565685781650345984"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=588796817957851136"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=24678142-8e44-48d6-9b3b-feb101f153df"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=588796817957851136"-->
+							<!--style="display: inline-block;">【济南】《吕剧优秀青年演员演唱会》</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-05-04</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-261"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">百花剧院</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">60</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=588796817957851136"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=588455466108063744"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=67e4ce6a-864a-4a8a-955b-3b91560bb8cb"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=588455466108063744"-->
+							<!--style="display: inline-block;">【济南】京剧《双下山》《陈三两爬堂》</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-04-30</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-244"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">梨园大戏院</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">20</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=588455466108063744"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=588453735869583360"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=c3f56ded-3095-406d-b109-0c9cf70af2fc"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=588453735869583360"-->
+							<!--style="display: inline-block;">【济南】京剧 《红鬃烈马》</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-04-29</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-244"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">梨园大戏院</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">20</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=588453735869583360"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-3 col-xs-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565630735638204416"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=f524abe4-acd9-481b-ba0b-f8a4729d20a2"-->
+						<!--class="poster col-sm-12 p0 col-xs-3" alt="" style="height: 256.468px;"></a>-->
+
+					<!--<div class="col_00 col-sm-12 col-xs-8 p0 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565630735638204416"-->
+							<!--style="display: inline-block;">【济宁】 波兰“多康多” 女高音钢琴2人组合音乐会</a></div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97 mt5-xs">时 间：<span class="lineHei20">2018-04-28</span>-->
+					<!--</div>-->
+					<!--<div class="size12 size12-xs col-sm-12 col-xs-8 p0 col_97">场 馆：<a href="/site/detail-454"-->
+																					  <!--style="display: inline-block;"><span-->
+							<!--class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt3">-->
+						<!--<div class="pull-left size14 col_red">￥<span class="size24 size18-xs">40</span><span-->
+								<!--class="col_a4 size13-xs">起</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565630735638204416"-->
+						   <!--class="pull-right hidden-xs col_red size14 bor_red buy_btn">立即购票</a></div>-->
+				<!--</li>-->
+			</ul>
+			<ul class="overflow bg_ff hide type2Box" id="type2Box">
+				<!--<li class="p15 col-sm-12">-->
+					<!--<a href="http://ticket.qlypt.com/project/info?projectId=565727734471462912">-->
+						<!--<img src="http://60.205.208.8/cms/getImage.action?uuid=b2625239-e014-4123-9ff2-cbb699a02dea" class="poster col-sm-2 p0 mr20" alt="">-->
+					<!--</a>-->
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs">-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565727734471462912"> 济宁】美国女高音男中音和钢琴音乐会</a>-->
+					<!--</div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-10-13</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a></div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left">-->
+							<!--<img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png" class="pull-left mt3 mr5" alt="">-->
+							<!--<span class="pull-left">在线选座</span>-->
+						<!--</div>-->
+						<!--<div class="mr20 overflow pull-left">-->
+							<!--<img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png" class="pull-left mt3 mr5" alt="">-->
+							<!--<span class="pull-left">电子票</span>-->
+						<!--</div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565727734471462912" class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a>-->
+					<!--</div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565723626490433536"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=b4b1e042-fbe0-4ff0-944b-b47576c06151"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565723626490433536"> 【济宁】德国 ”凯瑟.施密特“-->
+						<!--双吉它组合音乐会</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-09-14</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565723626490433536"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565719561631043584"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=e94621d9-c271-48f5-968a-7a2637052e58"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565719561631043584">-->
+						<!--【济宁】匈牙利布达佩斯“话语”长笛吉它组合</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-08-25</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565719561631043584"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565713800574144512"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=91122c0b-0b9a-4f5e-86cb-290b529b6a85"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565713800574144512">-->
+						<!--【济宁】英国吉尔达斯弦乐四重奏组</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-08-17</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565713800574144512"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565709041679077376"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=ac642fda-992a-4582-acec-33414829ed10"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565709041679077376"> 【济宁】西班牙-->
+						<!--安东.玛爱黛双钢琴组合音乐会</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-07-13</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565709041679077376"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565702202098847744"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=b2813f56-04aa-4b65-9ccf-d5bc8c61cc4b"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565702202098847744"> 【济宁】荷兰 “梅丽丝玛“-->
+						<!--萨克斯四重奏团</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-06-29</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565702202098847744"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565696968672808960"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=2d35aaf5-9d0d-465d-9db7-225311a3727b"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565696968672808960">-->
+						<!--【济宁】“卡达昂斯”组合法国女单簧管大师罗思恩和希腊女</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-06-22</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565696968672808960"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565685781650345984"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=bad3bd32-b27d-4b18-91db-c1ad5017d1ea"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565685781650345984"> 【济宁】希腊女钢琴家奈芙爱丽.莫索拉-->
+						<!--独奏音乐会</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-05-18</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565685781650345984"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=588796817957851136"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=24678142-8e44-48d6-9b3b-feb101f153df"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=588796817957851136">-->
+						<!--【济南】《吕剧优秀青年演员演唱会》</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-05-04</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-261">场 馆：<span class="lineHei20">百花剧院</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>60</span> ~<span>60</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=588796817957851136"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=588455466108063744"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=67e4ce6a-864a-4a8a-955b-3b91560bb8cb"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=588455466108063744">-->
+						<!--【济南】京剧《双下山》《陈三两爬堂》</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-04-30</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-244">场 馆：<span class="lineHei20">梨园大戏院</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>20</span> ~<span>20</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=588455466108063744"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=588453735869583360"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=c3f56ded-3095-406d-b109-0c9cf70af2fc"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=588453735869583360"> 【济南】京剧 《红鬃烈马》</a>-->
+					<!--</div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-04-29</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-244">场 馆：<span class="lineHei20">梨园大戏院</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>20</span> ~<span>20</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=588453735869583360"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+				<!--<li class="p15 col-sm-12"><a-->
+						<!--href="http://ticket.qlypt.com/project/info?projectId=565630735638204416"><img-->
+						<!--src="http://60.205.208.8/cms/getImage.action?uuid=f524abe4-acd9-481b-ba0b-f8a4729d20a2"-->
+						<!--class="poster col-sm-2 p0 mr20" alt=""></a>-->
+
+					<!--<div class="col_00 size16 lineHei24 lihei18-xs"><a-->
+							<!--href="http://ticket.qlypt.com/project/info?projectId=565630735638204416"> 【济宁】 波兰“多康多”-->
+						<!--女高音钢琴2人组合音乐会</a></div>-->
+					<!--<div class="size14 mt15">时 间：<span class="lineHei20">2018-04-28</span></div>-->
+					<!--<div class="size14 mt15"><a href="/site/detail-454">场 馆：<span class="lineHei20">济宁运河音乐厅</span></a>-->
+					<!--</div>-->
+					<!--<div class="mt10 lineHei36 overflow">-->
+						<!--<div class="pull-left">票 价：</div>-->
+						<!--<div class="pull-left size24 col_red">￥<span>40</span> ~<span>40</span></div>-->
+					<!--</div>-->
+					<!--<div class="size12 col_97 mt15 overflow">-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_10.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">在线选座</span></div>-->
+						<!--<div class="mr20 overflow pull-left"><img src="http://www.qlypt.com/public/ypt/img/qiluyipt_18.png"-->
+																  <!--class="pull-left mt3 mr5" alt=""><span-->
+								<!--class="pull-left">电子票</span></div>-->
+						<!--<a href="http://ticket.qlypt.com/project/info?projectId=565630735638204416"-->
+						   <!--class="pull-right hidden-xs col_ff size18 bg_red p_lr25 p_tb5 mr20">立即购票</a></div>-->
+				<!--</li>-->
+			</ul>
+			<div class="clearfix"></div>
+			<!--<div class="page">-->
+				<!--<ul id="pager" class="pagination" style="visibility: visible;">-->
+					<!--<li id="firstPage" class="disabled" title="首页"><a>«</a></li>-->
+					<!--<li class="pageIndex active"><span>1</span></li>-->
+					<!--<li class="index"><a href="javascript:void(0);" onclick="gotopage(2)">2</a></li>-->
+					<!--<li class="index"><a href="javascript:void(0);" onclick="gotopage(3)">3</a></li>-->
+					<!--<li class="index"><a href="javascript:void(0);" onclick="gotopage(4)">4</a></li>-->
+					<!--<li class="nextPage"><a href="javascript:void(0);" onclick="gotopage(4)">»</a></li>-->
+					<!--<li></li>-->
+				<!--</ul>-->
+			<!--</div>-->
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- 推荐开始 -->
+	<div class="col-sm-3 hidden-xs p0">
+		<div class="lineHei40 ml15 bg_ff recommend" id="hotspot">
+			<p class="size18 title">
+				<i class="verticalBar"></i> 热门推荐</p>
+			<ul id="hotUL">
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=571152388048687104">-->
+						<!--<img src="http://ticket.qlypt.com/uploads/picture/20170605/e61115897d2db9f6b1a46cba727eb354.jpg" class="poster pull-left" alt="">-->
+
+						<!--<div class="pull-left info">-->
+							<!--<h5 class="size14 mt5">【济南】京剧《小宴》《打瓜园》《刘兰芝》</h5>-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=571848868770222080">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--【济南】“春之声”交响音乐会-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=571426371440611328">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--【烟台】海上钢琴师 音乐向经典电影致敬主题视听音乐会-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=573950809214160896">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--【济南】《跳动的黑白键》钢琴四手联弹音乐会-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=571848120145678336">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--【济南】“春天的芬芳”现代音乐会-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+			</ul>
+		</div>
+	</div>
+	<!-- 推荐结束 -->
+	<div class="clearfix"></div>
+	<!-- 列表结束 -->
+	<!--分页开始-->
+	<div style="text-align: center">
+		<ul class="fenyeUL" id="page1">
+		</ul>
+		<div class="pageJump">
+			<span id="totalPage"></span>
+			<span>跳转到</span>
+			<input type="text" class="pageInput" maxlength="2"/>
+			<span>页</span>
+			<button type="button" class="button">确定</button>
+		</div>
+	</div>
+	<!--分页结束-->
+</div>
+<!-- 列表及推荐结束 -->
+</div>
+</div>
+<script>
+
+</script>
+<div id="footer"></div>
+</body>
+</html>

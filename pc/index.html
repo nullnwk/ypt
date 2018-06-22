@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>齐鲁艺票通</title>
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+    <!--bootstrap css-->
+    <link  href="css/bootstrap.css" rel="stylesheet">
+    <!--公共css-->
+    <link href="css/public.css" rel="stylesheet"/>
+    <link href="css/reset.css" rel="stylesheet"/>
+    <!--首页css-->
+    <link href="css/swiper.css" rel="stylesheet"/>
+    <!--个人中心css-->
+    <link href="css/user.css" rel="stylesheet">
+    <!--友情链接-->
+    <link rel="stylesheet" href="css/footerLink.css">
+    <link href="fonts2/iconfont.css" rel="stylesheet"/>
+    <style>
+        .supernatant{position: absolute;left: 15px;bottom: 0;width: 237px;height: 114px;z-index: 1001;opacity: 0.9; color: #fff;}
+        #drama_box .supernatant{background: #ea483d;}
+        /*#drama_box a:hover{color: #ea483d;}*/
+        #concert_box .supernatant{background: #51a5d1;}
+        /*#concert_box a:hover{color: #51a5d1;}*/
+        #dance_box .supernatant{background: #e6833f;}
+        /*#dance_box a:hover{color: #e6833f;}*/
+        #tattle_box .supernatant{background: #e75756;}
+        /*#tattle_box a:hover{color: #e75756;}*/
+        #vocalConcert_box .supernatant{background: #34748d;}
+        /*#vocalConcert_box a:hover{color: #34748d;}*/
+        #children_box .supernatant{background: #85ba50;}
+        /*#children_box a:hover{color: #85ba50;}*/
+        .supernatant p {margin: 5px;}
+    </style>
+    <!--bootstrap js-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+
+	<script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/url.js"></script>
+    <script type="text/javascript" src="js/security.js"></script>
+    <script type="text/javascript" src="js/base64.js"></script>
+    <!--百度地图-->
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OKxZsvlTuIBN16u1WpGt7K9eZXf8HS1s"></script>-->
+    <!--首页js-->
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+
+     <script type="text/javascript" src="js/index.js"></script>
+    <!--友情链接-->
+    <style>
+        #searching li{
+            text-indent: 1em;
+            text-align: left;
+        }
+        #searching li:hover{
+            background: #cccccc;
+            cursor: pointer;
+        }
+        #text{
+            background:url("img/glass.png") 10px 10px no-repeat;
+            background-size:20px;
+            width:470px;text-indent:2.5em;outline:none;font-size:14px;
+        }
+        .more{
+            width:100px;
+            height: 35px;
+            line-height:35px;
+            border-radius:20px;
+            color:#ececec;
+            border:1px solid #e1e1e1;
+            text-align: center;
+        }
+        .more:hover{
+            color:#fff;
+            background-color: orangered;
+        }
+        #hotRecommendFlg .line1Ellipsis:active{
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="placeholder" style="width: 100%;height: 40px;position: absolute;top:115px;"></div>
+        <div class="container ypt_col_67 ypt-f12">
+            <ul class="row ypt-style-mt10">
+                <li class="col-xs-6 pull-left">
+                    <span>HI , 欢迎来齐鲁艺票通</span>
+                    <span class="noLogged">[&nbsp;</span>
+                    <a href="html/login.html?t=info&m=login" style="color:#f84436" class="noLogged"id="login">登录</a>
+                    <a href="html/register.html?t=info&m=register" class="ypt_mr_lr_5 noLogged" id="register">注册</a>
+                    <span class="noLogged">]</span>
+                    <span class="ypt_mr_lr_5  Logged" id="clientName">dhd 3928</span>
+
+                    <a href="" class="ypt_mr_lr_5 Logged" id="quit">退出</a>
+
+                    <span class="Logged">&emsp;|</span>
+                    <a href="html/user.html" class="ypt_mr_lr_5 Logged">我的艺票通</a>
+
+                    <!--<span class="glyphicon glyphicon-menu-down Logged" aria-hidden="true"></span>-->
+                    <span class="Logged">&emsp;|</span>
+                    <a href="html/user.html" class="ypt_mr_lr_5 Logged">我的订单</a>
+                </li>
+                <li class="col-xs-6 pull-right">
+                    <a href="html/footerLinksMiddle.html?contentFlg=fg&t=index&m=footerLinksMiddle" class="ypt_mr_lr_5 pull-right">网站导航</a><span class="pull-right">|</span>
+                    <a href="html/footerLinks.html?contentFlg=ga&t=index&m=footerLinks" class="ypt_mr_lr_5 pull-right">客户服务</a><span class="pull-right">|</span>
+                    <a href="html/footerLinksMiddle.html?contentFlg=fl&t=index&m=footerLinksMiddle" class="ypt_mr_lr_5 pull-right">手机版</a><span class="pull-right">|</span>
+                    <a href="html/footerLinksMiddle.html?contentFlg=fk&t=index&m=footerLinksMiddle" class="ypt_mr_lr_5 pull-right">齐鲁艺票通微信</a>
+                </li>
+            </ul>
+        </div>
+        <div class="ypt_bgcol_fff ypt_bor_top_el" style="margin-bottom: 46px;">
+            <div class="container ypt-style-mt10">
+                <ul class="row" >
+                    <li class="col-xs-3" style="margin-top: 5px;">
+                        <a href="index.html?" class="pull-left"><img src="img/logo.png" alt=""></a>
+                        <div class="pull-left"style="margin-top:55px;width: 50px;margin-left:15px;">
+                            <!--<a href="html/city.html?t=index&m=city">-->
+                            <a href="#">
+                                <div class="ypt_bor_ddd ypt_pd_3">
+                                    <img src="img/location.png" alt="">
+                                    <span style="color:#717171;width:30px;font-size:12px;">济南</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="col-xs-6">
+                        <div class="text-center pull-left ypt-style-mt30" style="position: relative">
+                            <input type="text" class=" ypt_bor_red pull-left ypt_hei_40 "  placeholder="请输入演出/艺人/场馆名称..."id="text">
+                            <button class="btn pull-left ypt-bg_col_fa ypt_hei_40" style="border-radius:0;width:80px;color:#fff;font-size: 17px;" id="main_search">搜索</button>
+                            <ul id="searching" style="position: absolute;border:1px solid #929292;border-top:none;width:470px;top:40px;background:#fff;z-index:11111;display: none">
+                                <!--<li class="text-left">私搭乱建福利卡</li>-->
+                                <!--<li>私搭乱建福利卡</li>-->
+                                <!--<li>私搭乱建福利卡</li>-->
+                            </ul>
+                            <ul class="row" style="padding-left:15px">
+                                <li class="col-xs-10  ypt_pad_0 ypt_col_67 ypt-f12 pull-left  ypt-style-mt10 text-left">
+                                    <a href="html/performList.html?id1=2c982bbf62518657016251a771120006&id2=">音乐会</a>
+                                    <a href="html/performList.html?id1=2c982bbf62518657016251a7e3c10009&id2=" class="ypt_mr_lr_5">话剧歌剧</a>
+                                    <a href="html/performList.html?id1=2c982bbf62518657016251a84867000b&id2=" class="ypt_mr_lr_5">芭蕾舞蹈</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="col-xs-3">
+                        <div class="text-right ypt_col_67 ypt-style-mt40 ypt-f13">咨询热线：400-0099-566</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ypt_bgcol_fff ypt_bor_bot_el" style="position:absolute;top:155px;z-index: 1001;width: 100%;padding-top:10px;">
+            <div class="container">
+                <ul class="row ypt-f16">
+                    <li class="col-xs-12 pull-left">
+                        <a href="index.html?" class="ypt_mr_lr_5 placeholder">首页</a>
+                        <a href="html/performList.html" class="ypt_mr_lr_5" id="playInfo" style="margin-left: 30px;">演出信息 <i class="glyphicon glyphicon-menu-down ypt-f12" style="color:#e1e1e1"></i></a>
+                        <a href="html/newsList.html" class="ypt_mr_lr_5 placeholder" style="margin-left: 30px;">新闻动态</a>
+                        <a href="html/yuanxianList.html" class="ypt_mr_lr_5 placeholder" style="margin-left: 30px;">院线介绍</a>
+                        <a href="html/footerLinksMiddle.html?contentFlg=fj&t=index&m=footerLinksMiddle" class="ypt_mr_lr_5 placeholder" style="margin-left: 30px;">关于本站</a>
+                        <a href="html/footerLinksMiddle.html?contentFlg=fg&t=index&m=footerLinksMiddle" class="ypt_mr_lr_5 placeholder" style="margin-left: 30px;">网站地图</a>
+                        <div class="text-right pull-right" style="line-height: 19px;">
+                            <a href="html/yuanxianList.html" class="ypt-f20 pull-left">
+                                <img src="img/theater.png" alt=""><span class="ypt-fc-red" style="margin-left: 5px;">场馆库</span>
+                            </a>
+                            <a href="html/timeCard.html" class="ypt-f20 ypt-style-ml20 pull-left">
+                                <img src="img/ticket.png" alt=""><span class="ypt-fc-red" style="margin-left: 5px;"> 我的次卡</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="row hidden" id="infoBox">
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a771120006&id2=">
+                            <img src="img/bar1.jpg" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">音乐会</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a7e3c10009&id2=">
+                            <img src="img/bar2.jpg" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">话剧歌剧</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a84867000b&id2=">
+                            <img src="img/bar3.jpg" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">芭蕾舞蹈</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a82a6f000a&id2=">
+                            <img src="img/bar4.jpg" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">曲艺杂谈</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a7ad9e0008&id2=">
+                            <img src="img/bar5.jpg" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">儿童亲子</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a78ce70007&id2=">
+                            <img src="img/bar6.png" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">演唱会</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a8b79c000e&id2=">
+                            <img src="img/bar7.jpg" class="ypt_hei_40" alt="">
+                            <p class="ypt-style-mt5">周边商品</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-1 text-center ypt_pad_0 pull-left" style="width: 70px;margin-left: 20px">
+                        <a href="html/performList.html?id1=2c982bbf62518657016251a862a6000c&id2=">
+                            <img src="img/bar8.png" class="ypt_hei_40" alt="" >
+                            <p class="ypt-style-mt5">惠民演出</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="ypt_bgcol_fff">
+            <!--轮播图-->
+            <div id="content_index">
+                <div class="container ypt_pad_0">
+                    <div class="ypt_pad_0 col-xs-12 ">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                            </div>
+                            <div class="pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--热门推荐-->
+            <div class="container ">
+                <ul class="row">
+                    <li class="col-xs-9 ypt_pad_0">
+                        <div class="bor_top_b_30">
+                            <span class="ypt-fc-red" style="font-weight: 900">|</span>
+                            <span>热门推荐</span>
+                            <a href="html/performList.html"><img src="img/more.png" class="pull-right mar_t_8" alt=""></a>
+                        </div>
+                        <ul class="row ypt_pad_0 ypt-style-mb_30" id="hotRecommend">
+
+                        </ul>
+                    </li>
+                    <li class="col-xs-3 ypt_pad_0" style="padding-left:38px" id="newsDynamic">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--话剧歌剧-->
+        <div class="container ypt_pad_0" id="drama_box">
+            <div class="row ypt_mr_tb_30">
+                <div class="col-xs-12 ypt_mar_0">
+                    <div class="ypt_col_92 ypt-f14 ypt-style-mb_30" style="vertical-align:center">
+                        <span style="color:black;font-size:22px" id="opera">话剧歌剧</span>
+                    </div>
+                    <ul class="row">
+                        <li class="col-xs-3" style="position: relative;width:270px">
+
+                        </li>
+                        <li class="col-xs-6" style="width:55%">
+                            <ul class="row" style="position:relative;height:360px" id="opera_content">
+                            </ul>
+                        </li>
+                        <li class="col-xs-3" style="padding:0;width:250px;height:360px">
+                            <a></a>
+                            <ul style="height: 235px;margin-top: 10px;">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!--音乐会-->
+        <div class="ypt_bgcol_fff" id="concert_box">
+            <div class="container  ypt_pad_0">
+                <div class="row ypt_mr_tb_30">
+                    <div class="col-xs-12 ypt_mar_0">
+                        <div class="ypt_col_92 ypt-f14 ypt-style-mb_30" style="vertical-align:center">
+                            <span style="color:black;font-size:22px" id="music">音乐会</span>
+                        </div>
+                        <ul class="row">
+                            <li class="col-xs-3" style="position: relative;width:270px">
+
+                            </li>
+                            <li class="col-xs-6" style="width:55%">
+                                <ul class="row" style="position:relative;height:360px;" id="music_content">
+                                </ul>
+                            </li>
+                            <li class="col-xs-3" style="padding:0;width:250px;height:360px">
+                                <a></a>
+                                <ul style="height: 235px;margin-top: 10px;">
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--舞蹈-->
+        <div class="container ypt_pad_0" id="dance_box">
+            <div class="row ypt_mr_tb_30">
+                <div class="col-xs-12 ypt_mar_0">
+                    <div class="ypt_col_92 ypt-f14 ypt-style-mb_30" style="vertical-align:center">
+                        <span style="color:black;font-size:22px" id="dance">舞蹈</span>
+                    </div>
+                    <ul class="row">
+                        <li class="col-xs-3" style="position: relative;width:270px">
+
+                        </li>
+                        <li class="col-xs-6" style="width:55%">
+                            <ul class="row" style="position: relative;height:360px" id="dance_content">
+
+                            </ul>
+                        </li>
+                        <li class="col-xs-3" style="padding:0;width:250px;height:360px">
+                            <a></a>
+                            <ul style="height: 235px;margin-top: 10px;">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <!--曲艺-->
+        <div class="ypt_bgcol_fff" id="tattle_box">
+            <div class="container  ypt_pad_0">
+                <div class="row ypt_mr_tb_30">
+                    <div class="col-xs-12 ypt_mar_0">
+                        <div class="ypt_col_92 ypt-f14 ypt-style-mb_30" style="vertical-align:center">
+                            <span style="color:black;font-size:22px" id="tattle">曲艺</span>
+                        </div>
+                        <ul class="row">
+                            <li class="col-xs-3" style="position: relative;width:270px">
+
+                            </li>
+                            <li class="col-xs-6" style="width:55%">
+                                <ul class="row" style="position:relative;height:360px" id="tattle_content">
+
+                                </ul>
+                            </li>
+                            <li class="col-xs-3" style="padding:0;width:250px;height:360px">
+                                <a></a>
+                                <ul style="height: 235px;margin-top: 10px;">
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--演唱会-->
+        <div class="container ypt_pad_0" id="vocalConcert_box">
+            <div class="row ypt_mr_tb_30">
+                <div class="col-xs-12 ypt_mar_0">
+                    <div class="ypt_col_92 ypt-f14 ypt-style-mb_30" style="vertical-align:center">
+                        <span style="color:black;font-size:22px" id="vocalConcert">演唱会</span>
+                    </div>
+                    <ul class="row">
+                        <li class="col-xs-3" style="position: relative;width:270px">
+
+                        </li>
+                        <li class="col-xs-6" style="width:55%">
+                            <ul class="row" style="position:relative;height:360px" id="vocalConcert_content">
+
+                            </ul>
+                        </li>
+                        <li class="col-xs-3" style="padding:0;width:250px;height:360px">
+                            <a></a>
+                            <ul style="height: 235px;margin-top: 10px;">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!--儿童-->
+        <div class="ypt_bgcol_fff" id="children_box">
+            <div class="container  ypt_pad_0">
+                <div class="row ypt_mr_tb_30">
+                    <div class="col-xs-12 ypt_mar_0">
+                        <div class="ypt_col_92 ypt-f14 ypt-style-mb_30" style="vertical-align:center">
+                            <span style="color:black;font-size:22px" id="children">儿童剧</span>
+                        </div>
+                        <ul class="row">
+                            <li class="col-xs-3" style="position: relative;width:270px">
+
+                            </li>
+                            <li class="col-xs-6" style="width:55%">
+                                <ul class="row" style="position:relative;height:360px" id="children_content">
+                                </ul>
+                            </li>
+                            <li class="col-xs-3" style="padding:0;width:250px;height:360px">
+                                <a></a>
+                                <ul style="height: 235px;margin-top: 10px;">
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <!--页面底部-->
+        <div class="ypt_bgcol_fff">
+            <div class="container ypt_pad_0 ypt_bor_tb_ddd ypt_pad_tb_30 ypt-f14">
+                <div class="row">
+                    <div class="col-xs-2  ypt_mr_lr_13" style="margin-left:70px">
+                        <div class="left pull-left">
+                            <img src="img/buyTicket.png" alt="" class="ypt_mr_tr_5">
+                        </div>
+                        <div class="pull-left ypt_bor_pad">
+                            <div class="ypt-f16">购票指南</div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=ga&t=index&m=footerLinks" class="ypt-f14">购票流程</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gb&t=index&m=footerLinks" class="ypt-f14">预定说明</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gc&t=index&m=footerLinks" class="ypt-f14">退换及缺货说明</a></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 ypt_mr_lr_13">
+                        <div class="left pull-left ">
+                            <img src="img/buyTicket2.png" alt="" class="ypt_mr_tr_5">
+                        </div>
+                        <div class="pull-left ypt_bor_pad">
+                            <div class="ypt-f16">订票方式</div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gd&t=index&m=footerLinks" class="ypt-f14">电话订票</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=ge&t=index&m=footerLinks" class="ypt-f14">在线订票</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gf&t=index&m=footerLinks" class="ypt-f14">上门购票</a></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 ypt_mr_lr_13">
+                        <div class="left pull-left ">
+                            <img src="img/shopcar.png" alt=""  class="ypt_mr_tr_5">
+                        </div>
+                        <div class="pull-left  ypt_bor_pad">
+                            <div class="ypt-f16">配送说明</div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gg&t=index&m=footerLinks" class="ypt-f14">送货上门</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gh&t=index&m=footerLinks" class="ypt-f14">上门自取</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gi&t=index&m=footerLinks" class="ypt-f14">取票地图</a></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 ypt_mr_lr_13">
+                        <div class="left pull-left">
+                            <img src="img/money.png" alt="" class="ypt_mr_tr_5">
+                        </div>
+                        <div class="pull-left  ypt_bor_pad">
+                            <div class="ypt-f16">付款方式</div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gj&t=index&m=footerLinks" class="ypt-f14">在线支付</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gk&t=index&m=footerLinks" class="ypt-f14">货到付款</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gl&t=index&m=footerLinks" class="ypt-f14">上门付款</a></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 ypt_mr_lr_13">
+                        <div class="left pull-left">
+                            <img src="img/heart.png" alt="" class="ypt_mr_tr_5">
+                        </div>
+                        <div class="pull-left  ypt_bor_pad">
+                            <div class="ypt-f16">特色服务</div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gm&t=index&m=footerLinks" class="ypt-f14">超级票</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gn&t=index&m=footerLinks" class="ypt-f14">大麦会员</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=go&t=index&m=footerLinks" class="ypt-f14">场馆库</a></div>
+                            <div class="ypt-style-mt10"><a href="html/footerLinks.html?contentFlg=gp&t=index&m=footerLinks" class="ypt-f14">演出订阅</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 友情链接开始 -->
+            <div class="container ypt_pad_0 ypt-style-mb10 ypt_col_92">
+                <ul class="row ypt-style-mt20" style="margin-bottom:10px">
+                    <li>
+                        <a href="http://www.mcprc.gov.cn" alt="中华人民共和国文化部" class="col-xs-2 ypt_pad_0 text-right" style="margin-left:-18px"><img src="img/link1.jpg" alt="" class=" ypt_bor_ddd"></a>
+                        <a href="http://www.sdwht.gov.cn" alt="山东省文化厅" class="col-xs-2 ypt_pad_0 text-right"><img src="img/link2.png" alt="" class=" ypt_bor_ddd"></a>
+                        <a href="http://www.sdpag.com" alt=" 山东演艺集团"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link3.jpg" alt="" class=" ypt_bor_ddd"></a>
+                        <a href="http://www.jsyanyi.cn" alt="江苏省演艺集团"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link4.jpg" alt="" class=" ypt_bor_ddd"></a>
+                        <a href="http://www.qaf.org.tw" alt="广艺基金会"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link5.jpg" alt="" class=" ypt_bor_ddd"></a>
+                        <a href="http://culture.dzwww.com" alt="山东文化历史"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link6.gif" alt="" class=" ypt_bor_ddd"></a>
+                </ul>
+                <ul class="row">
+                    <li >
+                        <a href="http://www.sdmuseum.com" alt="山东博物馆"  class="col-xs-2 ypt_pad_0 text-right" style="margin-left:-18px"><img src="img/link7.png" alt="" class="link ypt_bor_ddd"></a>
+                        <a href="http://www.ccdy.cn" alt="中国文化传媒网"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link8.gif" alt="" class="link ypt_bor_ddd"></a>
+                        <a href="http://www.sdcbcm.com" alt="山东出版传媒股份有限公司"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link9.png" alt="" class="link ypt_bor_ddd"></a>
+                        <a href="http://www.sddjy.org/index.html" alt="山东省会大剧院"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link10.png" alt="" class="link ypt_bor_ddd"></a>
+                        <a href="http://www.sdlib.com" alt="山东省图书馆"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link11.jpg" alt="" class="link ypt_bor_ddd"></a>
+                        <a href="http://www.sdsysyjy.com" alt="山东省艺术研究院"  class="col-xs-2 ypt_pad_0 text-right"><img src="img/link12.png" alt="" class="link ypt_bor_ddd"></a>
+                    </li>
+                </ul>
+                <div class="row text-center ypt-style-mt20 ypt-style-mb10">
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fa&t=index&m=footerLinksMiddle" style="margin-left:150px;">公司简介</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fb&t=index&m=footerLinksMiddle">合作招商</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fc&t=index&m=footerLinksMiddle">合作伙伴</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fd&t=index&m=footerLinksMiddle">隐私声明</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fe&t=index&m=footerLinksMiddle">人才招聘</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=ff&t=index&m=footerLinksMiddle">联系我们</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fg&t=index&m=footerLinksMiddle">网站地图</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fh&t=index&m=footerLinksMiddle">友情链接</a><span class="pull-left">|</span>
+                    <a class="col-xs-1" href="html/footerLinksMiddle.html?contentFlg=fi&t=index&m=footerLinksMiddle">帮助中心</a>
+                </div>
+            </div>
+            <!-- 友情链接结束 -->
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="text-center ypt_col_92 ypt_pd_tb_15 ypt-f14">ICP备案标注：<span>鲁ICP备13028754号-2</span></div>
+                    <div class="text-center ypt_col_92 ypt-style-mb_30 ypt-f14">版权所有：<a href="http://www.sdpag.com">山东演艺联盟发展有限公司 </a>&emsp; 技术支持：<a href="http://www.sdwhcm.com.cn/">山东文化传媒有限公司</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>
+
+

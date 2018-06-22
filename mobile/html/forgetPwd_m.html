@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>忘记密码</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/security.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../logic/loginAndReg_m.js"></script>
+
+	<link rel="stylesheet" href="../css/include_m.css">
+	<link href="../css/public_mys.css" rel="stylesheet">
+	<style>
+		.inp{
+			height: 30px;
+			border: 1px #9d9d9d solid;
+			border-radius: 4px;;
+			font-size: 14px;
+			width: 90%;
+		}
+		input::-webkit-input-placeholder{
+			color: #9d9d9d;
+		}
+		input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+			color:#9d9d9d;
+		}
+		input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+			color:#9d9d9d;
+		}
+		input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+			color:#9d9d9d;
+		}
+	</style>
+</head>
+<input type="hidden" name="page" id="page" value="forget">
+<body class="bg_f6">
+<div class="container-fluid warp p0 bg_f6">
+	<div class="size14 size14-xs container p0 m0-xs bor-none-xs">
+		<div class="loginReg">
+			<!--标题栏-->
+			<table width="100%" class="mt10 col_ff">
+				<tr>
+					<td width="20%"><a class="ml10" href="javascript:void(0)" onclick="location.href='login_m.html'"><img src="../img/icon_back_white.png" style="width: 19px;"></a></td>
+					<td width="60%" align="center"><span class="size14 size14-xs text-center" id="title">修改密码</span></td>
+					<td width="20%"><span class="size14-xs"></span></td>
+				</tr>
+			</table>
+		</div>
+		<!--正文-->
+		<div class="mt50 p0 size14 size14-xs">
+			<table width="100%" border="0">
+				<tr>
+					<td colspan="2" valign="bottom" class="hei30 size12 size12-xs col_8a">
+						<span class="ml20">请输入注册时手机号</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="hei40">
+						<input class="ml20 inp" type="text" placeholder="" maxlength="11" id="forget_username">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="bottom" class="hei30 size12 size12-xs col_8a">
+						<span class="ml20">请输入手机收到的验证码</span>
+					</td>
+				</tr>
+				<tr>
+					<td width="70%" class="hei40">
+						<input class="ml20 inp" type="text" placeholder="" maxlength="6" id="forget_msg">
+					</td>
+					<td width="30%" class="hei40">
+						<input type="button" id="forget_yzmBtn" val="m" value="获取验证码" class="text-center size12 size12-xs" style="background-color: #fff0eb; color: #fa483c; border: 1px #fa483c solid; border-radius: 4px; width: 80%; height: 30px;line-height: 30px;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="bottom" class="hei30 size12 size12-xs col_8a">
+						<span class="ml20">设置新密码</span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="hei40">
+						<input class="ml20 inp" type="password" placeholder="" maxlength="30" id="forget_pwd">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button id="next2" class="mt10 bor_none ml0-xs text-center bg_red2 size14 size14-xs col_ff" style="width: 90%; height: 35px;line-height: 35px;">
+							提交
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+<!--<body>-->
+<!--<div id="logReg_head"></div>-->
+<!--<div style="height: 340px;" >-->
+	<!--<div class="register-main affix">-->
+		<!--<p style="border-bottom:1px solid #e5e5e5;"></p>-->
+		<!--<div id="s1">-->
+			<!--<table class="img-table">-->
+				<!--<tr>-->
+					<!--<td colspan="3" >-->
+						<!--<img src="../img/forget_point.png" style="width: 10px;" ><span style="margin-left: 10px; color: #fa483c;">通过手机短息验证</span>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="3" align="center">-->
+						<!--<img src="../img/forget_s1.png" style="width: 390px;" >-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+			<!--<table class="forget-table">-->
+				<!--<tr>-->
+					<!--<td colspan="2">-->
+						<!--<div class="forget-div-out">-->
+							<!--<img class="reg-img" src="../img/register_tel.png">-->
+							<!--<input class="forget-input" type="text" placeholder="请输入手机号码" maxlength="11" id="forget_username">-->
+						<!--</div>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td width="70%">-->
+						<!--<div class="forget-yzm-div-out">-->
+							<!--<img class="reg-img" src="../img/register_mail.png">-->
+							<!--<input class="forget-yzm-input" type="text" placeholder="短信验证码" maxlength="6" id="forget_msg">-->
+						<!--</div>-->
+					<!--</td>-->
+					<!--<td width="30%" align="right">-->
+						<!--<input type="button" id="forget_yzmBtn" val="m" class="button yzmBtn" value="获取验证码">-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="2">-->
+						<!--<input type="button" class="button loginBtn" id="next1" value="下一步">-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+		<!--</div>-->
+		<!--<div id="s2" style="display: none;">-->
+			<!--<table class="img-table">-->
+				<!--<tr>-->
+					<!--<td colspan="3" >-->
+						<!--<img src="../img/forget_point.png" style="width: 10px;" ><span style="margin-left: 10px; color: #fa483c;">通过手机短息验证</span>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="3" align="center">-->
+						<!--<img src="../img/forget_s2.png" style="width: 390px;" >-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+			<!--<table class="forget-table">-->
+				<!--<tr>-->
+					<!--<td colspan="2">-->
+						<!--<div class="reg-div-out">-->
+							<!--<img class="reg-img" src="../img/register_pwd.png">-->
+							<!--<input class="forget-input" type="password" placeholder="请输入新密码" maxlength="30" id="forget_pwd">-->
+						<!--</div>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="2">-->
+						<!--<div class="reg-div-out">-->
+							<!--<img class="reg-img" src="../img/register_pwd.png">-->
+							<!--<input class="forget-input" type="password" placeholder="确认密码" maxlength="30" id="forget_re_pwd">-->
+						<!--</div>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="2">-->
+						<!--<input type="button" class="button loginBtn" id="next2" value="下一步">-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+		<!--</div>-->
+		<!--<div id="s3" style="display: none;">-->
+			<!--<table class="img-table">-->
+				<!--<tr>-->
+					<!--<td colspan="3" >-->
+						<!--<img src="../img/forget_point.png" style="width: 10px;" ><span style="margin-left: 10px; color: #fa483c;">通过手机短息验证</span>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td colspan="3" align="center">-->
+						<!--<img src="../img/forget_s3.png" style="width: 390px;" >-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+			<!--<table class="forget-table">-->
+				<!--<tr>-->
+					<!--<td align="center">-->
+						<!--<img src="../img/forget_success.png" style="width: 50px;" ><br><br><span>密码重置成功</span>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td>-->
+						<!--<input type="button" class="button loginBtn" id="loginNowBTN" value="立即登录">-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</table>-->
+		<!--</div>-->
+		<!--<p style="border-bottom:1px solid #e5e5e5;"></p>-->
+	<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div id="logReg_foot"></div>&ndash;&gt;-->
+<!--</body>-->
+</html>

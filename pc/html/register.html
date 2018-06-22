@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+
+	<script src="../js/jquery-1.7.2.min.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../js/security.js"></script>
+	<script src="../logic/loginAndReg.js"></script>
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/loginAndReg.css">
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+<div id="logReg_head"></div>
+<input type="hidden" name="page" id="page" value="reg">
+<div style="padding: 0; height: 340px;" >
+	<div class="register-main affix">
+		<p style="border-bottom:1px solid #e5e5e5;"></p>
+		<table class="reg-table">
+			<tr>
+				<td colspan="2">
+					<div class="reg-div-out">
+						<img class="reg-img" src="../img/register_tel.png">
+						<input class="reg-input dq" type="text" placeholder="请输入手机号码" maxlength="11" id="reg_username">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="reg-div-out">
+						<img class="reg-img" src="../img/register_pwd.png">
+						<input class="reg-input dq" type="password" placeholder="登录密码" maxlength="30" id="reg_pwd">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="reg-div-out">
+						<img class="reg-img" src="../img/register_pwd.png">
+						<input class="reg-input dq" type="password" placeholder="确认密码" maxlength="30" id="reg_re_pwd">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="70%">
+					<div class="reg-yzm-div-out">
+						<img class="reg-img" src="../img/register_mail.png">
+						<input class="reg-yzm-input dq" type="text" placeholder="短信验证码" maxlength="6" id="reg_msg">
+					</div>
+				</td>
+				<td width="30%" align="right">
+					<input type="button" id="yzmBtn" val="r" class="button yzmBtn" value="获取验证码">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="login-div-out1"><input type="checkbox" id="agree" style="vertical-align:middle; margin-top: -2px;">&nbsp;&nbsp;我已阅读并同意<a class="col_blue4" href="javascript:void(0)" onclick="$('#xy').modal('show');">《齐鲁艺票通会员服务条款》</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" class="button loginBtn" style="border:none;" id="registerBTN" value="立即注册"></td>
+			</tr>
+		</table>
+		<p style="border-bottom:1px solid #e5e5e5;"></p>
+		<!--协议begin-->
+		<div class="modal fade size12 size10-xs" id="xy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog" style="width: 800px;">
+				<div class="modal-content">
+					<div class="modal-header bg_f6">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<span class="modal-title size14 size12-xs" id="name">齐鲁艺票通会员服务条款</span>
+					</div>
+					<div class="modal-body">
+						<div style="overflow-y:scroll; width:100%; height:600px;">
+							<table class="tk-table">
+							<tr>
+							<td colspan="2">
+							<!-- 协议开始 -->
+							<div class="agreementpreview agr-content" data-spm-anchor-id="a1zaa.8161610.0.i0.6079cab80js1sk"><h1
+									style="margin: 26px 0 0;text-align: center"><span
+									style="font-size:21px;font-family:Microsoft YaHei;color:black">阿里云网站服务条款</span></h1>
+
+							<p style="text-indent: 377px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;版本： 2017年12月版</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">前言</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><br></p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">欢迎访问阿里云网站并使用我们提供的产品和服务。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><br></p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在完成注册程序或以任何方式使用阿里云网站服务前，请您务必仔细阅读并透彻理解本阿里云网站服务条款(以下或简称“服务条款”)，在确认充分理解后选择接受或不接受本服务条款；一旦您完成“同意条款并注册”或开始以其他方式使用阿里云服务，即表明您已阅读并同意受本服务条款的约束。如您不同意本服务条款或其中任何条款约定，您应不再进行下一步或停止注册程序。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><br></p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云再次提示您审慎阅读、充分理解各条款内容，特别是限制或免除责任的相应条款，限制或免除责任条款将以加粗或其他醒目形式提示您注意。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><br></p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如果您未满18周岁，请在法定监护人的陪同下阅读本服务条款。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">一、 签约主体以及协议范围</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">1.1.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云网站服务条款是您与阿里云计算有限公司（“阿里云”或者“我们”）就使用阿里云网站服务（包含为您提供网站页面信息浏览、账户注册服务等）而订立的有效合约。</span>
+							</p>
+
+							<p style="text-indent: 32px;line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云网站包含域名为</span><a
+									href="http://www.aliyun.com/"><span
+									style="font-family:Microsoft YaHei;color: rgb(51, 51, 51);border: 1px none windowtext;padding: 0">www.aliyun.com</span></a><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">的网站以及阿里云客户端,如APP；但阿里云国际站，包括alibabacloud.com以及所有下属页面和jp.aliyun.com以及所有下属页面除外。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">1.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如您使用或购买阿里云网站上某一具体云服务，您可仍需确认具体服务对应的服务条款；请您审慎阅读、充分理解各条款内容，选择接受或不接受该服务条款。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">二、账户的注册、使用与安全</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1. </span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">注册的资格</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1.1. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您确认，在您完成注册程序或以其他阿里云允许的方式实际使用本服务时，您应当是具备完全民事权利能力和完全民事行为能力的自然人</span><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">、法人或其他组织（以下或简称为“您”）。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">若您是未成年人或限制民事行为能力人，则您不具备前述主体资格，您及您的监护人应承担因您的不当注册行为而导致的一切后果。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.1.3. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您还需确保您不是任何国家、国际组织或者地域实施的贸易限制、制裁或其他法律、规则限制的对象，否则您可能无法正常注册及使用阿里云服务。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.2. </span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户注册</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.1.</span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">当您按照注册页面提示填写信息、阅读并同意本服务条款且完成全部注册程序后，您可获得阿里云账户并成为阿里云的用户。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.2.2. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您在注册时候设置或确认的账户名（“账户名称”）及您设置的密码，将在注册成功后成为您的账户</span><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">（账户名称及密码合称“账户”）。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.3. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您设置的账户名不得违反国家法律法规、阿里云的管理规范或容易引起您与阿里云身份的混淆，否则您的账户可能不能注册成功或阿里云有权经通知您后予以注销。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.2.4. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您应当按照法律法规要求或按相应页面的提示，准确提供并及时更新您的账户信息，以使之真实、及时、完整和准确。如您提供的资料错误、不实、过时或不完整的，阿里云可以向您发出询问及/或要求改正的通知，您应按照阿里云的要求配合提供或者更新相关资料。<strong><span
+									style="text-decoration:underline;">因您填写的信息、资料不真实、不及时、不完整或不准确的，您应承担您不能使用阿里云账户（不能注册成功、或账户被冻结、注销）或您在使用过程中的后果和损失。</span></strong></span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.5. </span></strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">阿里云可能会就某些产品或服务的开通，要求您提供更多的身份资料和信息，做进一步的身份认证或资格验证，您的账户只有在通过这些认证和验证之后，方可获得使用相关产品或服务的资格。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">2.2.6. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">通常情况下，您的阿里云账户是您在阿里云网站进行一切活动的唯一身份标识，除非另有约定，每一个阿里云账户都可以在本网站独立开展活动。但在下列情形下，阿里云有权根据自己的判断，对同一及/或关联法律主体拥有的多个阿里云账户进行统一处理，如根据不同阿里云账户在注册、登录、使用中的关联信息，阿里云判断其实际为同一用户。关联信息举例：同一证件、同一手机号、同一支付账号、同一设备、同一地址等。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3. </span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户的使用和安全</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.1.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您有权使用您设定的账户</span><span
+										style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">登录阿里云网站，进而使用阿里云提供的其他服务。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.2. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云可能会以<strong>邮件、站内信、短信或电话等方式</strong>通知您服务进展情况以及提示您进行下一步的操作。在服务过程中您应当及时登录到阿里云账户查看和进行交易操作。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.3. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">一个阿里云账户仅能对应唯一的法律主体。除非有法律明文规定、司法裁定或者经阿里云同意的情况下，您不得以任何方式转让、赠与或让他人继承您的阿里云账户。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.4. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您的账户和密码由您自行设置并由您保管，您须对您的阿里云账户和密码保密。您需确保您在每个上网时段结束时，以正确步骤离开网站。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.5. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如发现他人未经授权使用您的阿里云账户和密码，您应立即通知阿里云；阿里云将协助您冻结账户、更改密码或进行其他安全设置；您理解阿里云对您的请求采取行动需要合理时间，阿里云对在采取行动前已经产生的以及由您引发的后果（包括但不限于您的任何损失）不承担任何责任。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">2.3.6. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云亦会在网站服务端采取合理的技术措施保障账户的安全。</span>
+							</p>
+
+							<p style="margin: 5px 0"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></strong>
+							</p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">三、账户的冻结、注销及申诉</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1. </span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户的冻结</span></strong>
+							</p>
+
+							<p style="text-indent: 32px;line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您的阿里云账户（全部或部分权限或功能）在如下情况可能被冻结（如阿里云帐户被限制资金转出功能等）</span></span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">，阿里云将通过邮件、站内信、短信或电话等方式通知您：</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.1. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">基于阿里云网站或服务运行和交易安全的需要，如您发生或可能发生破坏或试图破坏阿里云或阿里云关联公司公平交易环境或正常交易秩序的，或任何使用含有阿里云或阿里云关联公司名称、品牌且对他人有误导嫌疑或任何使用某种中英文(全称或简称)、数字、域名等意图表示或映射与阿里云或其关联公司具有某种关联的；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">违反本服务条款、阿里云网站的相关规则、规范（如交易规则、管理规范）、服务说明以及其他服务协议/条款的；</span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0"> </span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.3. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">违反国家法律、法规、政策、法律文书的规定的；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.4. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您遭到他人投诉， 且对方已经提供了相关证据的，而您未按照我们的要求提供相反证据的；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.5. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云根据合理分析判断您的账户操作、</span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">收益、兑换等存在异常的；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.6. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">国家有权机关要求进行的冻结的；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.1.7. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云合理判断，您发生与如上行为性质相同或产生如上类似风险的其他情况的。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.2. </span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">账户的注销</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;">3.2.1. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span style="font-family:Microsoft YaHei;">如果出现如上第3.1条情形且情形严重的，或基于国家有权机关的要求，<span
+									style="border:none windowtext 1px;padding:0">您的阿里云账户（全部或部分权限或功能）将被注销，阿里云将通过邮件、站内信、短信或电话等方式通知您。</span></span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.2.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您理解并同意，如您连续</span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">12</span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">个月未通过账户登录过阿里云网站，且您的账户下不存在任何未到期的服务，阿里云有权注销您的账户，您将不能再登录阿里云网站。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">3.3. </span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">申诉</span></strong>
+							</p>
+
+							<p style="text-indent: 32px;line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">发生前述账户冻结或注销情况下，您应及时予以关注并可以按照程序进行申诉等后续操作：</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">3.3.1. </span></strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您通过申诉程序，向阿里云申请解除上述冻结或注销的，为了您的账户安全，您应配合如实提供身份证明及相关资料，以及阿里云要求的其他信息或文件，以便阿里云进行核实。您应充分理解您的申诉并不必然被允许，阿里云有权决定是否同意您的申诉请求<strong>。</strong></span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">3.3.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您理解并同意，如果您拒绝如实提供身份证明及相关资料，或未能通过阿里云审核，阿里云有权长期冻结该等账户且长期限制账户部分或全部功能。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">四、网站服务及规范</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">4.1</span></strong><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">．</span></strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您有权享受阿里云通过本网站提供的互联网技术服务和信息服务。您同时还应根据本服务条款以及您在购买具体服务时确认的相关条款和条件，履行及时付款、服务管理等责任。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">4.2. </span></strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您使用阿里云的服务，您应保证：</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">4.2.1. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您使用阿里云服务时将遵从国家、地方法律法规、行业惯例和社会公共道德，不会利用阿里云提供的服务进行存储、发布、传播如下信息和内容：</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅰ）违反国家法律法规政策的任何内容（信息）；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅱ）违反国家规定的政治宣传和/或新闻信息；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅲ）涉及国家秘密和/或安全的信息；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅳ）封建迷信和/或淫秽、色情、下流的信息或教唆犯罪的信息；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅴ）博彩有奖、赌博游戏；违反国家民族和宗教政策的信息；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅵ）妨碍互联网运行安全的信息；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅶ）侵害他人合法权益的信息和/或其他有损于社会秩序、社会治安、公共道德的信息或内容；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">（ⅷ）您同时承诺不得为他人发布上述不符合国家规定和/或本服务条款约定的信息内容提供任何便利，包括但不限于设置URL、BANNER链接等；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">4.2.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">不应出现任何破坏或试图破坏网络安全等的行为，包括不会利用技术或其他手段破坏或扰乱本网站及阿里云其他客户的网站；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">4.2.3. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您使用阿里云网站的服务应符合本服务条款；</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如您违反上述保证，阿里云除有权根据相关服务条款采取删除信息、中止服务、终止服务的措施，并有权冻结或注销您账户部分或全部功能。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">五、隐私及个人信息的保护</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">&nbsp;&nbsp;</span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">您的信任对阿里云非常重要，阿里云深知用户信息安全的重要性，阿里云将按照法律法规要求，采取安全保护措施，保护您的用户信息安全可控。具体详见《<a
+									href="http://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201710161525_98396.html?spm=5176.8142029.631162.law.3836dbccuy7W0b">法律声明及隐私权政策</a>》。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border:none windowtext 1px;padding:0">&nbsp;</span></strong>
+							</p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">六、知识产权</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.1. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">我们尊重知识产权，除非获得了您的同意，阿里云不会擅自使用、修改、复制、公开传播、改变、散布、发行或公开发表您拥有知识产权的成果。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.2. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">任何组织或个人认为阿里云网站的网页内容，如转载文章、云市场服务商发布的商品信息等可能侵犯其合法权益的，可向阿里云（https://report.aliyun.com）提出书面权利通知，阿里云将在收到知识产权权利人合格通知后依法尽快处理。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.3.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">除非另行说明，阿里云网站Logo、“阿里云”、“aliyun”等文字、图形及其组合，以及阿里云网站的其他标识、徽记、阿里云服务的名称、技术文档等的知识产权为阿里云及其关联公司所有。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">6.4. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您应尊重阿里云和第三方的知识产权和其他合法权利/权益，并保证在发生侵犯前述权益的违法事件时，保护阿里云及其雇员、股东、合作伙伴等免于因该等事件受到影响或损失，阿里云保留在您侵犯阿里云及/或其他第三方的合法权利/权益时终止向您提供服务并不退还任何款项的权利</span></span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">。</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">其他具体信息详见《<a
+									href="http://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201710161525_98396.html?spm=5176.8142029.631162.law.3836dbccuy7W0b">法律声明及隐私权政策</a>》的法律声明部分。</span>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">七、保密</span></strong>
+							</p>
+
+							<p style="text-indent: 0px; margin-bottom: 10px; line-height: 24px;"><span
+									style="font-family:Microsoft YaHei; text-indent: 32px;"><b>&nbsp; </b>阿里云承诺对您注册账户时或使用阿里云服务时提交或知悉的信息采取保密措施，不向第三方披露您的信息，除非：</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">7.1.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">依据本服务条款或者您与阿里云之间其他服务协议、合同、在线条款等规定可以提供的；</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">7.2. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">依据法律法规的规定或行政、司法等职权部门要求应当提供的；</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">7.3.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在不违反本服务条款约定责任的前提下，该保密信息已经公开或能从公开领域获得。</span>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">八、责任范围和责任限制</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.1. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您了解并同意，您应承担因您使用本服务、违反本服务条款或在您的账户下采取的任何行动而导致的任何第三方索赔。如果由此引起阿里云及其关联公司、员工、客户和合作伙伴被第三方索赔的，您应负责处理，并赔偿阿里云及其关联公司由此遭受的全部损失和责任。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;">8.2. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在适用法律许可的范围内，阿里云不对与本服务条款有关或由本服务条款引起的任何间接的、惩罚性的、特殊的、派生的损失承担赔偿责任。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.3. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云在此提示，您在使用阿里云服务期间应当遵守中华人民共和国的法律，不得危害网络安全，不得利用阿里云的服务从事侵犯他人名誉、隐私、知识产权和其他合法权益的活动。阿里云不对您使用阿里云服务的违法或违约行为承担任何责任。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.4.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云用户在阿里云网站的论坛、社区以及云市场上自行上传、提供、发布相关信息，包括但不限于用户名称、公司名称、 联系人及联络信息，相关图片、资讯等，均由用户自行提供，阿里云的用户须对其提供的前述信息依法承担全部责任。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.5.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">如果您通过使用阿里云网站或获取来自第三方的任何产品或服务，例如，阿里云云市场上的服务商依托云市场向您提供服务，服务商将对其提供的服务向您负责，阿里云对此第三方服务不承担任何责任。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">8.6. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">在某些情况下，为了帮助您更便捷的使用阿里云的服务，阿里云可能会展示阿里云的参考代码或软件（如属于第三方开源软件，您则应遵守第三方开源软件的相关使用要求），基于相应展示页面的使用说明，该等软件可能允许您予以下载、进行二次开发等相关操作，您应理解并承诺，该等代码的知识产权属于阿里云，您在使用时应明确表明权利人，同时，阿里云不对您能否使用以及使用该等代码、软件的工作和后果负责。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">九、不可抗力和意外事件</span></strong>
+							</p>
+
+							<p style="text-indent: 0px; margin-bottom: 10px; line-height: 24px;"><span
+									style="font-family:Microsoft YaHei; text-indent: 32px;"><b>&nbsp; &nbsp;</b>阿里云的网站可能因为下列不可抗力或意外事件无法正常运行的，阿里云不承担损害赔偿责任：</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">9.1. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">因自然灾害、罢工、暴乱、战争、政府行为、司法行政命令等不可抗力因素；</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">9.2.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">因电力供</span><span
+										style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">应故障、通讯网络故障等公共服务因素；</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">9.3. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">经提前公告或通知的，阿里云在短时间内的系统维护。</span>
+							</p>
+
+							<p style="line-height: 24px"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十、 法律适用与管辖</span></strong>
+							</p>
+
+							<p style="text-indent: 32px;line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款之效力、解释、变更、执行与争议解决均适用中华人民共和国法律。因本服务条款产生之争议应提交至浙江省杭州市西湖区人民法院解决。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十一、通知送达</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">11.1.</span></strong>
+								<span style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">您理解并同意，阿里云可通过网页公告、电子邮件、站内信、短信、电话、系统消息以及即时通信等以上一种或多种通知方式向您发送通知，且阿里云可以信赖您所提供的联系信息是完整、准确且当前有效的；上述通知在发送成功后视为已送达。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">11.2</span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">．</span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">除非本服务条款另有约定或阿里云与您另行签订的协议明确规定了通知方式，您发送给阿里云的通知，应当通过阿里云对外正式公布的通信地址、传真号码、电子邮件地址等联系信息进行送达。</span>
+							</p>
+
+							<p style="line-height: 24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十二、条款的更新和终止</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">12.1. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云有权对本服务条款及相应的服务规则内容进行变更，并将网页公告、电子邮件、站内信、短信等方式予以公告或通知；若您在本服务条款内容变更后继续使用本服务的，表示您已充分阅读、理解并接受修改后的内容，也将遵循修改后的条款内容</span></span></strong><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">。</span></strong>
+							</p>
+
+							<p style="line-height:24px"><strong><span style="font-family:Microsoft YaHei;">12.2.</span></strong>
+								<span style="font-family:Microsoft YaHei;">在您的账户注销或经双方协商一致终止网站服务的，本服务条款终止。</span></p>
+
+							<p style="line-height:24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+							<p style="margin-bottom: 10px;line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">十三、其他</span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.1. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款由本服务条款的内容、网站相关页面上展现的规则、规范，服务说明（含操作文档）和您点击确认的其他条款/条件组成，阿里云和您均受其约束，且其中的相关名词可相互引用、解释。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.2. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款的章节标题仅为行文方便而设，不具有法律或合同效力。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.3. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款任一条款被视为废止、无效或不可执行，该条款应视为可分的且不影响本服务条款及其他条款的有效性及可执行性。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.4. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">阿里云有权在阿里云官网（</span><a
+									href="http://www.aliyun.com/"><span
+									style="font-family:Microsoft YaHei;color: rgb(51, 51, 51);border: 1px none windowtext;padding: 0">www.aliyun.com</span></a><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">）上发布公告、发站内通知或邮件通知等方式将本服务的权利义务全部或者部分转移给阿里云的关联公司。</span>
+							</p>
+
+							<p style="line-height: 24px"><strong><span style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.5. </span></span></strong><strong><span
+									style="text-decoration:underline;"><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">除另有约定外，出于服务专业性考虑，阿里云亦可能委托关联公司或其他法律主体向您提供阿里云网站上一项或多项具体服务，同时您可能会与该等公司订立相关条款或条件，请您审慎阅读、充分理解条款和条件内容，选择接受或不接受该条款和条件。</span></span></strong>
+							</p>
+
+							<p style="line-height: 24px"><strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">13.6. </span></strong><span
+									style="font-family:Microsoft YaHei;border: 1px none windowtext;padding: 0">本服务条款项下之保密条款、知识产权条款、法律适用与管辖条款以及性质上理应存续的其他条款（如对注册信息的真实性保证等），不因本条款的终止而失效。</span>
+							</p>
+
+							<p style="line-height:24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+							<p style="line-height:24px"><span style="font-family:Microsoft YaHei;">&nbsp;</span></p>
+
+							<p><br></p></div>
+							<!-- 协议结束 -->
+							</td>
+							</tr>
+							</table>
+						</div>
+						<!--按钮-->
+						<button class="bor_none ml0-xs text-center bg_ef size13 size10-xs col_47" data-dismiss="modal" style=" width: 100px; height: 30px;line-height: 30px; margin-left: 325px !important; margin-top: 20px !important;">
+							关闭
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--协议end-->
+	</div>
+</div>
+<div id="logReg_foot"></div>
+</body>
+</html>

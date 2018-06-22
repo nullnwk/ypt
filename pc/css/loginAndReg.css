@@ -1,0 +1,243 @@
+/*注册&登录-css*/
+
+body{ background-color: #ffffff; }
+
+.logAndReg-a:link{text-decoration:none; color:#707070;}
+.logAndReg-a:visited{text-decoration:none; color:#707070;}
+.logAndReg-a:hover{text-decoration:underline; color:#fa483c;}
+.logAndReg-a:active{text-decoration:underline; color:#fa483c;}
+.logAndReg-a.web:visited{text-decoration:none; color:#707070;}
+
+.loginBtn{
+    color:#fff;
+    background:#fa483c;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px
+}
+
+.loginBtn:hover{
+	background: #ff6f70;
+	color:#fff;
+}
+
+.yzmBtn{
+    color: #4a4a4a;
+    background:#ffffff;
+    border: 1px #e7e7e7 solid;
+    width: 100px;
+    padding: 0px 10px;
+    height: 35px;
+    line-height: 35px;
+    margin-top: 10px;
+    font-size: 10px;
+}
+
+.yzmBtn:hover{
+    /*background: #ff6f70;*/
+    /*color:#fff;*/
+    cursor: pointer;
+    /*cursor: not-allowed;*/
+}
+
+input{
+    outline: none;
+}
+
+.login-main{
+    opacity:0.95;
+    background-color: #fff;
+    width: 340px;
+    height: 280px;
+    float: right;
+    top: 0;
+    right: 0;
+    margin-right: 7%;
+    margin-top: 8%;
+}
+
+.login-input{
+    height:25px;
+    width:240px;
+    border: 0;
+}
+.login-img{
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+}
+.login-div-out{
+    height:35px;
+    line-height:35px;
+    background: #ffffff;
+    width:300px;
+    padding-left:10px;
+    margin-top: 10px;
+    position: relative;
+    border: 1px #e7e7e7 solid;
+}
+.login-tishi{
+    position:absolute;
+    right: 0;
+    bottom:-28px;
+    font-size:13px;
+    color: #f00;
+}
+
+.login-div-out1{
+    color: #777777;
+    font-size: 13px;
+    height:20px;
+    line-height:20px;
+    margin-top: 10px;
+}
+
+.login-table{
+    width: 300px;
+    height: 220px;
+    background-color: #fff;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.reg-table{
+    width: 350px;
+    height: 280px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    /*margin-left: 20px;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.forget-table{
+    width: 350px;
+    height: 180px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    /*margin-left: 20px;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.img-table{
+    width: 400px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+.tk-table{
+    width: 700px;
+    /*height: 280px;*/
+    background-color: #ffffff;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.tk-main{
+    background-color: #ffffff;
+    width: 700px;
+    /*height: 320px;*/
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.register-main{
+    background-color: #fff;
+    width: 100%;
+    height: 320px;
+    margin: 0 auto;
+    position: absolute;
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+}
+
+.reg-input{
+    height:25px;
+    width:200px;
+    border: 0;
+}
+.reg-img{
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+}
+
+.reg-yzm-input{
+    height:25px;
+    width:170px;
+    border: 0;
+}
+
+.reg-div-out{
+    height:35px;
+    line-height:35px;
+    background: #ffffff;
+    width:350px;
+    padding-left:10px;
+    margin-top: 10px;
+    position: relative;
+    border: 1px #e7e7e7 solid;
+}
+
+.reg-yzm-div-out{
+    height:35px;
+    line-height:35px;
+    background: #ffffff;
+    width:240px;
+    padding-left:10px;
+    margin-top: 10px;
+    position: relative;
+    border: 1px #e7e7e7 solid;
+}
+
+.forget-div-out{
+    height:35px;
+    line-height:35px;
+    background: #ffffff;
+    width:350px;
+    padding-left:10px;
+    margin-top: 10px;
+    position: relative;
+    border: 1px #e7e7e7 solid;
+}
+
+.forget-yzm-div-out{
+    height:35px;
+    line-height:35px;
+    background: #ffffff;
+    width:240px;
+    padding-left:10px;
+    margin-top: 10px;
+    position: relative;
+    border: 1px #e7e7e7 solid;
+}
+
+.dq{
+    vertical-align:middle;
+    margin-top: -4px;
+    font-size: 13px;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #c2c2c2; opacity:1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #c2c2c2;opacity:1;
+}
+
+input:-ms-input-placeholder{
+    color: #c2c2c2;opacity:1;
+}
+
+input::-webkit-input-placeholder{
+    color: #c2c2c2;opacity:1;
+}

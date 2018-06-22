@@ -1,0 +1,105 @@
+/** {*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*list-style-type: none;*/
+/*}*/
+
+/*a, img {*/
+    /*border: 0;*/
+/*}*/
+
+/*body {*/
+    /*font: 12px/180% Arial, Helvetica, sans-serif, "黑体";*/
+/*}*/
+
+/* select */
+.select {
+    /*padding: 5px 10px;*/
+    /*border: #ddd 1px solid;*/
+    /*border-radius: 4px;*/
+    /*width: 90%;*/
+    /*margin: 5% auto;*/
+    /*font-size: 12px*/
+}
+
+.select li {
+    list-style: none;
+    padding: 10px 0 0 80px
+}
+
+.select .select-list {
+    border-bottom: #eee 1px dashed
+}
+
+.select dl {
+    zoom: 1;
+    position: relative;
+    line-height: 10px;
+}
+
+.select dl:after {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden
+}
+
+.select dt {
+    width: 80px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 0;
+    left: -100px;
+    text-align: right;
+    color: #666666;
+    height: 15px;
+    line-height: 15px
+}
+
+.select dd {
+    float: left;
+    display: inline;
+    color: #666666;
+    margin: 0 0 5px 5px;
+}
+
+.select a {
+    display: inline-block;
+    white-space: nowrap;
+    height: 18px;
+    padding: 0 12px;
+    text-decoration: none;
+    color: #666666;   /*条件文字颜色*/
+    border-radius: 2px;
+}
+
+.select a:hover {
+    color: #ffffff;   /*条件点击字体颜色*/
+    background-color:#fa483c;   /*条件点击背景框颜色*/
+}
+
+.select .selected a {
+    color: #ffffff;
+    background-color: #fa483c;
+}
+
+.select-result dt {
+    /*font-weight: bold*/
+}
+
+.select-no {
+    color: #999
+}
+
+.select .select-result a {
+    padding-right: 20px;
+    border: 1px dotted;
+    border-color: #fa483c;
+    color: #fa483c;
+    background: #ffffff url("../img/close.gif") right 3px no-repeat
+}
+
+.select .select-result a:hover {
+    /*background-position: right -15px*/
+}

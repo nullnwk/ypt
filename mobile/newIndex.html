@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>齐鲁艺票通</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="fonts2/iconfont.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+	<script src="js/config.js"></script>
+    <script src="js/url.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/new_index.js"></script>
+    <style>
+        /* 轮播 */
+        #swiper .swiper-wrapper .swiper-slide {
+            width: 100%;
+            float:left;
+            color: #fff;
+            font-size: 36px;
+            text-align: center;
+        }
+        #swiper  .pagination {
+            position: absolute;
+            z-index: 1001;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        #swiper  .swiper-pagination-bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 8px;
+            background: #fff;
+            margin: 0 5px;
+            opacity: 0.8;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+        #swiper  .swiper-pagination-bullet-active{
+            background: #fa483c;
+            border: 3px solid #ffbdb9;
+            width:14px;
+            height:14px;
+            border-radius: 7px;
+            position: relative;
+            top: 2px
+        }
+        #swiper .swiper-wrapper .swiper-slide img{width: 100%!important;}
+        /*轮播结束*/
+        #swiper2 .swiper-container {
+            width: 100%;
+            height: 30px;
+            /*border:1px solid red;*/
+        }
+        .row{
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .dbline_left{
+            height: 30px;
+            background:url(img/dbLine_left.jpg) 0 6px no-repeat  ;
+        }
+        .dbline_right{
+            height: 30px;
+            background:url(img/dbLine_right.jpg) -60px 6px no-repeat  ;
+        }
+        #youLive div:nth-last-child(2){
+            border-bottom:none;
+        }
+        #youLive div:not(:nth-last-child(2)){
+            border-bottom:1px solid #ddd;
+        }
+        #searching li{
+            text-indent: 1em;
+            text-align: left;
+        }
+        #searching li:hover{
+            background: #cccccc;
+            cursor: pointer;
+        }
+        #text{
+            background:url("img/glass.png") 10px 7px no-repeat;
+            background-size:18px;
+            text-indent:2em;outline:none;font-size:12px
+        }
+        #searching li{
+            height: 35px;
+            line-height: 35px;
+        }
+        /*#searching li:nth-child(2n+1){*/
+            /*background: #ececec;*/
+        /*}*/
+
+        #swiper3{
+            width:100%;height: 225px;margin-bottom:15px;padding:0 5px;
+        }
+        #swiper3 .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+        #swiper3 .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid ypt_bgcol_fff" style="position: fixed;top:0;z-index:110;padding: 0;">
+        <div class="row ypt-style-mt10" style="height: 40px;">
+            <div class="col-xs-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle ypt-f16" data-toggle="dropdown" style="border:none;padding:6px 0;color:#4a4a4a">
+                        济南<span class="glyphicon glyphicon-menu-down"></span>
+                    </button>
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                        <!--<li><a href="#">青岛</a></li>-->
+                        <!--<li><a href="#">潍坊</a></li>-->
+                        <!--<li><a href="#">东营</a></li>-->
+                        <!--<li><a href="#">威海</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+            <div class="col-xs-10">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <input type="text" class="form-control colapse" placeholder="搜索演出、艺人、场馆" id="text">
+                        <span class="input-group-addon" id="search"> 搜索 </span>
+                    </div>
+                    <ul id="searching" style="position: absolute;border:1px solid #929292;border-top:none;top:36px;background:#fff;z-index:11111;width: 73%;display: none">
+                        <!--<li class="text-left">私搭乱建福利卡</li>-->
+                        <!--<li>私搭乱建福利卡</li>-->
+                        <!--<li>私搭乱建福利卡</li>-->
+                    </ul>
+                </form>
+
+            </div>
+            <!--<div class="col-xs-1">-->
+                <!--<a href="">-->
+                    <!--<img src="img/ss.jpg" alt="" style="width: 30px;margin-top: 4px;">-->
+                <!--</a>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="container-fluid ypt_pad_0 ypt_bgcol_fff" id="swiper" style="margin-top:45px">
+        <!--轮播图-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--<div class="swiper-slide">-->
+                    <!--<a href="mo/html/performInfo_m.html">-->
+                        <!--<img src="img/discover_img1.jpg" alt="">-->
+                    <!--</a>-->
+                <!--</div>-->
+            </div>
+            <div class="pagination"></div>
+        </div>
+    </div>
+    <div class="container-fluid ypt_bgcol_fff" style="padding: 10px">
+        <ul class="row">
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a771120006">
+                    <img src="img/bar1.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">音乐会</p>
+                </a>
+            </li>
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a7e3c10009">
+                    <img src="img/bar2.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">话剧歌剧</p>
+                </a>
+            </li>
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a84867000b">
+                    <img src="img/bar3.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">芭蕾舞蹈</p>
+                </a>
+            </li>
+        </ul>
+        <ul class="row">
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a82a6f000a">
+                    <img src="img/bar4.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">曲艺杂谈</p>
+                </a>
+            </li>
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a7ad9e0008">
+                    <img src="img/bar5.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">儿童亲子</p>
+                </a>
+            </li>
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a78ce70007">
+                    <img src="img/bar6.png" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">演唱会</p>
+                </a>
+            </li>
+
+        </ul>
+        <ul class="row">
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a8b79c000e">
+                    <img src="img/bar7.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">周边商品</p>
+                </a>
+            </li>
+            <li class="col-xs-4 text-center">
+                <a href="classify_page.html?id=2c982bbf62518657016251a862a6000c">
+                    <img src="img/bar8.png" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">惠民演出</p>
+                </a>
+            </li>
+            <li class="col-xs-4 text-center">
+                <a href="" id="myCard">
+                    <img src="img/bar9.jpg" alt="" class="ypt_wid_60">
+                    <p class="ypt-style-mt5">会员卡</p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="container-fluid ypt_pd_tb_8 ypt_bgcol_fff ypt-f18" style="border-top:1px solid #e7e7e7">
+        <ul class="row text-center ypt_bgcol_fff ypt_mar_0">
+            <li class="col-xs-4 ypt_pad_0 ypt-fc-red" style="border-right:1px solid #e7e7e7">新闻动态</li>
+            <li class="col-xs-8" id="swiper2" style="padding-right: 0">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper  ypt-f14">
+                        <!--<div class="swiper-slide colapse"><a href="mo/html/newsInfo_m.html">2017赛季2017赛季2017赛季2017赛季</a></div>-->
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container-fluid ypt_bgcol_fff ypt-style-mt20 ypt_pad_0" >
+        <div class="row ypt_mr_tb_15">
+            <div class="col-xs-4 dbline_left"></div>
+            <div class="col-xs-4 ypt-f18 text-center">热门推荐</div>
+            <div class="col-xs-4 dbline_right"></div>
+        </div>
+        <div id="swiper3">
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id="hotRecommend">
+                    <!--<div class="swiper-slide">-->
+                        <!--<a href="html/performInfo_m.html">-->
+                            <!--<img src="img/demo.jpg" alt="" class="ypt_wid_100"/>-->
+                            <!--<div class="ypt-f14">不服来犟—2017何洁济南演唱会</div>-->
+                            <!--<p class="ypt_col_92 colapse" style="font-size:10px">2017.09.09-2018.09.09</p>-->
+                            <!--<div class="ypt-fc-red">-->
+                                <!--￥<span class="ypt-f20">162</span>-->
+                                <!--<span class="ypt_col_92">起</span>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid ypt_bgcol_fff ypt-style-mt20" style="padding:0">
+        <div class="row ypt-style-mt15">
+            <div class="col-xs-4 dbline_left"></div>
+            <div class="col-xs-4 ypt-f18 text-center">猜你喜欢</div>
+            <div class="col-xs-4 dbline_right"></div>
+        </div>
+
+        <div class="row" id="guessLick">
+            <!--<a href="mo/html/performInfo_m.html">-->
+                <!--<div class="col-xs-12 ypt-style-mt15 ">-->
+                    <!--<ul class="row">-->
+                        <!--<li class="col-xs-4 ypt_pad_0">-->
+                            <!--<img src="img/thumbnail.jpg" alt="" class="ypt_wid_100"/>-->
+                        <!--</li>-->
+                        <!--<li class="col-xs-8">-->
+                            <!--<p>不服来犟—2017何洁济南演唱会</p>-->
+                            <!--<p class="ypt_col_92">时间：<span>2017.09.09-2018.09.09</span></p>-->
+                            <!--<p class="ypt_col_92">地点：<span>山东省会大剧院</span></p>-->
+                            <!--<p class=" ypt-fc-red"><span class="diamonds">折</span><span class="diamonds">惠</span>￥<span class="ypt-f20">162</span> <span class="ypt_col_92">起</span></p>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</a>-->
+        </div>
+        <div class="col-xs-12 ypt_mr_tb_30 text-center" style="border:none">
+            <button class= "btn btn-default" id="more">点击加载更多。。。。</button>
+        </div>
+    </div>
+    <div id="loding">
+        <img src="img/loding.gif"/>
+    </div>
+
+    <div style="margin-bottom:50px" class="bottomTap"></div>
+    <div class="container-fluid ypt_bgcol_fff ypt_pad_0 ypt_mar_0 bottomTap" id="bottomTap">
+        <ul class="row ypt_pad_0 ypt_mar_0">
+            <a href="newIndex.html">
+                <li class="col-xs-4 text-center" style="margin: 0;padding: 0;color:#ed4b40;background: #eee;">
+                    <i class="iconfont ypt-icon-fangzi">
+                        <p style="font-size:16px">推荐</p>
+                    </i>
+                </li>
+            </a>
+            <a href="discover_page.html">
+                <li class="col-xs-4 text-center">
+                    <i class="iconfont ypt-icon-faxian">
+                        <p style="font-size:16px">发现</p>
+                    </i>
+                </li>
+            </a>
+            <a href="user.html">
+                <li class="col-xs-4 text-center">
+                    <i class="iconfont ypt-icon-profile1">
+                        <p style="font-size:16px">我的</p>
+                    </i>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+</body>
+</html>

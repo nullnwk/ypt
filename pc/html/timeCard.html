@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>次卡</title>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/respond.min.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/base64.js"></script>
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" href="../css/include.css">
+	<link rel="stylesheet" href="../css/tpl_list_new.css">
+	<link href="../css/pager.css" rel="stylesheet">
+</head>
+<body>
+<div id="header"></div>
+<div id="" class="bg_f9 col-xs-12 p0">
+	<div class="container p0 size15 size10-xs p20">
+		<div class="col-md-12 bg_ff p_tb10">
+			次卡
+		</div>
+		<div class="col-md-12 bg_ff p_tb10 mt10">
+			<table style="width: 100%" border="0">
+				<tr>
+					<td width="30%" valign="top" style="background-color: #fff">
+						<img src="../img/cika.png" class="mt10" style="width: 370px;">
+					</td>
+					<td width="70%" rowspan="2">
+						<div class="ml10">
+							<div class="col_38 mt10"><img src="../img/icon_sanjiao.png" style="width: 15px;"><span class="ml5 bold size16 size12-xs">次卡有如下使用规则</span></div>
+							<div class="col_38 mt5 ml20">1、仅针对于<span class="col_red2">齐鲁艺票通</span>用户使用；</div>
+							<div class="col_38 mt5 ml20">2、每个用户持有效<span class="col_red2">“次卡”</span>可在全省剧院观看任意戏曲；</div>
+							<div class="col_38 mt5 ml20">3、“次卡”可在全省剧院任意使用，一张次卡仅限使用一次；</div>
+							<div class="col_38 mt5 ml20">4、<span class="col_red2">每个用户单次</span>购买<span class="col_red2">一张</span>“次卡”，过期可再次购买；</div>
+							<div class="col_38 mt5 ml20">5、最终解释权归齐鲁艺票通所有；</div>
+						</div>
+						<div class="ml30 mt10">
+							<button id="btn" class="mb5 bor_none text-center bg_red2 size13 size10-xs col_ff " style="width: 200px; height: 30px;line-height: 30px;">立即购买</button>
+						</div>
+					</td>
+				</tr>
+				<!--<tr>-->
+					<!--<td align="right" class="p_t10"><span class="col_red2 bold"><a href="user.html?key=buy"></a></span><span class="col_red2 ml5 bold">→</span></td>-->
+				<!--</tr>-->
+			</table>
+		</div>
+	</div>
+</div>
+<div id="footer"></div>
+<script>
+	$(function () {
+		$("#btn").on("click",function(){
+
+			if($.cookie("user_info")){
+				location.href='user.html?key=buy'
+			}else{
+				location.href='../html/login.html?t=card'
+			}
+
+
+
+
+		})
+	})
+</script>
+</body>
+</html>

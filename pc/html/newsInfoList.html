@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>新闻动态list</title>
+	<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/pager.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/base64.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/url.js"></script>
+	<script src="../logic/news.js"></script>
+
+	<link href="favicon.ico" rel="SHORTCUT ICON" />
+	<link rel="stylesheet" href="../css/include.css">
+	<link href="../css/tpl_list_new.css" rel="stylesheet">
+	<link href="../css/pager.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="header"></div>
+<input type="hidden" name="page" id="page" value="newsInfoList">
+<div id="content_showInfo" class="bg_f9 col-xs-12 p0 content_newsList">
+<div class="container p0">
+
+<!-- 列表及推荐开始 -->
+<div class="container p0">
+	<!-- 列表开始 -->
+	<div class="col-md-9 p0 mb20">
+
+		<!-----------------------------内容--------------------------------->
+
+		<!---------------------新闻动态------------------------>
+		<div id="page-content" class="gongzuo_dt">
+			<!-------------------路径start-------------------------->
+			<div class="m-crumb ">
+				<span>当前位置：</span>
+				<a href="#" target="_blank">首页</a>
+				<span>&gt;</span><span><a href="newsList.html">新闻动态</a></span>
+			</div>
+			<!-------------------路径end-------------------------->
+			<ul id="infoListUL">
+				<!--<li>-->
+					<!--<span>2017-03-17</span>-->
+					<!--<a href="./news-detail.html" style="" target="_blank">王磊厅长到德州市调研</a>-->
+					<!--<em class="btn-img">-->
+						<!--<a href="#" target="_blank">-->
+							<!--<img src="http://www.qlypt.com/public/ypt/img/gongzdongt_15.png" width="15" height="13" alt="图集">-->
+						<!--</a>-->
+					<!--</em>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<span>2017-03-17</span>-->
+					<!--<a href="#" style="" target="_blank">800多场活动打响"非遗文化月"品牌 推动非遗融入现代生活</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<span>2017-03-16</span>-->
+					<!--<a href="#" style="" target="_blank">文化部2016年度公共数字文化工程考核组来山东检查指导</a>-->
+					<!--<em class="btn-img">-->
+						<!--<a href="#" target="_blank">-->
+							<!--<img src="http://www.qlypt.com/public/ypt/img/gongzdongt_15.png" width="15" height="13" alt="图集">-->
+						<!--</a>-->
+					<!--</em>-->
+				<!--</li>-->
+			</ul>
+		</div>
+		<!--------------------/新闻动态------------------------>
+
+		<!----------------------------内容--------------------------------->
+		<!--分页开始-->
+		<div style="text-align: center">
+			<ul class="fenyeUL" id="page1">
+			</ul>
+			<div class="pageJump">
+				<span id="totalPage"></span>
+				<span>跳转到</span>
+				<input type="text" class="pageInput" maxlength="2"/>
+				<span>页</span>
+				<button type="button" class="button">确定</button>
+			</div>
+		</div>
+		<!--分页结束-->
+		<div class="clearfix"></div>
+	</div>
+	<!-- 列表结束 -->
+	<!-- 推荐开始 -->
+	<div class="col-sm-3 hidden-xs p0">
+		<div class="lineHei40 ml15 bg_ff recommend" id="hotspot">
+			<p class="size18 title">
+				<i class="verticalBar"></i> 热门推荐
+			</p>
+			<ul id="hotUL">
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=491769027643969536">-->
+						<!--<img src="http://60.205.208.8/cms/getImage.action?uuid=f8d27ff2-e9ba-4b95-9595-f6b3df3d10e3"-->
+							 <!--class="poster pull-left" alt="">-->
+
+						<!--<div class="pull-left info mt5">-->
+							<!--<h5 class="size14">“追”打击乐二重奏与钢琴音乐会</h5>-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=495328023499902976">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--木偶剧《嫦娥奔月》-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=504094884228108288">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--【济南】儿童剧《海的女儿》-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=499704504338485248">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--“迎国庆”黄金男高音“今夜无人入睡”经典名曲演唱会-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+				<!--<li>-->
+					<!--<a class="overflow bor_b_dash_e8 suolue size14"-->
+					   <!--href="http://ticket.qlypt.com/project/info?projectId=499753274400968704">-->
+						<!--<div class="col-sm-1 p0">-->
+							<!--<i class="pull-left circle text-center col_ff size11">2</i>-->
+						<!--</div>-->
+						<!--<div class="col-sm-11 p0">-->
+							<!--《八桂大歌》广西民族音画-->
+						<!--</div>-->
+					<!--</a>-->
+				<!--</li>-->
+
+			</ul>
+		</div>
+	</div>
+	<!-- 推荐结束 -->
+	<div class="clearfix"></div>
+	<!-- 列表结束 -->
+</div>
+<!-- 列表及推荐结束 -->
+</div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

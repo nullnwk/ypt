@@ -1,0 +1,79 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, code, em, img, small, strong, sub, sup, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    /*font-size: 1.2vw;*/
+    vertical-align: baseline;
+    background: transparent
+}
+
+a {
+    color: #007bc4;
+    text-decoration: none;
+}
+
+a:hover {
+    /*text-decoration: underline*/
+}
+
+ol, ul {
+    list-style: none
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+
+
+img {
+    border: none
+}
+
+
+
+/*.head {*/
+    /*border-bottom: 1px solid #dadada;*/
+    /*padding: 0 0 5px;*/
+/*}*/
+
+/*.head_inner {*/
+    /*margin: 0 auto;*/
+    /*width: 980px;*/
+/*}*/
+
+
+
+h2.title {
+    margin: 4px 0 30px;
+    padding: 15px 0 10px 20px;
+    border-bottom: 1px solid #d3d3d3;
+    font-size: 18px;
+    color: #a84c10;
+    background: url(../images/arrow.jpg) no-repeat 2px 14px
+}
+
+/*.foot {*/
+    /*height: 60px;*/
+    /*padding: 10px 2px;*/
+    /*line-height: 24px;*/
+    /*text-align: center*/
+/*}*/
+
+/*.foot a:hover {*/
+    /*color: #51555C*/
+/*}*/
+
+
+
+ul.ul_demo li {
+    background: url("../images/demo_icon.gif") no-repeat scroll 0 6px;
+    line-height: 28px;
+    padding-left: 20px;
+}
+
+

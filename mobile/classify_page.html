@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>演出分类页面</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="fonts2/iconfont.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/common.js"></script>
+	<script src="js/config.js"></script>
+    <script src="js/url.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/classify.js"></script>
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 45px;
+            /*border:1px solid red;*/
+        }
+        .swiper-slide{
+            line-height: 45px;
+            color:#666666;
+        }
+        .swiper-slide.text-center.ypt_borbom_red span{
+            display: inline-block;
+            height: 45px;
+            border-bottom:2px solid #fa483c;
+        }
+        .row{
+            margin-left: 0;
+            margin-right: 0;
+        }
+        #simpleness-toggle,#detaile-toggle{
+            width: 30px;margin-top:5px;
+        }
+
+        #detail{
+            display: none;
+        }
+        /*#detail ul:last-child{*/
+            /*border-bottom:1px solid red;*/
+        /*}*/
+        /*#detail div a ul:not(:nth-last-child(1)){*/
+            /*border-bottom:1px solid #ddd;*/
+        /*}*/
+        .affix{
+            position:fixed;top:0;right: 0;height:100%;width: 100%;background:#fff;z-index:101;overflow:auto;display: none;
+        }
+        .col-xs-12.ypt-f18.ypt-fc-red.ypt-style-mt10,.col-xs-12.ypt-f18.ypt-fc-red{
+            height: 37px;line-height: 37px;
+        }
+        .thumbnail{
+            height: 30px;line-height: 30px;border:1px solid #d6d6d6;border-radius:5px;margin-left: 15px;color:#797979;margin-bottom:10px;
+        }
+        .thumbnail:active{
+            background: #cccccc;
+        }
+        #backTap:active #affix{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <div class="container-fluid" style="position:fixed;top: 0;left: 0;z-index: 101;background: #fff;width:100%;height:45px;line-height: 13px;padding:0">
+            <div class="row ypt-style-mt10 ypt-style-mb10"/>
+                <div class="col-xs-4" style="margin-top: 5px;" >
+                    <i class="iconfont ypt-icon-back" onclick="history.go(-1);"></i>
+                </div>
+                <!--<div class="col-xs-3" style="padding:0;">-->
+                    <!--<div class="btn-group" style="margin-left:-10px;">-->
+                        <!--<button type="button" class="btn btn-default dropdown-toggle ypt-f16" data-toggle="dropdown" style="border:none;padding:0;color:#4a4a4a;">-->
+                            <!--济南 <span class="glyphicon glyphicon-menu-down"></span>-->
+                        <!--</button>-->
+                        <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">青岛</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">潍坊</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">东营</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">威海</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="col-xs-4 text-center ypt-f18 ypt-style-mt5" style="color:#545454">演出分类</div>
+                <div class="col-xs-4 text-right">
+                    <img src="img/classify_bar2.png" alt="" id="simpleness-toggle" style="margin-top: -2px;"> &nbsp;
+                    <img src="img/classify_bar1.png" alt="" id="detaile-toggle" style="margin-top: -3px;">
+                </div>
+                <!--<div class="col-xs-1" style="float: right;top:-5px;right:18px">-->
+                   <!-- -->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="container-fluid ypt_bor_tb_ddd ypt_bgcol_fff ypt_pad_0" style="position:fixed;width:100%;top: 45px;left: 0;z-index: 101;">
+            <div class="swiper-container">
+                <ul class="swiper-wrapper ypt-f16" id="swiper">
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a771120006"><span>音乐会</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a7e3c10009" style="padding-right: 10px;"><span>话剧歌剧</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a84867000b" style="padding-right: 10px;"><span>芭蕾舞蹈</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a82a6f000a" style="padding-right: 10px;"><span>曲艺杂坛</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a7ad9e0008" style="padding-right: 10px;"><span>儿童亲子</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a78ce70007" style="padding-right: 10px;"><span>演唱会</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a8b79c000e" style="padding-right: 10px;"><span>周边商品</span></li>
+                    <li class="swiper-slide text-center" cid="2c982bbf62518657016251a862a6000c" style="padding-right: 10px;"><span>惠民演出</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid ypt_bgcol_fff ypt_pad_0" id="simpleness" style="margin-top:90px;">
+            <ul class="row">
+                <!--<li class="col-xs-6 ypt-style-mt10">-->
+                    <!--<a href="mo/html/performInfo_m.html">-->
+                        <!--<img src="img/thumbnail.jpg" alt="" class="ypt_wid_100"/>-->
+                        <!--<p class="colapse  ypt-style-mt10">不服来犟—2017何洁济南演唱会</p>-->
+                        <!--<p class="ypt-f14 ypt-fc-red"><span class="diamonds">折</span><span class="diamonds">惠</span>￥<span class="ypt-f20">162</span> <span class="ypt_col_92">起</span></p>-->
+                    <!--</a>-->
+                <!--</li>-->
+            </ul>
+            <div class="col-xs-12 ypt_mr_tb_30 text-center" style="border:none">
+                <button class= "btn btn-default" id="more">点击加载更多。。。。</button>
+            </div>
+        </div>
+        <div class="container-fluid ypt_bgcol_fff" id="detail" style="margin-top:90px;">
+            <div class="row">
+                <!--<a href="mo/html/performInfo_m.html">-->
+                    <!--<ul class="col-xs-12   ypt_mar_0" style="padding:10px 0;">-->
+                        <!--<li class="col-xs-4 ypt_pad_0">-->
+                            <!--<img src="img/thumbnail.jpg" alt="" class="ypt_wid_100"/>-->
+                        <!--</li>-->
+                        <!--<li class="col-xs-8 ypt-style-mt10">-->
+                            <!--<p class="ypt-f16">不服来犟—2017何洁济南演唱会</p>-->
+                            <!--<p class="ypt-f16 ypt_col_92">时间：<span>2017.09.09-2018.09.09</span></p>-->
+                            <!--<p class="ypt-f16 ypt_col_92">地点：<span>山东省会大剧院</span></p>-->
+                            <!--<p class="ypt-f14 ypt-fc-red"><span class="diamonds">折</span><span class="diamonds">惠</span>￥<span class="ypt-f20">162</span> <span class="ypt_col_92">起</span></p>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</a>-->
+            </div>
+            <div class="col-xs-12 ypt_mr_tb_30 text-center" style="border:none">
+                <button class= "btn btn-default" id="more1">点击加载更多。。。。</button>
+            </div>
+        </div>
+        <div id="loding">
+            <img src="img/loding.gif"/>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="affix" style="height:100%;">
+        <div class="col-xs-12" style="border-bottom:1px solid #ddd;padding:0;height:45px;position: fixed;top:0;z-index: 1005;background:#fff">
+            <div class="col-xs-4" style="margin-top: 5px;" >
+                <i class="iconfont ypt-icon-back" id="backTap"></i>
+            </div>
+            <div class="col-xs-4 text-center ypt-f18 " style="color:#545454;margin-top: 10px">条件筛选</div>
+        </div>
+        <div id="side" class="col-xs-3" style="height: 100%;"></div>
+        <div class="col-xs-9" style="background: #eee;height:100%;margin-top:45px;padding:0">
+            <div class="col-xs-12 ypt-f18 ypt-fc-red ypt-style-mt10 ">演出分类</div>
+            <ul class="row" style="margin: 0;padding-left:10px" id="secondClassify" >
+                <!--<li class=" col-xs-3 ypt_pad_0 text-center thumbnail performance" style="margin-left: 25px" cid="">-->
+                    <!--全部分类-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" cid="2c982bbf62518657016251a771120006">-->
+                    <!--音乐会-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" cid="2c982bbf62518657016251a7e3c10009">-->
+                    <!--话剧歌剧-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" style="margin-left: 25px" cid="2c982bbf62518657016251a84867000b">-->
+                    <!--芭蕾舞蹈-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" cid="2c982bbf62518657016251a82a6f000a">-->
+                    <!--曲艺杂坛-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" cid="2c982bbf62518657016251a7ad9e0008">-->
+                    <!--儿童亲子-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" style="margin-left: 25px" cid="2c982bbf62518657016251a78ce70007">-->
+                    <!--演唱会-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" cid="2c982bbf62518657016251a8b79c000e">-->
+                    <!--周边商品-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail performance" cid="2c982bbf62518657016251a862a6000c">-->
+                    <!--惠民演出-->
+                <!--</li>-->
+            </ul>
+
+            <div class="col-xs-12 ypt-f18 ypt-fc-red">排序方式</div>
+            <ul class="row" style="margin: 0;padding-left:10px">
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail sortord" sort="1">
+                    时间排序
+                </li>
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail sortord" sort="2">
+                    默认排序
+                </li>
+            </ul>
+
+            <!--<div class="col-xs-12 ypt-f18 ypt-fc-red">购票方式</div>-->
+            <!--<ul class="row">-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail buyTicket" style="margin-left: 25px">-->
+                    <!--全部-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail buyTicket">-->
+                    <!--在线-->
+                <!--</li>-->
+                <!--<li class="col-xs-3 ypt_pad_0 text-center thumbnail buyTicket">-->
+                    <!--电子票-->
+                <!--</li>-->
+            <!--</ul>-->
+
+            <div class="col-xs-12 ypt-f18 ypt-fc-red">时间范围</div>
+            <ul class="row" style="margin: 0;padding-left:10px" id="timeScope">
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail timeHorizon" time="">
+                    全部时间
+                </li>
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail timeHorizon" time="0">
+                    今天
+                </li>
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail timeHorizon" time="1">
+                    明天
+                </li>
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail timeHorizon" time="2">
+                    一周内
+                </li>
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail timeHorizon" time="3">
+                    一月内
+                </li>
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail timeHorizon" time="4">
+                    自定义
+                </li>
+                <li class="col-xs-10 ypt_pad_0 text-center col-xs-offset-1" style="color:#797979;border:1px solid #d6d6d6;border-radius:5px;padding:15px;display:none;">
+                    <div>起始日期 : <input type="date" value="2014-06-01" id="startTime"></div>
+                    <div>结束日期 : <input type="date" value="2014-06-01" id="endTime"></div>
+                </li>
+            </ul>
+
+
+            <div class="col-xs-12 ypt-f18 ypt-fc-red">票价区间</div>
+            <ul class="row" style="margin: 0;padding-left:10px">
+                <input class="col-xs-5 thumbnail" type="text" pattern="[0-9]*" placeholder="最低价" id="minPrice">
+                <input class="col-xs-5 thumbnail" type="text" pattern="[0-9]*"  placeholder="最高价" id="maxPrice">
+            </ul>
+
+            <div class="col-xs-12 ypt-f18 ypt-fc-red">演出城市</div>
+            <ul class="row">
+                <li class="col-xs-5 ypt_pad_0 text-center thumbnail" style="margin-left: 25px">
+                    济南
+                </li>
+            </ul>
+            <div class="row">
+                <button class="col-xs-6 btn btn-default ypt-f18" id="rest" style="height: 50px;">重置</button>
+                <button class="col-xs-6 btn btn-danger ypt-f18" id="submit" style="height: 50px;">完成</button>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</body>
+</html>

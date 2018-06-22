@@ -1,0 +1,88 @@
+.bgDiv{
+    background: url(../image/login_bg.png);
+    height: 100%;
+    width: 100%;
+    background-repeat:no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #464646;
+}
+.button{
+	color:#fff;
+	background:#fa483c;
+}
+.button:hover{
+	background: #ff6f70;
+	color:#fff;
+}
+body{ background-color: #ffffff; }
+
+input{
+    outline: none;
+}
+
+.login-main{
+    background-color: #f8f8f8;
+    width: 340px;
+    height: 280px;
+    float: right;
+    top: 0;
+    right: 0;
+    margin-right: 10%;
+    margin-top: 10%;
+}
+
+.login-input{
+    height:25px;
+    width:240px;
+    border: 0;
+}
+.login-img{
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+}
+.login-div-out{
+    height:35px;
+    line-height:35px;
+    background: #ffffff;
+    width:300px;
+    padding-left:10px;
+    margin-top: 10px;
+    position: relative;
+    border: 1px #e7e7e7 solid;
+}
+.login-tishi{
+    position:absolute;
+    right: 0;
+    bottom:-28px;
+    font-size:13px;
+    color: #f00;
+}
+
+.login-div-out1{
+    font-size: 13px;
+    height:20px;
+    line-height:20px;
+    margin-top: 10px;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #c2c2c2; opacity:1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #c2c2c2;opacity:1;
+}
+
+input:-ms-input-placeholder{
+    color: #c2c2c2;opacity:1;
+}
+
+input::-webkit-input-placeholder{
+    color: #c2c2c2;opacity:1;
+}

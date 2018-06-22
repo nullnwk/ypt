@@ -1,0 +1,298 @@
+body {
+    height: 100%;
+    /*font: 12px/18px "Microsoft Yahei", Tahoma, Helvetica, Arial, Verdana, "\5b8b\4f53", sans-serif;*/
+    color: #51555C;
+}
+
+/*舞台*/
+.front {
+    height: 20px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    /*background-color: #e0e0e0;*/
+    /*color: #666;*/
+    line-height: 20px;
+    text-align: center;
+    /*border-radius: 10px;*/
+}
+
+/*舞台中心线*/
+.front-middle {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 15px;
+    text-align: center;
+    color: #a8a8a8;
+}
+
+div.seatCharts-cell {
+    /*所有座位样式*/
+    color: #182C4E;
+    height: 19px;
+    width: 19px;
+    line-height: 19px;
+    margin: 1px;
+    float: left;
+    text-align: center;
+    outline: none;
+    font-size: 8px;
+}
+
+/*左侧选票区域*/
+div.seat-Main{
+    /*border-right: 1px solid;*/
+    /*border-right-color: #a8a8a8;*/
+    overflow: auto;
+    width: 100%;
+    background-color: #fff;
+    float: left;
+    /*box-sizing: border-box;*/
+}
+
+.containers {
+    width: 100%;
+    min-height: 650px;
+    margin: 0px auto 30px auto;
+    /*border: 1px solid #a8a8a8;*/
+}
+
+.clearfix:after {
+    /*visibility: hidden;*/
+    width: auto;
+    height: auto;
+    /*background-color: #e81c10;*/
+    display: block;
+    content: " ";
+    clear: both;
+}
+
+/*结算按钮*/
+.input {
+    border: 1px solid #ccc;
+    padding: 0 5px;
+    width: auto;
+    height: 26px;
+    line-height: 26px;
+}
+
+.btn {
+    background-color: #fa483c;
+    color: #fff;
+    /*font-size: 16px;*/
+    display: inline-block;
+    height: 30px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 10%;
+    width: 80%;
+    transition: background-color 0.2s linear 0s;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    background-color: #fa483c;
+    text-decoration: none ;
+    color: #fff;
+}
+
+div.seatCharts-seat {
+    /*color: #fff;*/
+    cursor: pointer;    /*鼠标经过变小手形状*/
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+div.seatCharts-row {
+    height: 25px;
+    margin-left: 30px;
+}
+
+/*右侧列表座位图示*/
+img.rightDel{
+    width: 25px;
+    height: 25px;
+}
+
+/*div.seatCharts-seat.available {*/
+    /*座位颜色*/
+    /*background: url("../image/e_seat.png");*/
+    /*background-size: 17px 17px;*/
+    /*background-repeat: no-repeat;*/
+/*}*/
+
+
+div.seatCharts-seat.selected {
+    /*已选中座位样式*/
+    background: url("../img/seat_image/s_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.unavailable {
+    /*不可选座位样式*/
+    cursor: not-allowed;    /*鼠标经过变不可选择形状*/
+    background: url("../img/seat_image/h_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.locked {
+    /*已锁定座位样式*/
+    cursor: not-allowed;    /*鼠标经过变不可选择形状*/
+    background: url("../img/seat_image/lock_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.focused.leAseat{
+    /*A级别座位-鼠标悬停状态（放大）*/
+    background: url("../img/seat_image/leA_seat.png");
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.focused.leBseat{
+    /*B级别座位-鼠标悬停状态（放大）*/
+    background: url("../img/seat_image/leB_seat.png");
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.focused.leCseat{
+    /*C级别座位-鼠标悬停状态（放大）*/
+    background: url("../img/seat_image/leC_seat.png");
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.focused.leDseat{
+    /*D级别座位-鼠标悬停状态（放大）*/
+    background: url("../img/seat_image/leD_seat.png");
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.focused.leEseat{
+    /*E级别座位-鼠标悬停状态（放大）*/
+    background: url("../img/seat_image/leE_seat.png");
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.focused.leFseat{
+    /*F级别座位-鼠标悬停状态（放大）*/
+    background: url("../img/seat_image/leF_seat.png");
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+}
+
+div.seatCharts-seat.available.leAseat{
+    /*A级别座位*/
+    background: url("../img/seat_image/leA_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+div.seatCharts-seat.available.leBseat{
+    /*B级别座位*/
+    background: url("../img/seat_image/leB_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+div.seatCharts-seat.available.leCseat{
+    /*C级别座位*/
+    background: url("../img/seat_image/leC_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+div.seatCharts-seat.available.leDseat{
+    /*D级别座位*/
+    background: url("../img/seat_image/leD_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+div.seatCharts-seat.available.leEseat{
+    /*E级别座位*/
+    background: url("../img/seat_image/leE_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+div.seatCharts-seat.available.leFseat{
+    /*F级别座位*/
+    background: url("../img/seat_image/leF_seat.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+}
+
+/*div.seatCharts-container {*/
+    /*width: 80%;*/
+/*}*/
+
+/*图例样式*/
+div.seatCharts-legend {
+    position: absolute;
+    height: 36px;
+    z-index: 100;
+    opacity:1.0; /*透明度*/
+
+    /*PC端*/
+    /*background-color: #efefef;*/
+
+    /*移动端*/
+    margin-top: -25px;
+    margin-left: -10px;
+}
+
+ul.seatCharts-legendList {
+    /*PC端*/
+    /*padding: 8px 14px;*/
+
+    /*移动端*/
+    padding: 0px 0px;
+}
+
+.seatCharts-legendItem {
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+
+span.seatCharts-legendDescription {
+    line-height: 20px;
+}
+
+.checkout-button {
+    display: block;
+    width: 80px;
+    height: 24px;
+    line-height: 20px;
+    margin: 10px auto;
+    border: 1px solid #999;
+    font-size: 14px;
+    cursor: pointer
+}
+
+#seats_chose {
+    overflow-y: hidden;
+    overflow-x: none;
+    margin: 0;
+    padding: 0;
+}
+
+.zhe {
+    /*margin-top: 65px;*/
+    /*height: 100%;*/
+    /*position: absolute;*/
+    margin-left: 25px;
+    width: 25px;
+    float: left;
+    font-size: 13px;
+    border-radius: 25px;
+    opacity: 0.8;
+}
